@@ -1,3 +1,5 @@
+package graphCode;
+
 /*
  * Written by Ed Hong UWT Feb. 17, 2003.
  * Modified by Donald Chinn May 14, 2003.
