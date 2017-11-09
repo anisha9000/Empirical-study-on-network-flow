@@ -31,11 +31,11 @@ public class tcss543 {
         a = v;
         w = G.insertVertex(null, "b");
         b = w;
-        e = G.insertEdge(v, w, null, "X");
+        e = G.insertEdge(v, w, 10, "X");
         x = e;
         v = G.insertVertex(null, "c");
         c = v;
-        e = G.insertEdge(w, v, null, "Y");
+        e = G.insertEdge(w, v, 15, "Y");
         y = e;
         
         Iterator i;
@@ -58,11 +58,27 @@ public class tcss543 {
             }
         }
         
-        HashMap<Edge, Double> flow = utils.initFlow(G);
-        for(Entry<Edge,Double> value : flow.entrySet()) {
-            System.out.println("Edge:"+value.getKey()+" Flow:"+value.getValue());
-        
+        //Initialize flow
+        HashMap<Edge, Integer> flow = utils.initFlow(G);
+        // TODO cleanup
+        for(Entry<Edge,Integer> value : flow.entrySet()) {
+            System.out.println("Edge:"+value.getKey()+" Flow:"+value.getValue());        
         }
+        
+        //Compute Gf
+        SimpleGraph Gf = utils.createResidualGraph(G, flow);
+        
+//        System.out.println("Iterating through adjacency lists...");
+//        for (i= Gf.vertices(); i.hasNext(); ) {
+//            v = (Vertex) i.next();
+//            System.out.println("Vertex "+v.getName());
+//            Iterator j;
+//            
+//            for (j = Gf.incidentEdges(v); j.hasNext();) {
+//                e = (Edge) j.next();
+//                System.out.println("  found edge " + e.getName());
+//            }
+//        }
     }
     
 }
