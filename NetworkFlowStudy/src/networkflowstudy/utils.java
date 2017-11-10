@@ -31,6 +31,12 @@ public class utils {
         return flow;
     }
     
+    /**
+     * Create a residual graph based on a network flow G=(V,E)
+     * @param G
+     * @param flow
+     * @return Residual Graph
+     */
     public static SimpleGraph createResidualGraph(SimpleGraph G, 
             HashMap<Edge, Integer>  flow) {
         
@@ -41,7 +47,7 @@ public class utils {
         Iterator i = G.vertices();
         while(i.hasNext()) {
             Vertex v = (Vertex) i.next();
-            Gf.insertVertex(null, v.getName());
+            v = Gf.insertVertex(null, v.getName());
             vertexList.put(String.valueOf(v.getName()), v);
         }
         

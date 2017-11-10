@@ -68,17 +68,17 @@ public class tcss543 {
         //Compute Gf
         SimpleGraph Gf = utils.createResidualGraph(G, flow);
         
-//        System.out.println("Iterating through adjacency lists...");
-//        for (i= Gf.vertices(); i.hasNext(); ) {
-//            v = (Vertex) i.next();
-//            System.out.println("Vertex "+v.getName());
-//            Iterator j;
-//            
-//            for (j = Gf.incidentEdges(v); j.hasNext();) {
-//                e = (Edge) j.next();
-//                System.out.println("  found edge " + e.getName());
-//            }
-//        }
+        System.out.println("Iterating through adjacency lists...");
+        for (i= Gf.vertices(); i.hasNext(); ) {
+            v = (Vertex) i.next();
+            System.out.println("Vertex "+v.getName());
+            Iterator j;
+            
+            for (j = Gf.incidentEdges(v); j.hasNext();) {
+                e = (Edge) j.next();
+                System.out.println("  found edge " + e.getName());
+            }
+        }
     }
     
 }
