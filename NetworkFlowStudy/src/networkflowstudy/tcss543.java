@@ -25,24 +25,34 @@ public class tcss543 {
     public static void main(String[] args) {
         // TODO code application logic here
         SimpleGraph G = new SimpleGraph();
-        Vertex v, w, a, b, c;
-        Edge e, x, y;
-        v = G.insertVertex(null, "a");
-        a = v;
-        w = G.insertVertex(null, "b");
-        b = w;
-        e = G.insertEdge(v, w, 10, "X");
-        x = e;
-        v = G.insertVertex(null, "c");
-        c = v;
-        e = G.insertEdge(w, v, 15, "Y");
-        y = e;
+        Vertex s,a,b,c,d,t;
+        Edge e1,e2,e3,e4,e5,e6,e7;
+        s = G.insertVertex(null, "s");
+        a = G.insertVertex(null, "a");
+        b = G.insertVertex(null, "b");
+        c = G.insertVertex(null, "c");
+        d = G.insertVertex(null, "d");
+        t = G.insertVertex(null, "t");
+        
+        e1 = G.insertEdge(s, a, 10, "e1");
+        e2 = G.insertEdge(b, s, 15, "e2");
+        e3 = G.insertEdge(b, a, 15, "e3");
+        e4 = G.insertEdge(c, s, 20, "e4");
+        e5 = G.insertEdge(d, c, 8, "e5");
+        e6 = G.insertEdge(a, d, 6, "e6");
+        e7 = G.insertEdge(d, t, 4, "e7");
+        
         
         Iterator i;
+        Vertex v;
+        Edge e;
+        Vertex[] path = new Vertex[G.numVertices()];
         
+        int counter = 0;
         System.out.println("Iterating through vertices...");
         for (i= G.vertices(); i.hasNext(); ) {
             v = (Vertex) i.next();
+            path[counter++] = v;
             System.out.println("found vertex " + v.getName());
         }
 
@@ -79,6 +89,10 @@ public class tcss543 {
                 System.out.println("  found edge " + e.getName());
             }
         }
+        
+        
+        boolean isSTPath = utils.isSTPath(G, path, s, t);
+        
     }
     
 }
