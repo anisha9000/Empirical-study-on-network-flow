@@ -316,12 +316,29 @@ public class utils {
                             //e.setData(edge_capacity - b_neck);
                             if(e.getName()=="fe")
                             {
-                            System.out.println("Edge" + e.getName() + " data now:" + e.getData());
-                            System.out.println(e.getFirstEndpoint().getName()+"->"+e.getSecondEndpoint().getName());
-                            System.out.println((Edge)edgeList_G.get(String.valueOf(e.getFirstEndpoint().getName()+"->"+e.getSecondEndpoint().getName())));
-                            flow.put((Edge)edgeList_G.get(String.valueOf(e.getFirstEndpoint().getName()+"->"+e.getSecondEndpoint().getName())), b_neck);
-                           // System.out.println(v1.getName() + " "+ v2.getName()+ " " + edge_capacity);
+                                System.out.println("Edge" + e.getName() + " data now:" + e.getData());
+                                System.out.println(e.getFirstEndpoint().getName()+"->"+e.getSecondEndpoint().getName());
+                                System.out.println((Edge)edgeList_G.get(String.valueOf(e.getFirstEndpoint().getName()+"->"+e.getSecondEndpoint().getName())));
+                                
+                                Integer current_flow =  flow.get((Edge)edgeList_G.get(String.valueOf(e.getFirstEndpoint().getName()+"->"+e.getSecondEndpoint().getName())));
+                                System.out.println("current flow is : " + current_flow);
+                                Integer updated_edge_flow = current_flow + b_neck;
+                                flow.put((Edge)edgeList_G.get(String.valueOf(e.getFirstEndpoint().getName()+"->"+e.getSecondEndpoint().getName())), updated_edge_flow);
+                                // System.out.println(v1.getName() + " "+ v2.getName()+ " " + edge_capacity);
                             }
+                            if(e.getName()=="be")
+                            {
+                                System.out.println("Edge" + e.getName() + " data now:" + e.getData());
+                                System.out.println(e.getFirstEndpoint().getName()+"->"+e.getSecondEndpoint().getName());
+                                System.out.println((Edge)edgeList_G.get(String.valueOf(e.getFirstEndpoint().getName()+"->"+e.getSecondEndpoint().getName())));
+                                
+                                Integer current_flow =  flow.get((Edge)edgeList_G.get(String.valueOf(e.getFirstEndpoint().getName()+"->"+e.getSecondEndpoint().getName())));
+                                System.out.println("current flow is : " + current_flow);
+                                Integer updated_edge_flow = current_flow - b_neck;
+                                flow.put((Edge)edgeList_G.get(String.valueOf(e.getFirstEndpoint().getName()+"->"+e.getSecondEndpoint().getName())), updated_edge_flow);
+                                // System.out.println(v1.getName() + " "+ v2.getName()+ " " + edge_capacity);
+                            }
+                            
                         }
                     
                     }
@@ -335,11 +352,31 @@ public class utils {
             
         } */
     }
+ /*   
+    /**
+     * Calculates the max flow using augment() , getSTPath() and createResidualGraph()   
+     * @param G
+     * @return maxFlow
+     */
+/*    
+public static int fordFulkerson(SimpleGraph G){
+    
+     //Initialize flow
+     LinkedHashMap<Edge, Integer> flow = utils.initFlow(G);
+     // Create residual graph Gf
+     SimpleGraph Gf = createResidualGraph(G, flow);
+     
+     // get the Vertex object of the current soure and sink nodes
+     Vertex source = get_s(Gf);
+     Vertex sink = get_t(Gf);
+     
+     while(getSTPath(Gf, sink, source)!= null){
+         
+     }
+}
+   */ 
 }
 
 
 
 
-
-
-/**/
