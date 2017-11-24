@@ -22,6 +22,7 @@ public class ScalingMaxFlow {
     SimpleGraph G;
     private SimpleGraph Gf;
     LinkedHashMap<Edge, Integer> flow;
+    Vertex sourceGf, sinkGf;
 
     public ScalingMaxFlow(SimpleGraph G) {
         this.G = G;
@@ -32,26 +33,30 @@ public class ScalingMaxFlow {
     public LinkedHashMap<Edge, Integer> calculateFlow(Vertex sourceG,
             Vertex sinkG) {
 
-        Vertex sourceGf = Gf.getVertex((String) sourceG.getName());
-        Vertex sinkGf = Gf.getVertex((String) sinkG.getName());
+        sourceGf = Gf.getVertex((String) sourceG.getName());
+        sinkGf = Gf.getVertex((String) sinkG.getName());
 
         int delta = getDelta(sourceGf);
-        
+
         while (delta >= 1) {
             System.out.println("delta:" + delta);
             List<Vertex> path = new LinkedList<>();
 
             // returns s-t path if it exists, else returns null
             path = utils.getSTPath(Gf, sinkGf, sourceGf, delta);
-            
+
             while (path != null) {
-                path = utils.getSTPath(Gf, sinkGf, sourceGf, delta);
+
                 utils.printPath(path);
                 utils.augment(G, Gf, flow, path);
                 utils.printFlow(flow);
                 Gf = utils.createResidualGraph(G, flow);
                 utils.printGraph(Gf);
-                
+                sourceGf = Gf.getVertex((String) sourceG.getName());
+                sinkGf = Gf.getVertex((String) sinkG.getName());
+
+                path = utils.getSTPath(Gf, sinkGf, sourceGf, delta);
+
                 //utils.updateResidualGraph(G, Gf, flow, path);
             }
             delta /= 2;

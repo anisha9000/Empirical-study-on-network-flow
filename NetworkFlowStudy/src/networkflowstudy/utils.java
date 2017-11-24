@@ -226,7 +226,7 @@ public class utils {
         
         System.out.println("finding S-t path with delta:"+ delta);
         System.out.println("Gf to consider in path:");
-        utils.printGraph(Gf);
+        //utils.printGraph(Gf);
         
         while (!queue.isEmpty()) {
             current = queue.poll();
@@ -237,7 +237,7 @@ public class utils {
                 Iterator i1 = Gf.incidentEdges(current);
                 while (i1.hasNext()) {
                     Edge e = (Edge) i1.next();
-                    printEdge(e);
+                    //printEdge(e);
                     int edgeCapacity = (int) e.getData();
                     if ((e.getFirstEndpoint().getName().equals(current.getName()))
                             && edgeCapacity >= delta) {
