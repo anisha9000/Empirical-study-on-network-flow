@@ -46,18 +46,16 @@ public class utils {
             LinkedHashMap<Edge, Integer> flow) {
         // Initialize an instance of simple graph to be used as Residual Graph
         SimpleGraph Gf = new SimpleGraph();     
-        // We also maintain a hashmap for the vertices of the new graph Gf for quick access
-        HashMap<String, Vertex> vertexList = new HashMap<>();
-
+        
         // Insert all vertex in Gf
         Iterator i = G.vertices();
         while (i.hasNext()) {
             Vertex v = (Vertex) i.next();
             v = Gf.insertVertex(null, v.getName());
-            vertexList.put(String.valueOf(v.getName()), v);
         }
 
         //Insert edges based on flow
+        HashMap<String, Vertex> gfVertexList = Gf.getVertexMap();
         i = G.edges();
         while (i.hasNext()) {
             Edge e = (Edge) i.next();
@@ -65,17 +63,17 @@ public class utils {
             Integer edgeCapacity = (Integer) e.getData();
             String startVertex = String.valueOf(e.getFirstEndpoint().getName());
             String endVertex = String.valueOf(e.getSecondEndpoint().getName());
-
+            
             if (flowE.compareTo(edgeCapacity) < 0) {
                 //Forward edge
-                Edge fe = Gf.insertEdge(vertexList.get(startVertex),
-                        vertexList.get(endVertex), edgeCapacity - flowE, "fe");
+                Edge fe = Gf.insertEdge(gfVertexList.get(startVertex),
+                        gfVertexList.get(endVertex), edgeCapacity - flowE, "fe");
             }
 
             if (flowE.compareTo(0) > 0) {
                 // Backward edge
-                Edge be = Gf.insertEdge(vertexList.get(startVertex),
-                        vertexList.get(endVertex), flowE, "be");
+                Edge be = Gf.insertEdge(gfVertexList.get(startVertex),
+                        gfVertexList.get(endVertex), flowE, "be");
             }
             
         }
@@ -203,6 +201,67 @@ public class utils {
              return directions;
           
     }
+     
+     /**
+      * Return s-t path for a graph Gf based on the limiting capacity delta
+      * @param Gf
+      * @param sink
+      * @param source
+      * @param delta
+      * @return 
+      */
+     public static List<Vertex> getSTPath(SimpleGraph Gf, Vertex sink, 
+             Vertex source, int delta){
+         
+         //Initializations
+         Map<Vertex, Boolean> visited = new HashMap<>();
+         List<Vertex> directions = new LinkedList<>();
+         Queue<Vertex> queue = new LinkedList<>();
+         Map<Vertex,Vertex> prev = new HashMap<>();
+         
+         Vertex current = source;
+         queue.add(current);
+         visited.put(current, true);
+         while(!queue.isEmpty()){
+              current = queue.poll();
+              //System.out.println("Current "+current.getName());
+              if (current.getName().equals(sink.getName())){
+                    break;
+              }
+              else{
+                    Iterator i1 = Gf.incidentEdges(current);
+                    while(i1.hasNext()){
+                        Edge e = (Edge)i1.next();
+                        int edgeCapacity = (int) e.getData();
+                        if(e.getFirstEndpoint().getName().
+                                equals(current.getName()) && 
+                                edgeCapacity >= delta){
+                            
+                            Vertex node = e.getSecondEndpoint();
+                             if(!visited.containsKey(node)){
+                                queue.add(node);
+                                visited.put(node, true);
+                                prev.put(node, current);
+                             }
+                        }
+             
+                    }
+                }
+            }
+            if (!current.getName().equals(sink.getName())){
+                System.out.println("can't reach destination");
+                return null;
+            }
+            for(Vertex node = sink; node != null; node = prev.get(node)) {
+                 directions.add(node);
+            }
+      
+            Collections.reverse(directions);
+             return directions;
+          
+    }
+     
+     
      /**
      * Returns bottleneck for the given s-t path of graph Gf 
      *         
