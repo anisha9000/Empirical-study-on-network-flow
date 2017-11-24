@@ -223,20 +223,27 @@ public class utils {
         Vertex current = source;
         queue.add(current);
         visited.put(current, true);
+        
+        System.out.println("finding S-t path with delta:"+ delta);
+        System.out.println("Gf to consider in path:");
+        utils.printGraph(Gf);
+        
         while (!queue.isEmpty()) {
             current = queue.poll();
             //System.out.println("Current "+current.getName());
-            if (current.equals(sink)) {
+            if (current.getName().equals(sink.getName())) {
                 break;
             } else {
                 Iterator i1 = Gf.incidentEdges(current);
                 while (i1.hasNext()) {
                     Edge e = (Edge) i1.next();
+                    printEdge(e);
                     int edgeCapacity = (int) e.getData();
-                    if (current.equals(e.getFirstEndpoint())
+                    if ((e.getFirstEndpoint().getName().equals(current.getName()))
                             && edgeCapacity >= delta) {
 
                         Vertex node = e.getSecondEndpoint();
+                        //System.out.println("node considered:"+ node.getName());
                         if (!visited.containsKey(node)) {
                             queue.add(node);
                             visited.put(node, true);
@@ -397,6 +404,13 @@ public class utils {
         }
     }
 
+    public static void printEdge(Edge e) {
+        System.out.println("Edge " + e.getName() + " from "+ 
+                e.getFirstEndpoint().getName()+" to "+ 
+                e.getSecondEndpoint().getName() + " of value "+ e.getData());
+
+    }
+    
     public static void printFlow(LinkedHashMap<Edge, Integer> flow) {
         Iterator i;
 
