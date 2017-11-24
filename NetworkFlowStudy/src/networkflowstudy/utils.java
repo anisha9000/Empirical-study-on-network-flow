@@ -82,40 +82,7 @@ public class utils {
 
         return Gf;
     }
-    /**
-     * Returns the Source vertex in a given SimpleGraph object
-     * @param Gf
-     * @return source vertex
-     */
-    public static Vertex get_s(SimpleGraph Gf){
-        Iterator i = Gf.vertices();
-        while(i.hasNext()){
-            Vertex v = (Vertex)(i.next());
-            if(v.getName().equals("s")){
-                return v;
-            }
-        }
-        System.out.print("Source was not found!");
-        return null;
-        
-    }
-    /**
-     * Returns the sink vertex in a given SimpleGraph object
-     * @param Gf
-     * @return sink vertex
-     */
-    public static Vertex get_t(SimpleGraph Gf){
-        Iterator i = Gf.vertices();
-        while(i.hasNext()){
-            Vertex v = (Vertex)(i.next());
-            if(v.getName().equals("t")){
-                return v;
-            }
-        }
-        System.out.print("Sink was not found!");
-        return null;
-        
-    }
+    
     
     /**
      * Updates s-t path of graph Gf, if there is a simple path and returns true, 
@@ -183,6 +150,7 @@ public class utils {
      * else valid s-t path
      */
      public static List<Vertex> getSTPath(SimpleGraph Gf, Vertex Sink, Vertex Source){
+         // TODO: return edges in path and not vertices. 
          Map<Vertex, Boolean> vis = new HashMap<>();
          List<Vertex> directions = new LinkedList<>();
          Queue<Vertex> q = new LinkedList<>();
@@ -291,7 +259,7 @@ public class utils {
             Edge e_G = (Edge) i1.next();
             
             edgeList_G.put(String.valueOf(e_G.getFirstEndpoint().getName()+"->"+e_G.getSecondEndpoint().getName()), e_G);
-            System.out.println("edgelist_G"+ e_G + " Data:" + e_G.getData() + "first and second node"
+            System.out.println("edgelist_G"+ e_G + " Data:" + e_G.getData() + "first and second node "
                     + e_G.getFirstEndpoint().getName()+" "+ e_G.getSecondEndpoint().getName());
         }
         ListIterator i_path = path.listIterator();
@@ -342,7 +310,7 @@ public class utils {
                         }
                     
                     }
-                    i_path.previous();      // get back to previous element again so that we don't skip a node in teh current s-t path
+                    i_path.previous();      // get back to previous element again so that we don't skip a node in the current s-t path
                 } 
                 
             }
@@ -352,6 +320,29 @@ public class utils {
             
         } */
     }
+    
+    /**
+     * Given a graph G, print all the nodes and their incident edges
+     * @param G 
+     */
+    public static void printGraph(SimpleGraph G) {
+        Iterator i;
+        Vertex v;
+        Edge e;
+        
+        System.out.println("Iterating through adjacency lists...");
+        for (i= G.vertices(); i.hasNext(); ) {
+            v = (Vertex) i.next();
+            System.out.println("Vertex "+v.getName());
+            Iterator j;
+
+            for (j = G.incidentEdges(v); j.hasNext();) {
+                e = (Edge) j.next();
+                System.out.println("  found edge " + e.getName());
+            }
+        }
+    }
+    
  /*   
     /**
      * Calculates the max flow using augment() , getSTPath() and createResidualGraph()   
