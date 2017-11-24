@@ -31,23 +31,37 @@ public class ScalingMaxFlow {
 
     public LinkedHashMap<Edge, Integer> calculateFlow(Vertex sourceG,
             Vertex sinkG) {
-        
+
         Vertex sourceGf = Gf.getVertex((String) sourceG.getName());
         Vertex sinkGf = Gf.getVertex((String) sinkG.getName());
 
         int delta = getDelta(sourceGf);
         System.out.println("delta:" + delta);
-        /*while(delta >= 1) {
+
+        while (delta >= 1) {
+            System.out.println("delta:" + delta);
             List<Vertex> path = new LinkedList<>();
-        
+
             // returns s-t path if it exists, else returns null
             path = utils.getSTPath(Gf, sinkGf, sourceGf, delta);
-            while(path != null) {
+            utils.printPath(path);
+            int count = 2;
+            
+            while (path != null) {
+                path = utils.getSTPath(Gf, sinkGf, sourceGf, delta);
+                utils.printPath(path);
                 utils.augment(G, Gf, flow, path);
-                utils.updateResidualGraph(Gf, flow, path);
+                utils.printFlow(flow);
+                Gf= utils.createResidualGraph(G, flow);
+                utils.printGraph(Gf);
+                count--;
+                if(count == 0) {
+                    break;
+                }
+                //utils.updateResidualGraph(G, Gf, flow, path);
             }
             delta /= 2;
-        }*/
+        }
 
         return flow;
     }
