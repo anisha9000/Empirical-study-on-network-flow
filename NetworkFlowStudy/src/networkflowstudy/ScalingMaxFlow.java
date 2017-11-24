@@ -14,7 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- *
+ * Calculates and returns flow using Scaling max Flow algorithm
  * @author anisha
  */
 public class ScalingMaxFlow {
@@ -30,6 +30,12 @@ public class ScalingMaxFlow {
         Gf = utils.createResidualGraph(G, flow);
     }
 
+    /**
+     * Calculate flow of a network using Scaling max- flow algorithm
+     * @param source vertex sourceG
+     * @param sink vertex sinkG
+     * @return flow
+     */
     public LinkedHashMap<Edge, Integer> calculateFlow(Vertex sourceG,
             Vertex sinkG) {
 
@@ -42,19 +48,16 @@ public class ScalingMaxFlow {
             System.out.println("delta:" + delta);
             List<Vertex> path = new LinkedList<>();
 
-            // returns s-t path if it exists, else returns null
             path = utils.getSTPath(Gf, sinkGf, sourceGf, delta);
 
             while (path != null) {
 
-                utils.printPath(path);
+                logging.printPath(path);
                 utils.augment(G, Gf, flow, path);
-                utils.printFlow(flow);
+                logging.printFlow(flow);
                 Gf = utils.createResidualGraph(G, flow);
-                utils.printGraph(Gf);
                 sourceGf = Gf.getVertex((String) sourceG.getName());
                 sinkGf = Gf.getVertex((String) sinkG.getName());
-
                 path = utils.getSTPath(Gf, sinkGf, sourceGf, delta);
 
                 //utils.updateResidualGraph(G, Gf, flow, path);
@@ -65,8 +68,12 @@ public class ScalingMaxFlow {
         return flow;
     }
 
+    /**
+     * calculate delta for a residual graph G
+     * @param source vertex in residual graph 
+     * @return delta
+     */
     public int getDelta(Vertex source) {
-        // TODO
         int delta = 1;
         Iterator i = Gf.incidentEdges(source);
         while (i.hasNext()) {

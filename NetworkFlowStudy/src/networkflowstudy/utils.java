@@ -83,64 +83,6 @@ public class utils {
     }
 
     /**
-     * Updates s-t path of graph Gf, if there is a simple path and returns true,
-     * return false otherwise
-     *
-     * @param Gf
-     * @param path
-     * @param source
-     * @param sink
-     * @return
-     */
-    public static boolean isSTPath(SimpleGraph Gf,
-            Vertex source, Vertex sink) {
-
-        int numOfVertices = Gf.numVertices();
-
-        //To ensure there is no cycle
-        boolean[] visited = new boolean[numOfVertices];
-
-        LinkedList<Vertex> vertexList = new LinkedList<>();
-        Iterator i = Gf.vertices();
-        for (int j = 0; j < numOfVertices; j++) {
-            vertexList.add((Vertex) i.next());
-        }
-
-        Stack<Vertex> vertexStack = new Stack<>();
-        vertexStack.push(source);
-
-        while (!vertexStack.empty()) {
-
-            Vertex currVertex = vertexStack.pop();
-            visited[vertexList.indexOf(currVertex)] = true;
-
-            i = Gf.incidentEdges(currVertex);
-            while (i.hasNext()) {
-
-                Edge e = (Edge) i.next();
-                Vertex secondVertex = e.getSecondEndpoint();
-                int indexOfSecondVertex = vertexList.indexOf(secondVertex);
-
-                if (!visited[indexOfSecondVertex]) {
-
-                    // path[indexOfSecondVertex] = currVertex;
-                    vertexStack.push(secondVertex);
-
-                }
-
-            }
-        }
-
-        int indexOfSink = vertexList.indexOf(sink);
-        if (visited[indexOfSink]) {
-            return true;
-        } else {
-            return false;
-        }
-
-    }
-
-    /**
      * Returns s-t path of graph Gf, if there is no simple path , returns 0
      *
      * @param Gf
@@ -161,7 +103,7 @@ public class utils {
         while (!q.isEmpty()) {
             current = q.poll();
             //System.out.println("Current "+current.getName());
-            if (current.getName().equals(Sink.getName())) {
+            if (current.equals(Sink)) {
                 break;
             } else {
                 Iterator i1 = Gf.incidentEdges(current);
@@ -170,7 +112,7 @@ public class utils {
                     //System.out.println(e_G.getName()+" "+e_G.getFirstEndpoint().getName()+" "+e_G.getSecondEndpoint().getName());
 
                     //TODO check for forward and backward edges
-                    if ((e.getFirstEndpoint().getName().equals(current.getName()))) {
+                    if (current.equals(e.getFirstEndpoint())) {
 
                         Vertex node = e.getSecondEndpoint();
                         if (!vis.containsKey(node)) {
@@ -225,13 +167,11 @@ public class utils {
         visited.put(current, true);
         
         System.out.println("finding S-t path with delta:"+ delta);
-        System.out.println("Gf to consider in path:");
-        //utils.printGraph(Gf);
         
         while (!queue.isEmpty()) {
             current = queue.poll();
             //System.out.println("Current "+current.getName());
-            if (current.getName().equals(sink.getName())) {
+            if (current.equals(sink)) {
                 break;
             } else {
                 Iterator i1 = Gf.incidentEdges(current);
@@ -239,7 +179,7 @@ public class utils {
                     Edge e = (Edge) i1.next();
                     //printEdge(e);
                     int edgeCapacity = (int) e.getData();
-                    if ((e.getFirstEndpoint().getName().equals(current.getName()))
+                    if (current.equals(e.getFirstEndpoint()) 
                             && edgeCapacity >= delta) {
 
                         Vertex node = e.getSecondEndpoint();
@@ -378,60 +318,6 @@ public class utils {
         } */
     }
 
-    /**
-     * Given a graph G, print all the nodes and their incident edges
-     *
-     * @param G
-     */
-    public static void printGraph(SimpleGraph G) {
-        Iterator i;
-        Vertex v;
-        Edge e;
-
-        System.out.println("Iterating through adjacency lists...");
-        for (i = G.vertices(); i.hasNext();) {
-            v = (Vertex) i.next();
-            System.out.println("Vertex " + v.getName());
-            Iterator j;
-
-            for (j = G.incidentEdges(v); j.hasNext();) {
-                e = (Edge) j.next();
-                System.out.println("  found edge " + e.getName() + " from "+ 
-                        e.getFirstEndpoint().getName()+" to "+ 
-                        e.getSecondEndpoint().getName() + " of value "+ 
-                        e.getData());
-            }
-        }
-    }
-
-    public static void printEdge(Edge e) {
-        System.out.println("Edge " + e.getName() + " from "+ 
-                e.getFirstEndpoint().getName()+" to "+ 
-                e.getSecondEndpoint().getName() + " of value "+ e.getData());
-
-    }
-    
-    public static void printFlow(LinkedHashMap<Edge, Integer> flow) {
-        Iterator i;
-
-        System.out.println("Iterating through flow");
-        for (Entry<Edge, Integer> edge : flow.entrySet()) {
-            System.out.println("edge:" + edge.getKey().getName() + ", value:" + edge.getValue());
-        }
-
-    }
-
-    public static void printPath(List<Vertex> path) {
-        System.out.println("Path:");
-        if (path != null) {
-            path.forEach((v11) -> {
-                System.out.println("dir: " + (v11).getName());
-            });
-        }
-
-    }
-
-
     /*   
     /**
      * Calculates the max flow using augment() , getSTPath() and createResidualGraph()   
@@ -455,6 +341,8 @@ public static int fordFulkerson(SimpleGraph G){
      }
 }
      */
+    
+    // TODO 
     static void updateResidualGraph(SimpleGraph G, SimpleGraph Gf,
             LinkedHashMap<Edge, Integer> flow, List<Vertex> path) {
 
@@ -495,5 +383,18 @@ public static int fordFulkerson(SimpleGraph G){
 
             }
         }
+    }
+    
+    static int getMaxFlow(SimpleGraph G, Vertex source, 
+            LinkedHashMap<Edge, Integer> flow) {
+        Iterator incidentEdges = G.incidentEdges(source);
+        int maxFlow = 0;
+        
+        while(incidentEdges.hasNext()) {
+            Edge currEdge = (Edge) incidentEdges.next();
+            maxFlow += flow.get(currEdge);
+        }
+        
+        return maxFlow;
     }
 }
