@@ -8,6 +8,7 @@ package networkflowstudy;
 import graphCode.Edge;
 import graphCode.SimpleGraph;
 import graphCode.Vertex;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,35 +18,55 @@ import java.util.List;
  * @author anisha
  */
 public class ScalingMaxFlow {
+
     SimpleGraph G;
-    SimpleGraph Gf;
-    
-    public ScalingMaxFlow(SimpleGraph G, LinkedHashMap<Edge, Integer> flow) {
-        this.G= G;
+    private SimpleGraph Gf;
+    LinkedHashMap<Edge, Integer> flow;
+
+    public ScalingMaxFlow(SimpleGraph G) {
+        this.G = G;
+        flow = utils.initFlow(G);
         Gf = utils.createResidualGraph(G, flow);
     }
-    
-    public int calculateFlow(Vertex source, Vertex sink) {
-        //Initialize flow
-        LinkedHashMap<Edge, Integer> flow = utils.initFlow(G);
+
+    public LinkedHashMap<Edge, Integer> calculateFlow(Vertex sourceG,
+            Vertex sinkG) {
         
-        int delta = getDelta(source);
-        while(delta >= 1) {
+        Vertex sourceGf = Gf.getVertex((String) sourceG.getName());
+        Vertex sinkGf = Gf.getVertex((String) sinkG.getName());
+
+        int delta = getDelta(sourceGf);
+        System.out.println("delta:" + delta);
+        /*while(delta >= 1) {
             List<Vertex> path = new LinkedList<>();
         
             // returns s-t path if it exists, else returns null
-            path = utils.getSTPath(Gf, sink, source, delta);
+            path = utils.getSTPath(Gf, sinkGf, sourceGf, delta);
             while(path != null) {
-                
+                utils.augment(G, Gf, flow, path);
+                utils.updateResidualGraph(Gf, flow, path);
             }
             delta /= 2;
-        }
-        
-        return -1;
+        }*/
+
+        return flow;
     }
-    
+
     public int getDelta(Vertex source) {
         // TODO
-        return 4;
+        int delta = 1;
+        Iterator i = Gf.incidentEdges(source);
+        while (i.hasNext()) {
+            Edge e = (Edge) i.next();
+            if (e.getFirstEndpoint().equals(source)) {
+                int edgeCapacity = (int) e.getData();
+                int largestPow = (int) Math.pow(2,
+                        Math.floor(Math.log(edgeCapacity) / Math.log(2)));
+                if (delta < largestPow) {
+                    delta = largestPow;
+                }
+            }
+        }
+        return delta;
     }
 }

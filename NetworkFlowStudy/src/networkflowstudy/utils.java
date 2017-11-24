@@ -45,8 +45,8 @@ public class utils {
     public static SimpleGraph createResidualGraph(SimpleGraph G,
             LinkedHashMap<Edge, Integer> flow) {
         // Initialize an instance of simple graph to be used as Residual Graph
-        SimpleGraph Gf = new SimpleGraph();     
-        
+        SimpleGraph Gf = new SimpleGraph();
+
         // Insert all vertex in Gf
         Iterator i = G.vertices();
         while (i.hasNext()) {
@@ -63,7 +63,7 @@ public class utils {
             Integer edgeCapacity = (Integer) e.getData();
             String startVertex = String.valueOf(e.getFirstEndpoint().getName());
             String endVertex = String.valueOf(e.getSecondEndpoint().getName());
-            
+
             if (flowE.compareTo(edgeCapacity) < 0) {
                 //Forward edge
                 Edge fe = Gf.insertEdge(gfVertexList.get(startVertex),
@@ -72,33 +72,33 @@ public class utils {
 
             if (flowE.compareTo(0) > 0) {
                 // Backward edge
-                Edge be = Gf.insertEdge(gfVertexList.get(startVertex),
-                        gfVertexList.get(endVertex), flowE, "be");
+                Edge be = Gf.insertEdge(gfVertexList.get(endVertex),
+                        gfVertexList.get(startVertex), flowE, "be");
             }
-            
+
         }
 
         return Gf;
     }
-    
-    
+
     /**
-     * Updates s-t path of graph Gf, if there is a simple path and returns true, 
-     *         return false otherwise
+     * Updates s-t path of graph Gf, if there is a simple path and returns true,
+     * return false otherwise
+     *
      * @param Gf
      * @param path
      * @param source
      * @param sink
-     * @return 
+     * @return
      */
-     public static boolean isSTPath(SimpleGraph Gf,
-            Vertex source, Vertex sink){
+    public static boolean isSTPath(SimpleGraph Gf,
+            Vertex source, Vertex sink) {
 
         int numOfVertices = Gf.numVertices();
 
         //To ensure there is no cycle
         boolean[] visited = new boolean[numOfVertices];
-        
+
         LinkedList<Vertex> vertexList = new LinkedList<>();
         Iterator i = Gf.vertices();
         for (int j = 0; j < numOfVertices; j++) {
@@ -109,27 +109,27 @@ public class utils {
         vertexStack.push(source);
 
         while (!vertexStack.empty()) {
-            
+
             Vertex currVertex = vertexStack.pop();
             visited[vertexList.indexOf(currVertex)] = true;
 
             i = Gf.incidentEdges(currVertex);
             while (i.hasNext()) {
-                
+
                 Edge e = (Edge) i.next();
                 Vertex secondVertex = e.getSecondEndpoint();
                 int indexOfSecondVertex = vertexList.indexOf(secondVertex);
-                
+
                 if (!visited[indexOfSecondVertex]) {
-                    
-                   // path[indexOfSecondVertex] = currVertex;
+
+                    // path[indexOfSecondVertex] = currVertex;
                     vertexStack.push(secondVertex);
- 
+
                 }
 
             }
         }
-        
+
         int indexOfSink = vertexList.indexOf(sink);
         if (visited[indexOfSink]) {
             return true;
@@ -138,261 +138,248 @@ public class utils {
         }
 
     }
-     /**
-     * Returns s-t path of graph Gf, if there is no simple path , returns 0 
-     *         
+
+    /**
+     * Returns s-t path of graph Gf, if there is no simple path , returns 0
+     *
      * @param Gf
      * @param Source
      * @param Sink
-     * @return null if no s-t path
-     * else valid s-t path
+     * @return null if no s-t path else valid s-t path
      */
-     public static List<Vertex> getSTPath(SimpleGraph Gf, Vertex Sink, Vertex Source){
-         // TODO: return edges in path and not vertices. 
-         Map<Vertex, Boolean> vis = new HashMap<>();
-         List<Vertex> directions = new LinkedList<>();
-         Queue<Vertex> q = new LinkedList<>();
-         Map<Vertex,Vertex> prev = new HashMap<>();
-         Vertex current = Source;
-         q.add(current);
-         vis.put(current, true);
-         //System.out.println("Sink: "+ Sink.getName() );
-          while(!q.isEmpty()){
-              current = q.poll();
-              //System.out.println("Current "+current.getName());
-              if (current.getName().equals(Sink.getName())){
-                    break;
-              }
-              else{
-                    Iterator i1 = Gf.incidentEdges(current);
-                    while(i1.hasNext()){
-                        Edge e = (Edge)i1.next();
-                        //System.out.println(e_G.getName()+" "+e_G.getFirstEndpoint().getName()+" "+e_G.getSecondEndpoint().getName());
-                        
-                        //TODO check for forward and backward edges
-                        if((e.getFirstEndpoint().getName().equals(current.getName()))){
-                            
-                            Vertex node = e.getSecondEndpoint();
-                             if(!vis.containsKey(node)){
-                                 //System.out.println("node: "+node.getName()); 
-                                q.add(node);
-                                vis.put(node, true);
-                                prev.put(node, current);
-                             }
+    public static List<Vertex> getSTPath(SimpleGraph Gf, Vertex Sink, Vertex Source) {
+        // TODO: return edges in path and not vertices. 
+        Map<Vertex, Boolean> vis = new HashMap<>();
+        List<Vertex> directions = new LinkedList<>();
+        Queue<Vertex> q = new LinkedList<>();
+        Map<Vertex, Vertex> prev = new HashMap<>();
+        Vertex current = Source;
+        q.add(current);
+        vis.put(current, true);
+        //System.out.println("Sink: "+ Sink.getName() );
+        while (!q.isEmpty()) {
+            current = q.poll();
+            //System.out.println("Current "+current.getName());
+            if (current.getName().equals(Sink.getName())) {
+                break;
+            } else {
+                Iterator i1 = Gf.incidentEdges(current);
+                while (i1.hasNext()) {
+                    Edge e = (Edge) i1.next();
+                    //System.out.println(e_G.getName()+" "+e_G.getFirstEndpoint().getName()+" "+e_G.getSecondEndpoint().getName());
+
+                    //TODO check for forward and backward edges
+                    if ((e.getFirstEndpoint().getName().equals(current.getName()))) {
+
+                        Vertex node = e.getSecondEndpoint();
+                        if (!vis.containsKey(node)) {
+                            //System.out.println("node: "+node.getName()); 
+                            q.add(node);
+                            vis.put(node, true);
+                            prev.put(node, current);
                         }
-             
                     }
+
                 }
             }
-            if (!current.getName().equals(Sink.getName())){
-                System.out.println("can't reach destination");
-                return null;
-            }
-            for(Vertex node = Sink; node != null; node = prev.get(node)) {
-                 //System.out.println("dir: " + node.getName());
-                 directions.add(node);
-            }
-      
-            Collections.reverse(directions);
-        
-       /*directions.forEach((v) -> {
+        }
+        if (!current.getName().equals(Sink.getName())) {
+            System.out.println("can't reach destination");
+            return null;
+        }
+        for (Vertex node = Sink; node != null; node = prev.get(node)) {
+            //System.out.println("dir: " + node.getName());
+            directions.add(node);
+        }
+
+        Collections.reverse(directions);
+
+        /*directions.forEach((v) -> {
             System.out.println("dir: " + v.getName());
         }); */
-             return directions;
-          
+        return directions;
+
     }
-     
-     /**
-      * Return s-t path for a graph Gf based on the limiting capacity delta
-      * @param Gf
-      * @param sink
-      * @param source
-      * @param delta
-      * @return 
-      */
-     public static List<Vertex> getSTPath(SimpleGraph Gf, Vertex sink, 
-             Vertex source, int delta){
-         
-         //Initializations
-         Map<Vertex, Boolean> visited = new HashMap<>();
-         List<Vertex> directions = new LinkedList<>();
-         Queue<Vertex> queue = new LinkedList<>();
-         Map<Vertex,Vertex> prev = new HashMap<>();
-         
-         Vertex current = source;
-         queue.add(current);
-         visited.put(current, true);
-         while(!queue.isEmpty()){
-              current = queue.poll();
-              //System.out.println("Current "+current.getName());
-              if (current.getName().equals(sink.getName())){
-                    break;
-              }
-              else{
-                    Iterator i1 = Gf.incidentEdges(current);
-                    while(i1.hasNext()){
-                        Edge e = (Edge)i1.next();
-                        int edgeCapacity = (int) e.getData();
-                        if(e.getFirstEndpoint().getName().
-                                equals(current.getName()) && 
-                                edgeCapacity >= delta){
-                            
-                            Vertex node = e.getSecondEndpoint();
-                             if(!visited.containsKey(node)){
-                                queue.add(node);
-                                visited.put(node, true);
-                                prev.put(node, current);
-                             }
+
+    /**
+     * Return s-t path for a graph Gf based on the limiting capacity delta
+     *
+     * @param Gf
+     * @param sink
+     * @param source
+     * @param delta
+     * @return
+     */
+    public static List<Vertex> getSTPath(SimpleGraph Gf, Vertex sink,
+            Vertex source, int delta) {
+
+        //Initializations
+        Map<Vertex, Boolean> visited = new HashMap<>();
+        List<Vertex> directions = new LinkedList<>();
+        Queue<Vertex> queue = new LinkedList<>();
+        Map<Vertex, Vertex> prev = new HashMap<>();
+
+        Vertex current = source;
+        queue.add(current);
+        visited.put(current, true);
+        while (!queue.isEmpty()) {
+            current = queue.poll();
+            //System.out.println("Current "+current.getName());
+            if (current.equals(sink)) {
+                break;
+            } else {
+                Iterator i1 = Gf.incidentEdges(current);
+                while (i1.hasNext()) {
+                    Edge e = (Edge) i1.next();
+                    int edgeCapacity = (int) e.getData();
+                    if (current.equals(e.getFirstEndpoint())
+                            && edgeCapacity >= delta) {
+
+                        Vertex node = e.getSecondEndpoint();
+                        if (!visited.containsKey(node)) {
+                            queue.add(node);
+                            visited.put(node, true);
+                            prev.put(node, current);
                         }
-             
                     }
+
                 }
             }
-            if (!current.getName().equals(sink.getName())){
-                System.out.println("can't reach destination");
-                return null;
-            }
-            for(Vertex node = sink; node != null; node = prev.get(node)) {
-                 directions.add(node);
-            }
-      
-            Collections.reverse(directions);
-             return directions;
-          
+        }
+        if (!current.getName().equals(sink.getName())) {
+            System.out.println("can't reach destination");
+            return null;
+        }
+        for (Vertex node = sink; node != null; node = prev.get(node)) {
+            directions.add(node);
+        }
+
+        Collections.reverse(directions);
+        return directions;
+
     }
-     
-     
-     /**
-     * Returns bottleneck for the given s-t path of graph Gf 
-     *         
+
+    /**
+     * Returns bottleneck for the given s-t path of graph Gf
+     *
      * @param Gf
      * @param st_path
      * @return b_neck
-     */ 
-    public static int get_bottleneck(SimpleGraph Gf, List<Vertex> st_path){
-            ListIterator i = st_path.listIterator();
-            int b_neck = Integer.MAX_VALUE;
-            while(i.hasNext())
-            {
-                Vertex v1 = (Vertex)(i.next());
-                
-                if(i.hasNext())
-                {
-                    Vertex v2 = (Vertex)(i.next());
-                    
-                
-                    Iterator i_edge = Gf.incidentEdges(v1);
-                    while(i_edge.hasNext())
-                    {
-                        Edge e = (Edge)(i_edge.next());
-                        if(Gf.opposite(v1, e).equals(v2))
-                        {
-                            Integer edge_capacity = (Integer)(e.getData());
-                           // System.out.println(v1.getName() + " "+ v2.getName()+ " " + edge_capacity);
-                            if(edge_capacity < b_neck)
-                            {
-                                b_neck = edge_capacity;
-                            }
-                        }
-                    
-                    }
-                    i.previous();
-                } 
-                
-            }
-            return b_neck;
-     }
-     /**
-     * Calculates the increase in flow using get_bottleneck() and updates the flow LinkedHashmap   
-     * @param G
-     * @param Gf        
-     * @param flow
-     * @param path 
-     * 
      */
-    public static void augment(SimpleGraph G,SimpleGraph Gf,LinkedHashMap<Edge,Integer> flow, List<Vertex> path)
-    {
+    public static int get_bottleneck(SimpleGraph Gf, List<Vertex> st_path) {
+        ListIterator i = st_path.listIterator();
+        int b_neck = Integer.MAX_VALUE;
+        while (i.hasNext()) {
+            Vertex v1 = (Vertex) (i.next());
+
+            if (i.hasNext()) {
+                Vertex v2 = (Vertex) (i.next());
+
+                Iterator i_edge = Gf.incidentEdges(v1);
+                while (i_edge.hasNext()) {
+                    Edge e = (Edge) (i_edge.next());
+                    if (Gf.opposite(v1, e).equals(v2)) {
+                        Integer edge_capacity = (Integer) (e.getData());
+                        // System.out.println(v1.getName() + " "+ v2.getName()+ " " + edge_capacity);
+                        if (edge_capacity < b_neck) {
+                            b_neck = edge_capacity;
+                        }
+                    }
+
+                }
+                i.previous();
+            }
+
+        }
+        return b_neck;
+    }
+
+    /**
+     * Calculates the increase in flow using get_bottleneck() and updates the
+     * flow LinkedHashmap
+     *
+     * @param G
+     * @param Gf
+     * @param flow
+     * @param path
+     *
+     */
+    public static void augment(SimpleGraph G, SimpleGraph Gf, LinkedHashMap<Edge, Integer> flow, List<Vertex> path) {
         Map<String, Edge> edgeList_G = new HashMap<>();
         Iterator i1 = G.edges();
         while (i1.hasNext()) {
             Edge e_G = (Edge) i1.next();
-            
-            edgeList_G.put(String.valueOf(e_G.getFirstEndpoint().getName()+"->"+e_G.getSecondEndpoint().getName()), e_G);
-            System.out.println("edgelist_G"+ e_G + " Data:" + e_G.getData() + "first and second node "
-                    + e_G.getFirstEndpoint().getName()+" "+ e_G.getSecondEndpoint().getName());
+
+            edgeList_G.put(String.valueOf(e_G.getFirstEndpoint().getName() + "->" + e_G.getSecondEndpoint().getName()), e_G);
+            System.out.println("edgelist_G" + e_G + " Data:" + e_G.getData() + "first and second node "
+                    + e_G.getFirstEndpoint().getName() + " " + e_G.getSecondEndpoint().getName());
         }
         ListIterator i_path = path.listIterator();
-            int b_neck = get_bottleneck(Gf, path);
-            while(i_path.hasNext())
-            {
-                Vertex v1 = (Vertex)(i_path.next());
-                
-                if(i_path.hasNext())
-                {
-                    Vertex v2 = (Vertex)(i_path.next());
-                    
-                
-                    Iterator i_edge = Gf.incidentEdges(v1);
-                    while(i_edge.hasNext())
-                    {
-                        Edge e = (Edge)(i_edge.next());
-                        if(Gf.opposite(v1, e).equals(v2))
-                        {
-                            Integer edge_capacity = (Integer)(e.getData());
-                            // ***TODO Update residual capacity for residual capacity = 0: i_path.e_G. removing edge 
-                            //e.setData(edge_capacity - b_neck);
-                            if(e.getName()=="fe")
-                            {
-                                System.out.println("Edge" + e.getName() + " data now:" + e.getData());
-                                System.out.println(e.getFirstEndpoint().getName()+"->"+e.getSecondEndpoint().getName());
-                                System.out.println((Edge)edgeList_G.get(String.valueOf(e.getFirstEndpoint().getName()+"->"+e.getSecondEndpoint().getName())));
-                                
-                                Integer current_flow =  flow.get((Edge)edgeList_G.get(String.valueOf(e.getFirstEndpoint().getName()+"->"+e.getSecondEndpoint().getName())));
-                                System.out.println("current flow is : " + current_flow);
-                                Integer updated_edge_flow = current_flow + b_neck;
-                                flow.put((Edge)edgeList_G.get(String.valueOf(e.getFirstEndpoint().getName()+"->"+e.getSecondEndpoint().getName())), updated_edge_flow);
-                                // System.out.println(v1.getName() + " "+ v2.getName()+ " " + edge_capacity);
-                            }
-                            if(e.getName()=="be")
-                            {
-                                System.out.println("Edge" + e.getName() + " data now:" + e.getData());
-                                System.out.println(e.getFirstEndpoint().getName()+"->"+e.getSecondEndpoint().getName());
-                                System.out.println((Edge)edgeList_G.get(String.valueOf(e.getFirstEndpoint().getName()+"->"+e.getSecondEndpoint().getName())));
-                                
-                                Integer current_flow =  flow.get((Edge)edgeList_G.get(String.valueOf(e.getFirstEndpoint().getName()+"->"+e.getSecondEndpoint().getName())));
-                                System.out.println("current flow is : " + current_flow);
-                                Integer updated_edge_flow = current_flow - b_neck;
-                                flow.put((Edge)edgeList_G.get(String.valueOf(e.getFirstEndpoint().getName()+"->"+e.getSecondEndpoint().getName())), updated_edge_flow);
-                                // System.out.println(v1.getName() + " "+ v2.getName()+ " " + edge_capacity);
-                            }
-                            
+        int b_neck = get_bottleneck(Gf, path);
+        while (i_path.hasNext()) {
+            Vertex v1 = (Vertex) (i_path.next());
+
+            if (i_path.hasNext()) {
+                Vertex v2 = (Vertex) (i_path.next());
+
+                Iterator i_edge = Gf.incidentEdges(v1);
+                while (i_edge.hasNext()) {
+                    Edge e = (Edge) (i_edge.next());
+                    if (Gf.opposite(v1, e).equals(v2)) {
+                        Integer edge_capacity = (Integer) (e.getData());
+                        // ***TODO Update residual capacity for residual capacity = 0: i_path.e_G. removing edge 
+                        //e.setData(edge_capacity - b_neck);
+                        if (e.getName() == "fe") {
+                            System.out.println("Edge" + e.getName() + " data now:" + e.getData());
+                            System.out.println(e.getFirstEndpoint().getName() + "->" + e.getSecondEndpoint().getName());
+                            System.out.println((Edge) edgeList_G.get(String.valueOf(e.getFirstEndpoint().getName() + "->" + e.getSecondEndpoint().getName())));
+
+                            Integer current_flow = flow.get((Edge) edgeList_G.get(String.valueOf(e.getFirstEndpoint().getName() + "->" + e.getSecondEndpoint().getName())));
+                            System.out.println("current flow is : " + current_flow);
+                            Integer updated_edge_flow = current_flow + b_neck;
+                            flow.put((Edge) edgeList_G.get(String.valueOf(e.getFirstEndpoint().getName() + "->" + e.getSecondEndpoint().getName())), updated_edge_flow);
+                            // System.out.println(v1.getName() + " "+ v2.getName()+ " " + edge_capacity);
                         }
-                    
+                        if (e.getName() == "be") {
+                            System.out.println("Edge" + e.getName() + " data now:" + e.getData());
+                            System.out.println(e.getFirstEndpoint().getName() + "->" + e.getSecondEndpoint().getName());
+                            System.out.println((Edge) edgeList_G.get(String.valueOf(e.getFirstEndpoint().getName() + "->" + e.getSecondEndpoint().getName())));
+
+                            Integer current_flow = flow.get((Edge) edgeList_G.get(String.valueOf(e.getFirstEndpoint().getName() + "->" + e.getSecondEndpoint().getName())));
+                            System.out.println("current flow is : " + current_flow);
+                            Integer updated_edge_flow = current_flow - b_neck;
+                            flow.put((Edge) edgeList_G.get(String.valueOf(e.getFirstEndpoint().getName() + "->" + e.getSecondEndpoint().getName())), updated_edge_flow);
+                            // System.out.println(v1.getName() + " "+ v2.getName()+ " " + edge_capacity);
+                        }
+
                     }
-                    i_path.previous();      // get back to previous element again so that we don't skip a node in the current s-t path
-                } 
-                
+
+                }
+                i_path.previous();      // get back to previous element again so that we don't skip a node in the current s-t path
             }
-            /*
+
+        }
+        /*
             for(Map.Entry<Edge,Integer> value : flow.entrySet()) {
             System.out.println("Edge:"+value.getKey().getName()+" Flow:"+value.getValue());  
             
         } */
     }
-    
+
     /**
      * Given a graph G, print all the nodes and their incident edges
-     * @param G 
+     *
+     * @param G
      */
     public static void printGraph(SimpleGraph G) {
         Iterator i;
         Vertex v;
         Edge e;
-        
+
         System.out.println("Iterating through adjacency lists...");
-        for (i= G.vertices(); i.hasNext(); ) {
+        for (i = G.vertices(); i.hasNext();) {
             v = (Vertex) i.next();
-            System.out.println("Vertex "+v.getName());
+            System.out.println("Vertex " + v.getName());
             Iterator j;
 
             for (j = G.incidentEdges(v); j.hasNext();) {
@@ -401,14 +388,14 @@ public class utils {
             }
         }
     }
-    
- /*   
+
+    /*   
     /**
      * Calculates the max flow using augment() , getSTPath() and createResidualGraph()   
      * @param G
      * @return maxFlow
      */
-/*    
+ /*    
 public static int fordFulkerson(SimpleGraph G){
     
      //Initialize flow
@@ -424,9 +411,8 @@ public static int fordFulkerson(SimpleGraph G){
          
      }
 }
-   */ 
+     */
+    static void updateResidualGraph(SimpleGraph Gf, LinkedHashMap<Edge, Integer> flow, List<Vertex> path) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
-
-
-
-

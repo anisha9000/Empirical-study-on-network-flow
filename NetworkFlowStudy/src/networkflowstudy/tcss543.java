@@ -48,7 +48,7 @@ public class tcss543 {
         Edge e;
         
         utils.printGraph(G);
-
+        
         //Initialize flow
         LinkedHashMap<Edge, Integer> flow = utils.initFlow(G);
         
@@ -97,6 +97,12 @@ public class tcss543 {
         System.out.println();
         
         utils.printGraph(Gf2);
+        
+        System.out.println("Calling scaling max flow");
+        ScalingMaxFlow maxFlow = new ScalingMaxFlow(G);
+        maxFlow.calculateFlow(s, t);
+
+        
     }
 
 
