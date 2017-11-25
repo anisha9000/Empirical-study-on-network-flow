@@ -17,19 +17,20 @@ import java.util.ArrayList;
  * @author jason
  */
 public class PreflowPush {
-    private LinkedHashMap<Edge, Integer>   flows;                               // a hashmap to store flow values
-    private LinkedHashMap<Vertex, Integer> heights;                             // a hashmap to store heights of vertices
-    private SimpleGraph       graph;                                            // represents the input graph
-    private SimpleGraph       residualGraph;                                    // represents the residual graph
-    private ArrayList<Vertex> vertices;                                         // a vertex vector to work with
-    private ArrayList<Edge>   edges;                                            // an edge vector to work with
-    private Iterator          i;                                                // iterator for a graph
-    private utils             utilities;
+
+    LinkedHashMap<Edge, Integer>   flows;                                       // a hashmap to store flow values
+    LinkedHashMap<Vertex, Integer> heights;                                     // a hashmap to store heights of vertices
+    SimpleGraph       graph;                                                    // represents the input graph
+    SimpleGraph       residualGraph;                                            // represents the residual graph
+    ArrayList<Vertex> vertices;                                                 // a vertex vector to work with
+    ArrayList<Edge>   edges;                                                    // an edge vector to work with
+    Iterator          i;                                                        // iterator for a graph
+    utils             utilities;
     
     
     /**
      * 
-     * @param g
+     * @param g     represents a SimpleGraph to find max flow for.
      */
     public PreflowPush(SimpleGraph g) {
         graph = g;
@@ -50,7 +51,7 @@ public class PreflowPush {
                 flows.put(edges.get(k), (int)edges.get(k).getData());
         }
         residualGraph = utils.createResidualGraph(graph, flows);                // compute the residual graph
-    }
+    } /* end Constructor */
     
     
     /**
@@ -58,13 +59,13 @@ public class PreflowPush {
      */
     public void GetMaxFlow() {
         
-    }
+    } /* end GetMaxFlow function */
     
     
     /**
      * @name  Push
-     * @param v
-     * @param w 
+     * @param v     represents the vertex with excess flow.
+     * @param w     the vertex we want to push flow to.
      */
     private void Push(Vertex v, Vertex w) {
         Edge     vw_edge       = new Edge(v, w, "", "");                        // test for the edge (v, w)
@@ -115,7 +116,7 @@ public class PreflowPush {
     
     /**
      * 
-     * @param v 
+     * @param v     represents the vertex we need to re-label.
      */
     private void Relabel(Vertex v) {
         int      newHeight     = 0;
@@ -143,8 +144,8 @@ public class PreflowPush {
     
     /**
      * 
-     * @param v
-     * @return 
+     * @param v     represents the vertex to read amount of excess flow from.
+     * @return      integer amount of flow into vertex v from all edges
      */
     private int GetExcess(Vertex v) {
         int      e_into_v      = 0;
@@ -157,6 +158,6 @@ public class PreflowPush {
         }                                                                       //
         
         return e_into_v;
-    }
-}
+    } /* end GetExcess function */
+} /* end PreflowPush class */
 
