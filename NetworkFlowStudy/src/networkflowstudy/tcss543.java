@@ -7,6 +7,7 @@ package networkflowstudy;
 
 import graphCode.SimpleGraph;
 import graphCode.Edge;
+import graphCode.GraphInput;
 import graphCode.SimpleGraph;
 import graphCode.Vertex;
 import java.util.HashMap;
@@ -26,6 +27,10 @@ public class tcss543 {
     public static void main(String[] args) {
         // TODO code application logic here
         SimpleGraph G = new SimpleGraph();
+        GraphInput graphGenrerator = new GraphInput();
+        graphGenrerator.LoadSimpleGraph(G, args[0]);
+        
+        /*
         Vertex s,a,b,c,d,t;
         Edge e1,e2,e3,e4,e5,e6,e7;
         s = G.insertVertex(null, "s");
@@ -94,12 +99,16 @@ public class tcss543 {
         utils.printGraph(Gf2);
         */
         System.out.println("Calling scaling max flow");
+        logging.printGraph(G);
         ScalingMaxFlow scalingMaxFlow = new ScalingMaxFlow(G);
-        LinkedHashMap<Edge, Integer> flow = scalingMaxFlow.calculateFlow(s, t);
+        Vertex source = G.getVertex("s");
+        Vertex sink = G.getVertex("t");
+        LinkedHashMap<Edge, Integer> flow = scalingMaxFlow.calculateFlow(source, 
+                sink);
         
         logging.printFlow(flow);
         
-        int maxFlow = utils.getMaxFlow(G, s, flow);
+        int maxFlow = utils.getMaxFlow(G, source, flow);
         System.out.println("maxFlow:"+ maxFlow);
 
         

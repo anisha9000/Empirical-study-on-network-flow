@@ -38,7 +38,7 @@ public class ScalingMaxFlow {
      */
     public LinkedHashMap<Edge, Integer> calculateFlow(Vertex sourceG,
             Vertex sinkG) {
-
+        
         sourceGf = Gf.getVertex((String) sourceG.getName());
         sinkGf = Gf.getVertex((String) sinkG.getName());
 

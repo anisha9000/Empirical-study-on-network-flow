@@ -61,7 +61,7 @@ public class utils {
         while (i.hasNext()) {
             Edge e = (Edge) i.next();
             Integer flowE = flow.get(e);
-            Integer edgeCapacity = (Integer) e.getData();
+            Integer edgeCapacity = ((Double)e.getData()).intValue();
             String startVertex = String.valueOf(e.getFirstEndpoint().getName());
             String endVertex = String.valueOf(e.getSecondEndpoint().getName());
 
