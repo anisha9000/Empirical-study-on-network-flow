@@ -8,7 +8,7 @@ package networkflowstudy;
 import graphCode.SimpleGraph;
 import graphCode.Edge;
 import graphCode.Vertex;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Iterator;
 import java.util.ArrayList;
 
@@ -17,29 +17,22 @@ import java.util.ArrayList;
  * @author jason
  */
 public class PreflowPush {
-    private HashMap<Edge, Integer>   flows;                                     // a hashmap to store flow values
-    private HashMap<Vertex, Integer> heights;                                   // a hashmap to store heights of vertices
-    private ArrayList<Vertex>        vertices;                                  // a vertex vector to work with
-    private ArrayList<Edge>          edges;                                     // an edge vector to work with
-    private Iterator                 i;                                         // iterator for a graph
+    private LinkedHashMap<Edge, Integer>   flows;                               // a hashmap to store flow values
+    private LinkedHashMap<Vertex, Integer> heights;                             // a hashmap to store heights of vertices
+    private SimpleGraph       graph;                                            // represents the input graph
+    private SimpleGraph       residualGraph;                                    // represents the residual graph
+    private ArrayList<Vertex> vertices;                                         // a vertex vector to work with
+    private ArrayList<Edge>   edges;                                            // an edge vector to work with
+    private Iterator          i;                                                // iterator for a graph
+    private utils             utilities;
     
-    private void Push(int flow, int height, Vertex v, Vertex w) {
-        
-    }
-    
-    private void Relabel(int flow, int height, Vertex v) {
-        
-    }
-
-    private void GetMaxFlow() {
-        
-    }
     
     /**
      * 
-     * @param graph 
+     * @param g
      */
-    public PreflowPush(SimpleGraph graph) {
+    public PreflowPush(SimpleGraph g) {
+        graph = g;
         for (i = graph.vertices(); i.hasNext(); )                               // extract all vertices
             vertices.add((Vertex)i.next());
         for (i = graph.edges(); i.hasNext(); )                                  // extract all edges
@@ -56,6 +49,114 @@ public class PreflowPush {
             if (e1.equals("s") || e2.equals("s"))
                 flows.put(edges.get(k), (int)edges.get(k).getData());
         }
+        residualGraph = utils.createResidualGraph(graph, flows);                // compute the residual graph
+    }
+    
+    
+    /**
+     * 
+     */
+    public void GetMaxFlow() {
+        
+    }
+    
+    
+    /**
+     * @name  Push
+     * @param v
+     * @param w 
+     */
+    private void Push(Vertex v, Vertex w) {
+        Edge     vw_edge       = new Edge(v, w, "", "");                        // test for the edge (v, w)
+        int      fintov        = GetExcess(v);                                  // flow into v
+        boolean  hasEdgeVW     = false;                                         // indicate whether residual graph has (v, w)
+                                                                                //
+        i = residualGraph.edges();                                              // get iterator to residual graph
+        while (i.hasNext()) {                                                   // iterate over all edges
+            vw_edge = (Edge)i.next();                                           // save a copy of current edge
+            if (vw_edge.getFirstEndpoint().equals(v)                            // test for first and second endpoints
+                    && vw_edge.getSecondEndpoint().equals(w)) {                 // if equal,
+                hasEdgeVW = true;                                               // set this to true
+                break;                                                          // break out of this loop, we're done
+            }                                                                   //
+        }                                                                       //
+                                                                                //
+        if (fintov > 0)                                                         // if there is any excess, we can push
+        {                                                                       //
+            if (heights.get(w) < heights.get(v))                                // if the height of v is greater than w,
+            {                                                                   // we can push
+                if (hasEdgeVW)                                                  // if (v, w) exists in the residual graph,
+                {                                                               // we can push
+                    if (vw_edge.getName() == "fe") {                            // forward edge
+                        int delta = Math.min(fintov, (int)vw_edge.getData());   // save the delta
+                        for (int i = 0; i < edges.size(); i++) {                // iterate over all edges
+                            if (edges.get(i).equals(vw_edge)) {                 // search for our saved edge
+                                int f = (int)edges.get(i).getData();            // save the current data
+                                edges.get(i).setData(f + delta);                // increase it by delta
+                                // update residual graph
+                            }                                                   //
+                        }                                                       //
+                    }                                                           //
+                    if (vw_edge.getName() == "be") {                            // backward edge
+                        int delta = Math.min(fintov, (int)vw_edge.getData());   // save the delta
+                        for (int j = 0; j < edges.size(); j++) {                // iterate over all edges
+                            if (edges.get(j).equals(vw_edge)) {                 // search for our saved edge
+                                int f = (int)edges.get(j).getData();            // save the current data
+                                edges.get(j).setData(f - delta);                // decrease it by delta
+                                // update residual graph
+                            }                                                   //
+                        }                                                       //
+                    }                                                           //
+                }                                                               //
+            }                                                                   //
+        }                                                                       //
+    } /* end Push function */
+    
+    
+    /**
+     * 
+     * @param v 
+     */
+    private void Relabel(Vertex v) {
+        int      newHeight     = 0;
+        int      fintov        = GetExcess(v);
+        boolean  isSteepness   = true;
+        Iterator incidentEdges = residualGraph.incidentEdges(v);
+        
+        if (fintov > 0) {
+            while (incidentEdges.hasNext()) {
+                Edge edge = (Edge)incidentEdges.next();
+                if (edge.getFirstEndpoint().equals(v)) {
+                    if (heights.get(edge.getSecondEndpoint()) >= heights.get(v))
+                        isSteepness = true;
+                    else
+                        isSteepness = false;
+                }
+                if (!isSteepness)
+                    return;
+            }
+            newHeight = heights.get(v) + 1;
+            heights.put(v, newHeight);
+        }
+    } /* end Relabel function */
+    
+    
+    /**
+     * 
+     * @param v
+     * @return 
+     */
+    private int GetExcess(Vertex v) {
+        int      e_into_v      = 0;
+        Iterator incidentEdges = graph.incidentEdges(v);
+        
+        while (incidentEdges.hasNext()) {                                       // iterate over edges incident to v
+            Edge edge = (Edge)incidentEdges.next();                             // save a copy
+            if (edge.getSecondEndpoint().equals(v))                             // if the second endpoint equals v
+                e_into_v += flows.get(edge);                                    // this edge is going into v, save the flow
+        }                                                                       //
+        
+        return e_into_v;
     }
 }
 
