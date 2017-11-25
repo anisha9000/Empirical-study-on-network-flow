@@ -8,7 +8,32 @@ import java.util.Random;
 
 public class BuildGraph {
 
-    private void BuildGraph(String fileName, String directory, int vertices, int dense, int maxCapacity, int minCapacity) {
+    public static void main(String[] args) {
+        if (args.length != 5) {
+            System.out.println("\nInvalid parameters!");
+            System.out.println("Usage:");
+            System.out.println("java BuildGraph v, d, min, max, f");
+            System.out.println("v - the number of vertices in the graph");
+            System.out.println("d - density of graph");
+            System.out.println("min - the lower bound on edge capacities");
+            System.out.println("max - the upper bound on edge capacities");
+            System.out.println("f - path and file name for saving this graph");
+            System.out.println("Example: java BuildGraph 999 50 75 101 graph1.txt");
+        } else if (Integer.parseInt(args[3]) >= Integer.parseInt(args[2])) {
+                BuildGraph(args[4], "",
+                        Integer.parseInt(args[0]),
+                        Integer.parseInt(args[1]),
+                        Integer.parseInt(args[3]),
+                        Integer.parseInt(args[2]));
+                System.out.println("\nDONE!");
+            } else {
+                System.out.println("\nFAIL!");
+                System.out.println("Max must be greater than or equal to min.");
+            }
+    }
+
+    private static void BuildGraph(String fileName, String directory, 
+            int vertices, int dense, int maxCapacity, int minCapacity) {
         Random random = new Random();
         try {
             String dirName = directory;//           
