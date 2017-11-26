@@ -137,6 +137,25 @@ public class SimpleGraph {
         
         return w;
     }
+     /**
+     * Given a vertex and an edge, if the vertex is the head 
+     * of the edge, return the other endpoint (tail) of the edge.  Otherwise,
+     * return null.
+     * @param v  a vertex
+     * @param e  an edge
+     * @returns  the other endpoint of the edge (or null, if v is not an endpoint of e)
+     */
+    public Vertex tail(Vertex v, Edge e) {
+        Vertex w;
+        
+        if (e.getFirstEndpoint() == v) {
+            w= e.getSecondEndpoint();
+        }
+        else
+            w = null;
+        
+        return w;
+    }
     
     /**
      * Return the number of vertices in this graph.
