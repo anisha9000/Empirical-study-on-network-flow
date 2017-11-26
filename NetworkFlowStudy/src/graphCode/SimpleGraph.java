@@ -18,11 +18,16 @@ public class SimpleGraph {
 
     LinkedList vertexList;
     LinkedList edgeList;
-
+    
+    HashMap<String, Vertex> vertexMap;
+    HashMap<String, Edge> edgeMap;
+    
     // Constructor
     public SimpleGraph() {
         this.vertexList = new LinkedList();
         this.edgeList = new LinkedList();
+        this.vertexMap = new HashMap<>();
+        this.edgeMap = new HashMap<>();
     }
     
     /**
@@ -39,6 +44,22 @@ public class SimpleGraph {
      */
     public Iterator edges() {
         return edgeList.iterator();
+    }
+    
+    /**
+     * get graph vertex hashMap
+     * @return vertexMap
+     */
+    public HashMap getVertexMap() {
+        return vertexMap;
+    }
+    
+    /**
+     * get graph edge hashMap
+     * @return edgeMap
+     */
+    public HashMap getEdgeMap() {
+        return edgeMap;
     }
 
     /**
@@ -71,6 +92,7 @@ public class SimpleGraph {
         Vertex v;
         v = new Vertex(data, name);
         vertexList.addLast(v);
+        vertexMap.put((String)name, v);
         return v;
     }
 
@@ -88,6 +110,8 @@ public class SimpleGraph {
         edgeList.addLast(e);
         v.incidentEdgeList.addLast(e);
         w.incidentEdgeList.addLast(e);
+        edgeMap.put((String) name, e);
+        
         return e;
     }
 
@@ -113,6 +137,25 @@ public class SimpleGraph {
         
         return w;
     }
+     /**
+     * Given a vertex and an edge, if the vertex is the head 
+     * of the edge, return the other endpoint (tail) of the edge.  Otherwise,
+     * return null.
+     * @param v  a vertex
+     * @param e  an edge
+     * @returns  the other endpoint of the edge (or null, if v is not an endpoint of e)
+     */
+    public Vertex tail(Vertex v, Edge e) {
+        Vertex w;
+        
+        if (e.getFirstEndpoint() == v) {
+            w= e.getSecondEndpoint();
+        }
+        else
+            w = null;
+        
+        return w;
+    }
     
     /**
      * Return the number of vertices in this graph.
@@ -129,6 +172,16 @@ public class SimpleGraph {
     public int numEdges() {
         return edgeList.size();
     }
+    
+    /**
+     * Returns the vertex in a given SimpleGraph object
+     * @param vertexName
+     * @return source vertex
+     */
+    public Vertex getVertex(String vertexName){
+        return vertexMap.get(vertexName);
+    }
+    
 
     /**
      * Code to test the correctness of the SimpleGraph methods.
