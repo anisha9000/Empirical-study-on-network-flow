@@ -91,56 +91,7 @@ public class utils {
      * @return null if no s-t path else valid s-t path
      */
     public static List<Vertex> getSTPath(SimpleGraph Gf, Vertex Sink, Vertex Source) {
-        // TODO: return edges in path and not vertices. 
-        Map<Vertex, Boolean> vis = new HashMap<>();
-        List<Vertex> directions = new LinkedList<>();
-        Queue<Vertex> q = new LinkedList<>();
-        Map<Vertex, Vertex> prev = new HashMap<>();
-        Vertex current = Source;
-        q.add(current);
-        vis.put(current, true);
-        //System.out.println("Sink: "+ Sink.getName() );
-        while (!q.isEmpty()) {
-            current = q.poll();
-            //System.out.println("Current "+current.getName());
-            if (current.equals(Sink)) {
-                break;
-            } else {
-                Iterator i1 = Gf.incidentEdges(current);
-                while (i1.hasNext()) {
-                    Edge e = (Edge) i1.next();
-                    //System.out.println(e_G.getName()+" "+e_G.getFirstEndpoint().getName()+" "+e_G.getSecondEndpoint().getName());
-
-                    //TODO check for forward and backward edges
-                    if (current.equals(e.getFirstEndpoint())) {
-
-                        Vertex node = e.getSecondEndpoint();
-                        if (!vis.containsKey(node)) {
-                            //System.out.println("node: "+node.getName()); 
-                            q.add(node);
-                            vis.put(node, true);
-                            prev.put(node, current);
-                        }
-                    }
-
-                }
-            }
-        }
-        if (!current.getName().equals(Sink.getName())) {
-            System.out.println("can't reach destination");
-            return null;
-        }
-        for (Vertex node = Sink; node != null; node = prev.get(node)) {
-            //System.out.println("dir: " + node.getName());
-            directions.add(node);
-        }
-
-        Collections.reverse(directions);
-
-        /*directions.forEach((v) -> {
-            System.out.println("dir: " + v.getName());
-        }); */
-        return directions;
+        return getSTPath(Gf, Sink, Source, 1);
 
     }
 
