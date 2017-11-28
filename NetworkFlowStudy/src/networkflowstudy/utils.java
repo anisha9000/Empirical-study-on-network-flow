@@ -23,7 +23,7 @@ public class utils {
     /**
      * Initialize the flow LinkedHashmap for the graph G
      *
-     * @param G
+     * @param G simple graph G
      * @return LinkedHashmap containing <Edge, flow value> pairs
      */
     public static LinkedHashMap<Edge, Integer> initFlow(SimpleGraph G) {
@@ -39,9 +39,9 @@ public class utils {
     /**
      * Create a residual graph based on a network flow G=(V,E)
      *
-     * @param G
-     * @param flow
-     * @return Residual Graph
+     * @param G a simple graph G
+     * @param flow flow across the edges
+     * @return Residual Graph Gf
      */
     public static SimpleGraph createResidualGraph(SimpleGraph G,
             LinkedHashMap<Edge, Integer> flow) {
@@ -311,11 +311,7 @@ public class utils {
             }
 
         }
-        /*
-            for(Map.Entry<Edge,Integer> value : flow.entrySet()) {
-            System.out.println("Edge:"+value.getKey().getName()+" Flow:"+value.getValue());  
-            
-        } */
+        
     }
     
     // TODO 
@@ -361,6 +357,13 @@ public class utils {
         }
     }
     
+    /**
+     *  Given a graph G, and flow, calculate the sum of flow going out of source
+     * @param G graph
+     * @param source source vertex
+     * @param flow flow value along each edge
+     * @return 
+     */
     static int getMaxFlow(SimpleGraph G, Vertex source, 
             LinkedHashMap<Edge, Integer> flow) {
         Iterator incidentEdges = G.incidentEdges(source);

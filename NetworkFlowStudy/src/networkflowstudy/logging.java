@@ -21,7 +21,7 @@ public class logging {
     /**
      * Given a graph G, print all the nodes and their incident edges
      *
-     * @param G
+     * @param G Graph
      */
     public static void printGraph(SimpleGraph G) {
         Iterator i;
@@ -47,7 +47,7 @@ public class logging {
     /**
      * Given an edge e, print it's values
      *
-     * @param e
+     * @param e An edge
      */
     public static void printEdge(Edge e) {
         System.out.println("Edge " + e.getName() + " from "
@@ -59,7 +59,7 @@ public class logging {
     /**
      * Given an flow, print the value across all the edges
      *
-     * @param flow
+     * @param flow Hashmap of flow value for each edge in a graph
      */
     public static void printFlow(LinkedHashMap<Edge, Integer> flow) {
         Iterator i;
@@ -75,7 +75,7 @@ public class logging {
 
     /**
      * Print the vertices in a given path
-     * @param path 
+     * @param path List of vertices inclusive of s and t
      */
     public static void printPath(List<Vertex> path) {
         System.out.println("Path:");

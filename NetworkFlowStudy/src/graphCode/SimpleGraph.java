@@ -19,8 +19,8 @@ public class SimpleGraph {
     LinkedList vertexList;
     LinkedList edgeList;
     
-    HashMap<String, Vertex> vertexMap;
-    HashMap<String, Edge> edgeMap;
+    HashMap<String, Vertex> vertexMap;      // Hashmap with vertex name and object
+    HashMap<String, Edge> edgeMap;          // Hashmap with edge name and object
     
     // Constructor
     public SimpleGraph() {

@@ -8,6 +8,13 @@ import java.util.Random;
 
 public class BuildGraph {
 
+    /**
+     * Computes and saves a random graph based on the number of vertices, 
+     * density of graph, lower bound on capacities, upper bound on capacities
+     * and the output file path.
+     * 
+     * @param args 
+     */
     public static void main(String[] args) {
         if (args.length != 5) {
             System.out.println("\nInvalid parameters!");
