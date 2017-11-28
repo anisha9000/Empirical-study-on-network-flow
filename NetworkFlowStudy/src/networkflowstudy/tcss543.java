@@ -98,6 +98,7 @@ public class tcss543 {
         
         utils.printGraph(Gf2);
         */
+        /****SCALING MAX FLOW CALCULATION*****/            
         System.out.println("Calling scaling max flow");
         logging.printGraph(G);
         ScalingMaxFlow scalingMaxFlow = new ScalingMaxFlow(G);
@@ -111,6 +112,20 @@ public class tcss543 {
         int maxFlow = utils.getMaxFlow(G, source, flow);
         System.out.println("maxFlow:"+ maxFlow);
 
+        /****FORD FULKERSON MAX FLOW CALCULATION*****/        
+        
+        System.out.println("Calling Ford fulkerson max flow");
+        logging.printGraph(G);
+        MaxFlow FFmaxFlow = new MaxFlow(G);
+        Vertex source1 = G.getVertex("s");
+        Vertex sink1 = G.getVertex("t");
+        LinkedHashMap<Edge, Integer> flow_FF = FFmaxFlow.calculateFlow(source1, sink1);
+        
+        logging.printFlow(flow);
+        
+        int maxF = utils.getMaxFlow(G, source, flow);
+        System.out.println("maxFlow:"+ maxF);
+        
         
     }
 

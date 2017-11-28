@@ -177,7 +177,7 @@ public class utils {
                 Iterator i1 = Gf.incidentEdges(current);
                 while (i1.hasNext()) {
                     Edge e = (Edge) i1.next();
-                    //printEdge(e);
+                    //printEdge(e_Gf);
                     int edgeCapacity = (int) e.getData();
                     if (current.equals(e.getFirstEndpoint()) 
                             && edgeCapacity >= delta) {
@@ -254,65 +254,88 @@ public class utils {
      */
     public static void augment(SimpleGraph G, SimpleGraph Gf, LinkedHashMap<Edge, Integer> flow, List<Vertex> path) {
         Map<String, Edge> edgeList_G = new HashMap<>();
+        Map<Vertex, Boolean> vis = new HashMap<>();
+       
         Iterator i1 = G.edges();
         while (i1.hasNext()) {
             Edge e_G = (Edge) i1.next();
 
             edgeList_G.put(String.valueOf(e_G.getFirstEndpoint().getName() + "->" + e_G.getSecondEndpoint().getName()), e_G);
-            /*System.out.println("edgelist_G" + e_G + " Data:" + e_G.getData() + "first and second node "
-                    + e_G.getFirstEndpoint().getName() + " " + e_G.getSecondEndpoint().getName());*/
+            //System.out.println("edgelist_G" + e_G + " Data:" + e_G.getData() + "first and second node "
+            //        + e_G.getFirstEndpoint().getName() + " " + e_G.getSecondEndpoint().getName());
         }
         ListIterator i_path = path.listIterator();
+        
         int b_neck = get_bottleneck(Gf, path);
+        //System.out.println("bneck = "+ b_neck);
         while (i_path.hasNext()) {
+            
             Vertex v1 = (Vertex) (i_path.next());
+            
 
             if (i_path.hasNext()) {
                 Vertex v2 = (Vertex) (i_path.next());
+                
+               // visited.put(v2, true);
 
                 Iterator i_edge = Gf.incidentEdges(v1);
                 while (i_edge.hasNext()) {
-                    Edge e = (Edge) (i_edge.next());
-                    if (Gf.opposite(v1, e).equals(v2)) {
-                        Integer edge_capacity = (Integer) (e.getData());
+                    Edge e_Gf = (Edge) (i_edge.next());
+                    //System.out.println("visited: "+visited.get(v2));
+                    if (Gf.opposite(v1, e_Gf).equals(v2)&&(!vis.containsKey(v2))) {
+                        // once the correct edge is found, we make sure not to go backwards again.
+                        vis.put(v2, true);
+                        Integer edge_capacity = (Integer) (e_Gf.getData());
                         // ***TODO Update residual capacity for residual capacity = 0: i_path.e_G. removing edge 
-                        //e.setData(edge_capacity - b_neck);
-                        if (e.getName() == "fe") {
+                        if (e_Gf.getName().equals("fe")) {
+                            
                             /*
-                            System.out.println("Edge" + e.getName() + " data now:" + e.getData());
-                            System.out.println(e.getFirstEndpoint().getName() + "->" + e.getSecondEndpoint().getName());
-                            System.out.println((Edge) edgeList_G.get(String.valueOf(e.getFirstEndpoint().getName() + "->" + e.getSecondEndpoint().getName())));
+                            System.out.println("Edge " + e_Gf.getName() +" first and second endpoints:  "+e_Gf.getFirstEndpoint().getName() +" "+ 
+                                    e_Gf.getSecondEndpoint().getName()+ " data now:" + e_Gf.getData());
+                            
+                            System.out.println(e_Gf.getFirstEndpoint().getName() + "->" + e_Gf.getSecondEndpoint().getName());
+                            System.out.println((Edge) edgeList_G.get(String.valueOf(e_Gf.getFirstEndpoint().getName() + "->" + e_Gf.getSecondEndpoint().getName())));
+                            
+                            
+                            System.out.println("current flow");
+                            System.out.println(flow.get((Edge) edgeList_G.get(String.valueOf(e_Gf.getFirstEndpoint().getName() + "->" + e_Gf.getSecondEndpoint().getName()))));
                             */
-
-                            Integer current_flow = flow.get((Edge) edgeList_G.get(String.valueOf(e.getFirstEndpoint().getName() + "->" + e.getSecondEndpoint().getName())));
+                            Integer current_flow = flow.get((Edge) edgeList_G.get(String.valueOf(e_Gf.getFirstEndpoint().getName() + "->" + e_Gf.getSecondEndpoint().getName())));
                             //System.out.println("current flow is : " + current_flow);
                             Integer updated_edge_flow = current_flow + b_neck;
-                            flow.put((Edge) edgeList_G.get(String.valueOf(e.getFirstEndpoint().getName() + "->" + e.getSecondEndpoint().getName())), updated_edge_flow);
+                            flow.put((Edge) edgeList_G.get(String.valueOf(e_Gf.getFirstEndpoint().getName() + "->" + e_Gf.getSecondEndpoint().getName())), updated_edge_flow);
                             // System.out.println(v1.getName() + " "+ v2.getName()+ " " + edge_capacity);
                         }
-                        if (e.getName() == "be") {
+                        else if (e_Gf.getName().equals("be"))
+                        {
                             /*
-                            System.out.println("Edge" + e.getName() + " data now:" + e.getData());
-                            System.out.println(e.getFirstEndpoint().getName() + "->" + e.getSecondEndpoint().getName());
-                            System.out.println((Edge) edgeList_G.get(String.valueOf(e.getFirstEndpoint().getName() + "->" + e.getSecondEndpoint().getName())));
+                            System.out.println("Edge" + e_Gf.getName() + " data now:" + e_Gf.getData());
+                            System.out.println(e_Gf.getFirstEndpoint().getName() + "->" + e_Gf.getSecondEndpoint().getName());
+                            System.out.println((Edge) edgeList_G.get(String.valueOf(e_Gf.getFirstEndpoint().getName() + "->" + e_Gf.getSecondEndpoint().getName())));
+                            
+                            System.out.println("Edge " + e_Gf.getName() +" first and second endpoints:  "+e_Gf.getFirstEndpoint().getName() +" "+ 
+                                    e_Gf.getSecondEndpoint().getName()+ " data now:" + e_Gf.getData());
                             */
-
-                            Integer current_flow = flow.get((Edge) edgeList_G.get(String.valueOf(e.getFirstEndpoint().getName() + "->" + e.getSecondEndpoint().getName())));
+                            Integer current_flow = flow.get((Edge) edgeList_G.get(String.valueOf(e_Gf.getFirstEndpoint().getName() + "->" + e_Gf.getSecondEndpoint().getName())));
                             //System.out.println("current flow is : " + current_flow);
+                            //System.out.println(flow.get((Edge) edgeList_G.get(String.valueOf(e_Gf.getFirstEndpoint().getName() + "->" + e_Gf.getSecondEndpoint().getName()))));
                             Integer updated_edge_flow = current_flow - b_neck;
-                            flow.put((Edge) edgeList_G.get(String.valueOf(e.getFirstEndpoint().getName() + "->" + e.getSecondEndpoint().getName())), updated_edge_flow);
+                            flow.put((Edge) edgeList_G.get(String.valueOf(e_Gf.getFirstEndpoint().getName() + "->" + e_Gf.getSecondEndpoint().getName())), updated_edge_flow);
                             // System.out.println(v1.getName() + " "+ v2.getName()+ " " + edge_capacity);
                         }
 
                     }
 
                 }
+                
                 i_path.previous();      // get back to previous element again so that we don't skip a node in the current s-t path
+               
             }
 
         }
         
     }
+
     
     // TODO 
     static void updateResidualGraph(SimpleGraph G, SimpleGraph Gf,
