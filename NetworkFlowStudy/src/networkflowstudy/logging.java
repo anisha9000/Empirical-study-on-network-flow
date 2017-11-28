@@ -28,7 +28,7 @@ public class logging {
         Vertex v;
         Edge e;
 
-        System.out.println("Iterating through adjacency lists...");
+        System.out.println("Iterating through graph");
         for (i = G.vertices(); i.hasNext();) {
             v = (Vertex) i.next();
             System.out.println("Vertex " + v.getName());
@@ -36,31 +36,47 @@ public class logging {
 
             for (j = G.incidentEdges(v); j.hasNext();) {
                 e = (Edge) j.next();
-                System.out.println("  found edge " + e.getName() + " from "+ 
-                        e.getFirstEndpoint().getName()+" to "+ 
-                        e.getSecondEndpoint().getName() + " of value "+ 
-                        e.getData());
+                System.out.println("  found edge " + e.getName() + " from "
+                        + e.getFirstEndpoint().getName() + " to "
+                        + e.getSecondEndpoint().getName() + " of value "
+                        + e.getData());
             }
         }
     }
 
+    /**
+     * Given an edge e, print it's values
+     *
+     * @param e
+     */
     public static void printEdge(Edge e) {
-        System.out.println("Edge " + e.getName() + " from "+ 
-                e.getFirstEndpoint().getName()+" to "+ 
-                e.getSecondEndpoint().getName() + " of value "+ e.getData());
+        System.out.println("Edge " + e.getName() + " from "
+                + e.getFirstEndpoint().getName() + " to "
+                + e.getSecondEndpoint().getName() + " of value " + e.getData());
 
     }
-    
+
+    /**
+     * Given an flow, print the value across all the edges
+     *
+     * @param flow
+     */
     public static void printFlow(LinkedHashMap<Edge, Integer> flow) {
         Iterator i;
 
         System.out.println("Iterating through flow");
         for (Map.Entry<Edge, Integer> edge : flow.entrySet()) {
-            System.out.println("edge:" + edge.getKey().getName() + ", value:" + edge.getValue());
+            System.out.println("edge:" + 
+                    edge.getKey().getFirstEndpoint().getName() + " to " + 
+                    edge.getKey().getSecondEndpoint().getName() + ", value: " +
+                    edge.getValue());
         }
-
     }
 
+    /**
+     * Print the vertices in a given path
+     * @param path 
+     */
     public static void printPath(List<Vertex> path) {
         System.out.println("Path:");
         if (path != null) {

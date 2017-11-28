@@ -317,30 +317,6 @@ public class utils {
             
         } */
     }
-
-    /*   
-    /**
-     * Calculates the max flow using augment() , getSTPath() and createResidualGraph()   
-     * @param G
-     * @return maxFlow
-     */
- /*    
-public static int fordFulkerson(SimpleGraph G){
-    
-     //Initialize flow
-     LinkedHashMap<Edge, Integer> flow = utils.initFlow(G);
-     // Create residual graph Gf
-     SimpleGraph Gf = createResidualGraph(G, flow);
-     
-     // get the Vertex object of the current soure and sink nodes
-     Vertex source = get_s(Gf);
-     Vertex sink = get_t(Gf);
-     
-     while(getSTPath(Gf, sink, source)!= null){
-         
-     }
-}
-     */
     
     // TODO 
     static void updateResidualGraph(SimpleGraph G, SimpleGraph Gf,

@@ -19,11 +19,16 @@ import java.util.List;
  */
 public class ScalingMaxFlow {
 
-    SimpleGraph G;
-    private SimpleGraph Gf;
-    LinkedHashMap<Edge, Integer> flow;
-    Vertex sourceGf, sinkGf;
+    SimpleGraph G;                          // The given network flow G = (V, E) 
+    private SimpleGraph Gf;                 // The residual graph Gf
+    LinkedHashMap<Edge, Integer> flow;      // Hashmap to store the flow per edge
+    Vertex sourceGf, sinkGf;                // The source vertex and sink vertex in the residual graph
 
+    /**
+     * Constructor to initialize the flow along all edges and create the corresponding graph
+     * @param G 
+     */
+    
     public ScalingMaxFlow(SimpleGraph G) {
         this.G = G;
         flow = utils.initFlow(G);
