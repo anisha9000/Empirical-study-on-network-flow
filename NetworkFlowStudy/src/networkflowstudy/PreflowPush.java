@@ -66,7 +66,7 @@ public class PreflowPush {
     
     /**
      * @name        GetMaxFlow
-     * @return      the flow of the graph in a linkedhashmap of Edge to
+     * @return      the flow of the graph in a linked hash map of Edge to
      *              Integer.
      */
     public LinkedHashMap<Edge, Integer> GetMaxFlow() {
@@ -233,14 +233,13 @@ public class PreflowPush {
             }                                                                   //
         }                                                                       //
                                                                                 //
-        if (w.isEmpty()) {                                                      // if 'w' is still null, the edge wasn't in the residual graph
-            while (residualIterator.hasNext()) {                                // now iterate through the residual graph
-                Edge edge = (Edge)residualIterator.next();                      // to locate a backward edge to use.
-                if (edge.getFirstEndpoint().getName().equals(v.getName())) {    // if 'v' is the first endpoint,
-                    w.add(edge.getSecondEndpoint());                            // save the second in 'w'
-                }                                                               //
+        while (residualIterator.hasNext()) {                                    // now iterate through the residual graph
+            Edge edge = (Edge)residualIterator.next();                          // to locate a backward edge to use.
+            if (edge.getFirstEndpoint().getName().equals(v.getName())) {        // if 'v' is the first endpoint,
+                w.add(edge.getSecondEndpoint());                                // save the second in 'w'
             }                                                                   //
         }                                                                       //
+                                                                                //
         return w;                                                               // return w
     } /* end GetWVertex function */
     
