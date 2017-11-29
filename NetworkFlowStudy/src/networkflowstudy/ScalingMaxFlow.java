@@ -50,16 +50,16 @@ public class ScalingMaxFlow {
         int delta = getDelta(sourceGf);
 
         while (delta >= 1) {
-            System.out.println("delta:" + delta);
+            //System.out.println("delta:" + delta);
             List<Vertex> path = new LinkedList<>();
 
             path = utils.getSTPath(Gf, sinkGf, sourceGf, delta);
 
             while (path != null) {
 
-                logging.printPath(path);
+                //logging.printPath(path);
                 utils.augment(G, Gf, flow, path);
-                logging.printFlow(flow);
+                //logging.printFlow(flow);
                 Gf = utils.createResidualGraph(G, flow);
                 sourceGf = Gf.getVertex((String) sourceG.getName());
                 sinkGf = Gf.getVertex((String) sinkG.getName());

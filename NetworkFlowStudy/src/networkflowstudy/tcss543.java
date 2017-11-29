@@ -10,6 +10,7 @@ import graphCode.Edge;
 import graphCode.GraphInput;
 import graphCode.SimpleGraph;
 import graphCode.Vertex;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -24,11 +25,14 @@ public class tcss543 {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // TODO code application logic here
         SimpleGraph G = new SimpleGraph();
         GraphInput graphGenrerator = new GraphInput();
         graphGenrerator.LoadSimpleGraph(G, args[0]);
+        
+        long startTime;
+        long endTime;
         
         /*
         Vertex s,a,b,c,d,t;
@@ -98,33 +102,43 @@ public class tcss543 {
         
         utils.printGraph(Gf2);
         */
-        /****SCALING MAX FLOW CALCULATION*****/            
+        /****SCALING MAX FLOW CALCULATION*****/          
         System.out.println("Calling scaling max flow");
         logging.printGraph(G);
+        
+        startTime = System.currentTimeMillis();
         ScalingMaxFlow scalingMaxFlow = new ScalingMaxFlow(G);
         Vertex source = G.getVertex("s");
         Vertex sink = G.getVertex("t");
         LinkedHashMap<Edge, Integer> flow = scalingMaxFlow.calculateFlow(source, 
                 sink);
         
-        logging.printFlow(flow);
+        //logging.printFlow(flow);
         
         int maxFlow = utils.getMaxFlow(G, source, flow);
         System.out.println("maxFlow:"+ maxFlow);
+        endTime = System.currentTimeMillis();
+        SaveOutput.writeToCSV("Mesh","Scaling Max flow", G.numVertices(), 
+                endTime- startTime, maxFlow);
 
         /****FORD FULKERSON MAX FLOW CALCULATION*****/        
         
         System.out.println("Calling Ford fulkerson max flow");
         logging.printGraph(G);
+        
+        startTime = System.currentTimeMillis();
         MaxFlow FFmaxFlow = new MaxFlow(G);
         Vertex source1 = G.getVertex("s");
         Vertex sink1 = G.getVertex("t");
         LinkedHashMap<Edge, Integer> flow_FF = FFmaxFlow.calculateFlow(source1, sink1);
         
-        logging.printFlow(flow);
+        //logging.printFlow(flow);
         
         int maxF = utils.getMaxFlow(G, source, flow);
         System.out.println("maxFlow:"+ maxF);
+        endTime = System.currentTimeMillis();
+        SaveOutput.writeToCSV("Mesh", "FordFulkerson", G.numVertices(), 
+                endTime- startTime, maxFlow);
         
         
     }

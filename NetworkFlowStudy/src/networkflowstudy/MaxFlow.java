@@ -45,9 +45,9 @@ public class MaxFlow {
 
         while (path != null) {
 
-            logging.printPath(path);
+            //logging.printPath(path);
             utils.augment(G, Gf, flow, path);
-            logging.printFlow(flow);
+            //logging.printFlow(flow);
             Gf = utils.createResidualGraph(G, flow);
             sourceGf = Gf.getVertex((String) sourceG.getName());
             sinkGf = Gf.getVertex((String) sinkG.getName());

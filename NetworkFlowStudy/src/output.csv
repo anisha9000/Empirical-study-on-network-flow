@@ -1,0 +1,8 @@
+Scaling MAx flow,14,195,195,6
+Scaling MAx flow,14,7,7,6
+Scaling Max flow,202,14992,38
+FordFulkerson,202,15945,38
+Mesh,Scaling Max flow,202,94,38
+Mesh,FordFulkerson,202,15913,38
+Mesh,Scaling Max flow,202,97,38
+Mesh,FordFulkerson,202,15610,38
