@@ -18,3 +18,9 @@ Mesh,PreflowPush,14,2,0
 Mesh,Scaling Max flow,14,11,6
 Mesh,FordFulkerson,14,5,6
 Mesh,PreflowPush,14,16,0
+Mesh,Scaling Max flow,14,22,6
+Mesh,FordFulkerson,14,0,6
+Mesh,PreflowPush,14,0,6
+Mesh,Scaling Max flow,14,16,6
+Mesh,FordFulkerson,14,0,6
+Mesh,PreflowPush,14,34,6

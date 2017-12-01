@@ -30,7 +30,7 @@ public class tcss543 {
         SimpleGraph G = new SimpleGraph();
         GraphInput graphGenrerator = new GraphInput();
         //graphGenrerator.LoadSimpleGraph(G, args[0]);
-        graphGenrerator.LoadSimpleGraph(G, "/home/anisha/AlgoProject/NetworkFlowStudy/src/graphGenerationCode/Mesh/smallMesh.txt");
+        graphGenrerator.LoadSimpleGraph(G, "C:\\Users\\bhagatsanchya\\Desktop\\UWash\\Adv. Algorithms\\project_nf\\NetworkFlowStudy\\src\\graphGenerationCode\\Mesh\\size_6.txt");
         
         Vertex source = G.getVertex("s");
         Vertex sink = G.getVertex("t");
@@ -58,8 +58,7 @@ public class tcss543 {
 
         
         
-        
-        /****FORD FULKERSON MAX FLOW CALCULATION*****/        
+        /****FORD FULKERSON MAX FLOW CALCULATION*****/      
         
         System.out.println("Calling Ford fulkerson max flow");
         

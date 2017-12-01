@@ -11,18 +11,18 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVPrinter;
+//import apache.commons.csv.CSVFormat;
+//import apache.commons.csv.CSVPrinter;
 /**
  *
  * @author anisha
  */
 public class SaveOutput {
     private static final String OUTPUT_CSV_FILE = new File("").getAbsolutePath()
-            + "/src/output.csv";
+            + "/src/output_bipartite.csv";
 
     private static final String OUTPUT_FOLDER =  new File("").getAbsolutePath() 
-            + "/src/output/";
+            + "/src/output_bipartite/";
     
     public static void writeToCSV(String graphType, String algorithmName, int numberOfVertices, 
             long runningTime, int maxFlow) throws IOException {

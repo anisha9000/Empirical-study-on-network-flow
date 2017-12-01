@@ -14,6 +14,7 @@ import java.util.LinkedList;
 import java.util.Map.Entry;
 import java.util.Stack;
 
+
 /**
  *
  * @author anisha
@@ -155,7 +156,7 @@ public class utils {
 
         Collections.reverse(directions);
         return directions;
-
+        
     }
 
     /**
@@ -233,7 +234,10 @@ public class utils {
                 while (i_edge.hasNext()) {
                     Edge e_Gf = (Edge) (i_edge.next());
                     //System.out.println("visited: "+visited.get(v2));
-                    if (Gf.opposite(v1, e_Gf).equals(v2)&&(!vis.containsKey(v2))) {
+                    //HashMap<String, Edge> edgeMap = Gf.getEdgeMap();
+                    //Edge e_Gf = edgeMap.get(String.valueOf(v1.getName()+"->"+v2.getName()));
+                    //e_Gf.getSecondEndpoint().getName().equals(v2.getName())
+                    if (e_Gf.getSecondEndpoint().getName().equals(v2.getName())) {
                         // once the correct edge is found, we make sure not to go backwards again.
                         vis.put(v2, true);
                         Integer edge_capacity = (Integer) (e_Gf.getData());
@@ -275,7 +279,7 @@ public class utils {
                             // System.out.println(v1.getName() + " "+ v2.getName()+ " " + edge_capacity);
                         }
 
-                    }
+                    } 
 
                 }
                 
@@ -284,53 +288,20 @@ public class utils {
             }
 
         }
-        
     }
-
-    
-    // TODO 
-    static void updateResidualGraph(SimpleGraph G, SimpleGraph Gf,
-            LinkedHashMap<Edge, Integer> flow, List<Vertex> path) {
-
-        HashMap<String,Edge> edgeListOfG = G.getEdgeMap();
-        ListIterator iPath = path.listIterator();
         
-        while (iPath.hasNext()) {
-            Vertex v1 = (Vertex) (iPath.next());
-            if (iPath.hasNext()) {
-                Vertex v2 = (Vertex) (iPath.next());
+    /**
+     * Calculates the increase in flow using get_bottleneck() and updates the
+     * flow LinkedHashmap
+     *
+     * @param G
+     * @param Gf
+     * @param flow
+     * @param path
+     *
+     */
+       
 
-                Iterator iEdge = Gf.incidentEdges(v1);
-                while (iEdge.hasNext()) {
-                    Edge eGf = (Edge) (iEdge.next());
-                    if (Gf.opposite(v1, eGf).equals(v2)) {
-                        String edgeNameG = "";
-
-                        if (eGf.getName().equals("fe")) {
-                            edgeNameG = v1.getName() + "->" + v2.getName();
-                        } else {
-                            edgeNameG = v2.getName() + "->" + v1.getName();
-                        }
-                        
-                        Edge eG = edgeListOfG.get(edgeNameG);
-                        
-                        int flowInEdge = flow.get(eG);
-                        System.out.println("Current Flow:"+ flowInEdge);
-                        
-                        if(eGf.getData().equals(flowInEdge)) {
-                            // This is the bottleneck edge
-                            
-                        }
-                        
-
-                    }
-
-                }
-
-            }
-        }
-    }
-    
     /**
      *  Given a graph G, and flow, calculate the sum of flow going out of source
      * @param G graph
