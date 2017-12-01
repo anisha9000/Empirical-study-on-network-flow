@@ -30,7 +30,7 @@ public class tcss543 {
         SimpleGraph G = new SimpleGraph();
         GraphInput graphGenrerator = new GraphInput();
         //graphGenrerator.LoadSimpleGraph(G, args[0]);
-        graphGenrerator.LoadSimpleGraph(G, "C:\\Users\\bhagatsanchya\\Desktop\\UWash\\Adv. Algorithms\\project_nf\\NetworkFlowStudy\\src\\graphGenerationCode\\Mesh\\size_6.txt");
+        graphGenrerator.LoadSimpleGraph(G, "/home/anisha/AlgoProject/NetworkFlowStudy/src/graphGenerationCode/Bipartite/bipartitegraph_50.txt");
         
         Vertex source = G.getVertex("s");
         Vertex sink = G.getVertex("t");
