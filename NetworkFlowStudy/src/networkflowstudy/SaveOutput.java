@@ -31,7 +31,7 @@ public class SaveOutput {
         
         String row = graphType + "," + algorithmName + "," + numberOfVertices +
                 ","+ runningTime + "," + maxFlow;
-        System.out.println(row);
+        //System.out.println(row);
         fileWriter.append(row);
         fileWriter.append("\n");
         fileWriter.flush();

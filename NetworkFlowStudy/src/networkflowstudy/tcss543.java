@@ -41,7 +41,8 @@ public class tcss543 {
         LinkedHashMap<Edge, Integer> flow;
         
         logging.printGraph(G);
-        
+        System.out.println();
+        System.out.println("******************************************");
         /****SCALING MAX FLOW CALCULATION*****/          
         
         System.out.println("Calling scaling max flow");
@@ -51,13 +52,16 @@ public class tcss543 {
                 sink);
         //logging.printFlow(flow);
         maxFlow = utils.getMaxFlow(G, source, flow);
-        System.out.println("maxFlow from Scaling Max Flow:"+ maxFlow);
+        // TODO add these outputs to console output
+        //System.out.println("maxFlow from Scaling Max Flow:"+ maxFlow);
         endTime = System.currentTimeMillis();
+        System.out.println("||Algorithm: Scaling Max Flow||" + "Number of vertices: " + G.numVertices() +"||Running time:" + (endTime- startTime)
+                +"||maxFlow:" + maxFlow+"||");
         SaveOutput.writeToCSV("Mesh","Scaling Max flow", G.numVertices(), 
                 endTime- startTime, maxFlow);
 
         
-        
+        System.out.println("******************************************");
         /****FORD FULKERSON MAX FLOW CALCULATION*****/      
         
         System.out.println("Calling Ford fulkerson max flow");
@@ -67,15 +71,18 @@ public class tcss543 {
         flow = FFmaxFlow.calculateFlow(source, sink);
         //logging.printFlow(flow);
         maxFlow = utils.getMaxFlow(G, source, flow);
-        System.out.println("maxFlow:"+ maxFlow);
+      
         endTime = System.currentTimeMillis();
+        System.out.println("||Algorithm: Ford fulkerson ||" + "Number of vertices: " + G.numVertices() +"||Running time:" + (endTime- startTime)
+                +"||maxFlow:" + maxFlow + "||");
+        // TODO add these outputs to console output
         SaveOutput.writeToCSV("Mesh", "FordFulkerson", G.numVertices(), 
                 endTime- startTime, maxFlow);
         
         
         
-        
-        /****FORD FULKERSON MAX FLOW CALCULATION*****/        
+        System.out.println("******************************************");
+        /****PREFLOW PUSH MAX FLOW CALCULATION*****/        
         System.out.println("Calling Preflow Push max flow");
         
         startTime = System.currentTimeMillis();
@@ -83,10 +90,15 @@ public class tcss543 {
         flow = preflowPush.GetMaxFlow();
         //logging.printFlow(flow);
         maxFlow = utils.getMaxFlow(G, source, flow);
-        System.out.println("maxFlow:"+ maxFlow);
+        // TODO add these outputs to console output
+        //System.out.println("maxFlow:"+ maxFlow);
         endTime = System.currentTimeMillis();
+        System.out.println("||Algorithm: Preflow Push||" + "Number of vertices: " + G.numVertices() +"||Running time:" + (endTime- startTime)
+                +"||maxFlow:" + maxFlow +"||");
         SaveOutput.writeToCSV("Mesh", "PreflowPush", G.numVertices(), 
                 endTime- startTime, maxFlow);
+        
+        System.out.println("******************************************");
         
     }
 

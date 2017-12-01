@@ -16,3 +16,21 @@ Mesh,FordFulkerson,8,101,7
 Mesh,FordFulkerson,8,181,7
 Mesh,FordFulkerson,8,160,7
 Mesh,FordFulkerson,8,72,5
+Mesh,Scaling Max flow,8,18,5
+Mesh,FordFulkerson,8,3,5
+Mesh,PreflowPush,8,4,5
+Mesh,Scaling Max flow,8,5,5
+Mesh,FordFulkerson,8,3,5
+Mesh,PreflowPush,8,14,5
+Mesh,Scaling Max flow,8,4,5
+Mesh,FordFulkerson,8,2,5
+Mesh,PreflowPush,8,9,5
+Mesh,Scaling Max flow,8,4,5
+Mesh,FordFulkerson,8,2,5
+Mesh,PreflowPush,8,5,5
+Mesh,Scaling Max flow,8,3,5
+Mesh,FordFulkerson,8,2,5
+Mesh,PreflowPush,8,9,5
+Mesh,Scaling Max flow,8,7,5
+Mesh,FordFulkerson,8,3,5
+Mesh,PreflowPush,8,7,5
