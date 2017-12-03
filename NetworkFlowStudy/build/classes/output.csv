@@ -1,26 +1,34 @@
-Scaling MAx flow,14,195,195,6
-Scaling MAx flow,14,7,7,6
-Scaling Max flow,202,14992,38
-FordFulkerson,202,15945,38
-Mesh,Scaling Max flow,202,94,38
-Mesh,FordFulkerson,202,15913,38
-Mesh,Scaling Max flow,202,97,38
-Mesh,FordFulkerson,202,15610,38
-Mesh,Scaling Max flow,202,115,38
-Mesh,FordFulkerson,202,51,38
-Mesh,PreflowPush,202,3,0
-Mesh,Scaling Max flow,202,123,38
-Mesh,FordFulkerson,202,62,39
-Mesh,PreflowPush,202,8,0
-Mesh,Scaling Max flow,14,9,6
-Mesh,FordFulkerson,14,4,6
-Mesh,PreflowPush,14,2,0
-Mesh,Scaling Max flow,14,11,6
-Mesh,FordFulkerson,14,5,6
-Mesh,PreflowPush,14,16,0
-Mesh,Scaling Max flow,14,22,6
-Mesh,FordFulkerson,14,0,6
-Mesh,PreflowPush,14,0,6
-Mesh,Scaling Max flow,14,16,6
-Mesh,FordFulkerson,14,0,6
-Mesh,PreflowPush,14,34,6
+
+Mesh,Scaling Max flow,7,24,14
+Mesh,FordFulkerson,7,4,14
+Mesh,PreflowPush,7,12,14
+Mesh,Scaling Max flow,12,12,108
+Mesh,FordFulkerson,12,7,108
+Mesh,PreflowPush,12,4,108
+Mesh,Scaling Max flow,27,38,276
+Mesh,FordFulkerson,27,34,276
+Mesh,PreflowPush,27,17,276
+Mesh,Scaling Max flow,52,120,599
+Mesh,FordFulkerson,52,64,599
+Mesh,PreflowPush,52,641,599
+Mesh,Scaling Max flow,77,142,848
+Mesh,FordFulkerson,77,140,848
+Mesh,PreflowPush,77,294,848
+Mesh,Scaling Max flow,102,365,1226
+Mesh,FordFulkerson,102,424,1226
+Mesh,PreflowPush,102,419,1226
+Mesh,Scaling Max flow,127,480,1665
+Mesh,FordFulkerson,127,359,1665
+Mesh,PreflowPush,127,642,1665
+Mesh,Scaling Max flow,152,654,1853
+Mesh,FordFulkerson,152,374,1853
+Mesh,PreflowPush,152,1007,1853
+Mesh,Scaling Max flow,202,909,2722
+Mesh,FordFulkerson,202,884,2722
+Mesh,PreflowPush,202,3549,2722
+Mesh,Scaling Max flow,252,1251,3059
+Mesh,FordFulkerson,252,1726,3059
+Mesh,PreflowPush,252,6963,3059
+Mesh,Scaling Max flow,7,4,2
+Mesh,FordFulkerson,7,0,2
+Mesh,PreflowPush,7,4,2

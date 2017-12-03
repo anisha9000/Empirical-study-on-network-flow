@@ -8,7 +8,7 @@ import java.util.*;
 
 public class RandomGraph {
 	
-	private static final String NL = "\n";
+	private static final String NL = "\r\n";
 	
 	/**
 	 * Entrance point for the program.
@@ -71,6 +71,7 @@ public class RandomGraph {
 				s.add(head);
 				c = min + gen.nextInt(max - min + 1);
 				bfr.append("s"+" "+"v"+head+" "+c+NL);	
+                                
 				j++;
 			}
 		}
