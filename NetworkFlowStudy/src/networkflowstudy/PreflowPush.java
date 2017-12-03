@@ -23,8 +23,6 @@ public class PreflowPush {
     LinkedHashMap<Vertex, Integer> excess;                                                      // a hashmap to store excesses
     SimpleGraph       graph;                                                                    // represents the input graph
     SimpleGraph       residualGraph;                                                            // represents the residual graph
-    ArrayList<Vertex> vertices;                                                                 // a vertex vector to work with
-    ArrayList<Edge>   edges;                                                                    // an edge vector to work with
     Iterator          i;                                                                        // iterator for a graph
     
     
@@ -38,25 +36,27 @@ public class PreflowPush {
         flows    = new LinkedHashMap<Edge, Integer>();                                          // initialize all the containers
         heights  = new LinkedHashMap<Vertex, Integer>();                                        //
         excess   = new LinkedHashMap<Vertex, Integer>();                                        // what the hell is the diamond operator???
-        vertices = new ArrayList<Vertex>();                                                     // java = :*(
-        edges    = new ArrayList<Edge>();                                                       // java < c++
                                                                                                 //
-        for (i = graph.vertices(); i.hasNext(); )                                               // extract all vertices
-            vertices.add((Vertex)i.next());                                                     //
-        for (i = graph.edges(); i.hasNext(); )                                                  // extract all edges
-            edges.add((Edge)i.next());                                                          //
-        for (int i = 0; i < vertices.size(); i++)                                               // initialize all nodes height to zero
-            heights.put(vertices.get(i), 0);                                                    //
-        Vertex s = graph.getVertex("s");                                                        // get the source node
-        heights.put(s, vertices.size());                                                        // set its height to n
-        for (int k = 0; k < edges.size(); k++) {                                                // initialize flow of all edges from s to some node v, to the capacity
-            if (edges.get(k).getFirstEndpoint().getName().equals("s"))                          // edges leaving source are maxed
-                flows.put(edges.get(k), ((Double)edges.get(k).getData()).intValue());           //
-            else                                                                                //
-                flows.put(edges.get(k), 0);                                                     // everything else is zero
+        i = graph.vertices();                                                                   // set i to graph vertices
+        while (i.hasNext()) {                                                                   // loop through each
+            Vertex v = (Vertex)i.next();                                                        // save a copy
+            heights.put(v, 0);                                                                  // set all heights to zero
         }                                                                                       //
+                                                                                                //
+        Vertex s = graph.getVertex("s");                                                        // get the source node
+        heights.put(s, graph.numVertices());                                                    // set its height to n
+                                                                                                //
+        i = graph.edges();                                                                      // set i to graph edges
+        while (i.hasNext()) {                                                                   // loop through each
+            Edge e = (Edge)i.next();                                                            // save a copy
+            if (e.getFirstEndpoint().getName().equals("s"))                                     // if the first endpoint is s
+                flows.put(e, ((Double)e.getData()).intValue());                                 // set flow to max capacity
+            else                                                                                // if not,
+                flows.put(e, 0);                                                                // set to zero
+        }                                                                                       //
+                                                                                                //
         residualGraph = utils.createResidualGraph(graph, flows);                                // compute the residual graph
-        UpdateExcessMap();                                                                      // update the excess map
+        CreateExcessMap();                                                                      // update the excess map
     } /* end Constructor */
     
     
@@ -69,11 +69,12 @@ public class PreflowPush {
         boolean isPushSuccess = false;                                                          // tell loop to relabel if push fails
                                                                                                 //
         while (!excess.isEmpty()) {                                                             // while excess map isn't empty
+            int i = 0;                                                                          // declare here so UpdateExcessMap can use index value
             isPushSuccess = false;                                                              // reset this each iteration
-            Vertex v = excess.keySet().iterator().next();                                       // get first element
+            Vertex v = excess.entrySet().iterator().next().getKey();                            // get the first key
             ArrayList<Vertex> w = GetWVertexList(v);                                            // get a list of available nodes
                                                                                                 //
-            for (int i = 0; i < w.size(); i++) {                                                // iterate through each available node
+            for (i = 0; i < w.size(); i++) {                                                    // iterate through each available node
                 if (Push(v, w.get(i))) {                                                        // try to push to the first, if success
                     isPushSuccess = true;                                                       // set this true
                     break;                                                                      // and break, we only want to execute once
@@ -82,9 +83,10 @@ public class PreflowPush {
                                                                                                 //
             if (!isPushSuccess)                                                                 // if Push failed, call
                 Relabel(v);                                                                     // relabel on node v
-                                                                                                //
-            residualGraph = utils.createResidualGraph(graph, flows);                            // re-create residual graph
-            UpdateExcessMap();                                                                  // update excess map
+            else {                                                                              // if Push suceeded,
+                UpdateExcessMap(v, w.get(i));                                                   // update excess map
+                residualGraph = utils.createResidualGraph(graph, flows);                        // re-create residual graph
+            }                                                                                   //
         }                                                                                       //
         return flows;                                                                           // return the flows
     } /* end GetMaxFlow function */
@@ -151,19 +153,41 @@ public class PreflowPush {
             heights.put(v, newHeight);                                                          // and stored in heights
         }                                                                                       //
     } /* end Relabel function */
+    
+    
+    /**
+     * @name    CreateExcessMap
+     */
+    private void CreateExcessMap() {
+        int ef = 0;                                                                             // excess flow
+        excess.clear();                                                                         // clear the container each time
+        i = graph.vertices();                                                                   // set i to graph vertices
+        while (i.hasNext()) {                                                                   // loop through each
+            Vertex v = (Vertex)i.next();                                                        // save a copy
+            ef = GetExcess(v);                                                                  // set the excess, if any
+            if ((ef > 0) && !v.getName().equals("t"))                                           // as long as v isn't t,
+                excess.put(v, ef);                                                              // set the excess in the map
+        }                                                                                       //
+    } /* end CreateExcessMap function */
 
     
     /**
      * @name    UpdateExcessMap
      */
-    private void UpdateExcessMap() {
-        int ef = 0;                                                                             // excess flow
-        excess.clear();                                                                         // clear the container each time
-        for (int i = 0; i < vertices.size(); i++) {                                             // iterate through all vertices
-            ef = GetExcess(vertices.get(i));                                                    // calculate the excess
-            if ((ef > 0) && !vertices.get(i).getName().equals("t"))                             // and if this isn't "t"
-                excess.put(vertices.get(i), ef);                                                // add it to the excess map
-        }                                                                                       //
+    private void UpdateExcessMap(Vertex v, Vertex w) {
+        int ef1 = 0, ef2 = 0;                                                                   // store "excess flow 1" and "2"
+        ef1 = GetExcess(v);                                                                     // get excess of "v"
+        ef2 = GetExcess(w);                                                                     // get excess of "w"
+                                                                                                //
+        if ((ef1 > 0) && !v.getName().equals("t"))                                              // if v has excess,
+            excess.put(v, ef1);                                                                 // put it on the map
+        else                                                                                    // otherwise remove
+            excess.remove(v);                                                                   // if it wasn't there nothing happens
+                                                                                                //
+        if ((ef2 > 0) && !w.getName().equals("t"))                                              // if w has excess,
+            excess.put(w, ef2);                                                                 // put it on the map
+        else                                                                                    // otherwise remove
+            excess.remove(w);                                                                   // if it wasn't there nothing happens
     } /* end FillExcessMap function */
     
     
@@ -221,11 +245,12 @@ public class PreflowPush {
      * @return      Edge
      */
     private Edge GetEdge(Vertex v, Vertex w) {
-        for (int i = 0; i < edges.size(); i++) {                                                // iterate over all edges
-            Edge edge = edges.get(i);                                                           // save a copy
-            if (edge.getFirstEndpoint().getName().equals(v.getName())                           // compare actual names to determine both endpoints
-                    && edge.getSecondEndpoint().getName().equals(w.getName()))                  // are the same as v and w
-                return edges.get(i);                                                            // return the edge when it is found
+        i = graph.edges();                                                                      // set i to graph edges
+        while (i.hasNext()) {                                                                   // loop through each
+            Edge e = (Edge)i.next();                                                            // save a copy
+            if (e.getFirstEndpoint().getName().equals(v.getName())                              // if v is first endpoint
+                    && e.getSecondEndpoint().getName().equals(w.getName()))                     // and w is second endpoint
+                return e;                                                                       // return e
         }                                                                                       //
         return null;                                                                            // otherwise return null
     } /* end GetEdge function */
@@ -238,14 +263,12 @@ public class PreflowPush {
      * @return      Edge
      */
     private Edge GetResidualEdge(Vertex v, Vertex w) {
-        Edge vw_residual;                                                                       // save the residual graph edge
         i = residualGraph.edges();                                                              // get iterator to residual graph
         while (i.hasNext()) {                                                                   // iterate over all edges
-            vw_residual = (Edge)i.next();                                                       // save a copy of current edge
-            String e1 = (String)vw_residual.getFirstEndpoint().getName();                       // save endpoint 1 name
-            String e2 = (String)vw_residual.getSecondEndpoint().getName();                      // save endpoint 2 name
-            if (e1.equals(v.getName()) && e2.equals(w.getName()))                               // test for first and second endpoints
-                return vw_residual;                                                             // return the edge when found
+            Edge e = (Edge)i.next();                                                            // save a copy of current edge
+            if (e.getFirstEndpoint().getName().equals(v.getName())                              // if v is first endpoint
+                    && e.getSecondEndpoint().getName().equals(w.getName()))                     // and w is second endpoints
+                return e;                                                                       // return e
         }                                                                                       //
         return null;                                                                            // otherwise return null
     } /* end GetResidualEdge function */
