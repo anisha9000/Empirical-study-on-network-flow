@@ -72,7 +72,7 @@ public class PreflowPush {
         while (!excess.isEmpty()) {                                                             // while excess map isn't empty
             int i = 0;                                                                          // declare here so UpdateExcessMap can use index value
             isPushSuccess = false;                                                              // reset this each iteration
-            Vertex v = GetVVertex();                                                            // get the vertex with max excess
+            Vertex v = GetVVertex();                                                            // get the vertex with max excess each time
             ArrayList<Vertex> w = GetWVertexList(v);                                            // get a list of available nodes
                                                                                                 //
             for (i = 0; i < w.size(); i++) {                                                    // iterate through each available node
