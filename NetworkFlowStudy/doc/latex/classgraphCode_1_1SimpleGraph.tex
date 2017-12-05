@@ -1,0 +1,249 @@
+\hypertarget{classgraphCode_1_1SimpleGraph}{}\section{graph\+Code.\+Simple\+Graph Class Reference}
+\label{classgraphCode_1_1SimpleGraph}\index{graph\+Code.\+Simple\+Graph@{graph\+Code.\+Simple\+Graph}}
+
+
+Collaboration diagram for graph\+Code.\+Simple\+Graph\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classgraphCode_1_1SimpleGraph__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Iterator \hyperlink{classgraphCode_1_1SimpleGraph_a9c8e1eedfc1f1f9b15cbaf0b7d1e60cd}{vertices} ()
+\item 
+Iterator \hyperlink{classgraphCode_1_1SimpleGraph_a806589f8bd826802e960c2cc3e6d7c06}{edges} ()
+\item 
+Hash\+Map \hyperlink{classgraphCode_1_1SimpleGraph_a3abf29703b8e059453d3c11da066dd25}{get\+Vertex\+Map} ()
+\item 
+Hash\+Map \hyperlink{classgraphCode_1_1SimpleGraph_a2f70f56636e2d881b2593760453d4723}{get\+Edge\+Map} ()
+\item 
+Iterator \hyperlink{classgraphCode_1_1SimpleGraph_a1c8b377618c14bed26e8007e9b23eda5}{incident\+Edges} (\hyperlink{classgraphCode_1_1Vertex}{Vertex} v)
+\item 
+\hyperlink{classgraphCode_1_1Vertex}{Vertex} \hyperlink{classgraphCode_1_1SimpleGraph_a4348702804a838f36d7515a765ea8389}{a\+Vertex} ()
+\item 
+\hyperlink{classgraphCode_1_1Vertex}{Vertex} \hyperlink{classgraphCode_1_1SimpleGraph_a5c1202dd0060fd97620c1dfe4184a371}{insert\+Vertex} (Object data, Object name)
+\item 
+\hyperlink{classgraphCode_1_1Edge}{Edge} \hyperlink{classgraphCode_1_1SimpleGraph_a4507c310762a6091a25e8cd922662d7e}{insert\+Edge} (\hyperlink{classgraphCode_1_1Vertex}{Vertex} v, \hyperlink{classgraphCode_1_1Vertex}{Vertex} w, Object data, Object name)
+\item 
+\hyperlink{classgraphCode_1_1Vertex}{Vertex} \hyperlink{classgraphCode_1_1SimpleGraph_ad700bce03aa2ab5cb067a9c5feb2f049}{opposite} (\hyperlink{classgraphCode_1_1Vertex}{Vertex} v, \hyperlink{classgraphCode_1_1Edge}{Edge} e)
+\item 
+\hyperlink{classgraphCode_1_1Vertex}{Vertex} \hyperlink{classgraphCode_1_1SimpleGraph_a2537a9016af6f2509381c124ed3de524}{tail} (\hyperlink{classgraphCode_1_1Vertex}{Vertex} v, \hyperlink{classgraphCode_1_1Edge}{Edge} e)
+\item 
+int \hyperlink{classgraphCode_1_1SimpleGraph_ac00393b0333d8b19f2581c4773b8451e}{num\+Vertices} ()
+\item 
+int \hyperlink{classgraphCode_1_1SimpleGraph_a11a7c6c52ebf307077ab6b887c122425}{num\+Edges} ()
+\item 
+\hyperlink{classgraphCode_1_1Vertex}{Vertex} \hyperlink{classgraphCode_1_1SimpleGraph_aab1ec8273dce11b72f198ce45ce1e866}{get\+Vertex} (String vertex\+Name)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{classgraphCode_1_1SimpleGraph_a6368cc5b7180cd0d7aafb0f315b944f6}{main} (String\mbox{[}$\,$\mbox{]} args)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A class that represents a graph.
+
+\begin{DoxyAuthor}{Author}
+edhong 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+0 
+\end{DoxyVersion}
+
+
+\subsection{Member Function Documentation}
+\index{graph\+Code\+::\+Simple\+Graph@{graph\+Code\+::\+Simple\+Graph}!a\+Vertex@{a\+Vertex}}
+\index{a\+Vertex@{a\+Vertex}!graph\+Code\+::\+Simple\+Graph@{graph\+Code\+::\+Simple\+Graph}}
+\subsubsection[{\texorpdfstring{a\+Vertex()}{aVertex()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vertex} graph\+Code.\+Simple\+Graph.\+a\+Vertex (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classgraphCode_1_1SimpleGraph_a4348702804a838f36d7515a765ea8389}{}\label{classgraphCode_1_1SimpleGraph_a4348702804a838f36d7515a765ea8389}
+Return an arbitrary vertex of this graph \begin{DoxyReturn}{Returns}
+some vertex of this graph 
+\end{DoxyReturn}
+\index{graph\+Code\+::\+Simple\+Graph@{graph\+Code\+::\+Simple\+Graph}!edges@{edges}}
+\index{edges@{edges}!graph\+Code\+::\+Simple\+Graph@{graph\+Code\+::\+Simple\+Graph}}
+\subsubsection[{\texorpdfstring{edges()}{edges()}}]{\setlength{\rightskip}{0pt plus 5cm}Iterator graph\+Code.\+Simple\+Graph.\+edges (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classgraphCode_1_1SimpleGraph_a806589f8bd826802e960c2cc3e6d7c06}{}\label{classgraphCode_1_1SimpleGraph_a806589f8bd826802e960c2cc3e6d7c06}
+Return the edge list of this graph. \begin{DoxyReturn}{Returns}
+edge list of this graph 
+\end{DoxyReturn}
+\index{graph\+Code\+::\+Simple\+Graph@{graph\+Code\+::\+Simple\+Graph}!get\+Edge\+Map@{get\+Edge\+Map}}
+\index{get\+Edge\+Map@{get\+Edge\+Map}!graph\+Code\+::\+Simple\+Graph@{graph\+Code\+::\+Simple\+Graph}}
+\subsubsection[{\texorpdfstring{get\+Edge\+Map()}{getEdgeMap()}}]{\setlength{\rightskip}{0pt plus 5cm}Hash\+Map graph\+Code.\+Simple\+Graph.\+get\+Edge\+Map (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classgraphCode_1_1SimpleGraph_a2f70f56636e2d881b2593760453d4723}{}\label{classgraphCode_1_1SimpleGraph_a2f70f56636e2d881b2593760453d4723}
+get graph edge hash\+Map \begin{DoxyReturn}{Returns}
+edge\+Map 
+\end{DoxyReturn}
+\index{graph\+Code\+::\+Simple\+Graph@{graph\+Code\+::\+Simple\+Graph}!get\+Vertex@{get\+Vertex}}
+\index{get\+Vertex@{get\+Vertex}!graph\+Code\+::\+Simple\+Graph@{graph\+Code\+::\+Simple\+Graph}}
+\subsubsection[{\texorpdfstring{get\+Vertex(\+String vertex\+Name)}{getVertex(String vertexName)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vertex} graph\+Code.\+Simple\+Graph.\+get\+Vertex (
+\begin{DoxyParamCaption}
+\item[{String}]{vertex\+Name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classgraphCode_1_1SimpleGraph_aab1ec8273dce11b72f198ce45ce1e866}{}\label{classgraphCode_1_1SimpleGraph_aab1ec8273dce11b72f198ce45ce1e866}
+Returns the vertex in a given \hyperlink{classgraphCode_1_1SimpleGraph}{Simple\+Graph} object 
+\begin{DoxyParams}{Parameters}
+{\em vertex\+Name} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+source vertex 
+\end{DoxyReturn}
+\index{graph\+Code\+::\+Simple\+Graph@{graph\+Code\+::\+Simple\+Graph}!get\+Vertex\+Map@{get\+Vertex\+Map}}
+\index{get\+Vertex\+Map@{get\+Vertex\+Map}!graph\+Code\+::\+Simple\+Graph@{graph\+Code\+::\+Simple\+Graph}}
+\subsubsection[{\texorpdfstring{get\+Vertex\+Map()}{getVertexMap()}}]{\setlength{\rightskip}{0pt plus 5cm}Hash\+Map graph\+Code.\+Simple\+Graph.\+get\+Vertex\+Map (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classgraphCode_1_1SimpleGraph_a3abf29703b8e059453d3c11da066dd25}{}\label{classgraphCode_1_1SimpleGraph_a3abf29703b8e059453d3c11da066dd25}
+get graph vertex hash\+Map \begin{DoxyReturn}{Returns}
+vertex\+Map 
+\end{DoxyReturn}
+\index{graph\+Code\+::\+Simple\+Graph@{graph\+Code\+::\+Simple\+Graph}!incident\+Edges@{incident\+Edges}}
+\index{incident\+Edges@{incident\+Edges}!graph\+Code\+::\+Simple\+Graph@{graph\+Code\+::\+Simple\+Graph}}
+\subsubsection[{\texorpdfstring{incident\+Edges(\+Vertex v)}{incidentEdges(Vertex v)}}]{\setlength{\rightskip}{0pt plus 5cm}Iterator graph\+Code.\+Simple\+Graph.\+incident\+Edges (
+\begin{DoxyParamCaption}
+\item[{{\bf Vertex}}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classgraphCode_1_1SimpleGraph_a1c8b377618c14bed26e8007e9b23eda5}{}\label{classgraphCode_1_1SimpleGraph_a1c8b377618c14bed26e8007e9b23eda5}
+Given a vertex, return an iterator to the edge list of that vertex 
+\begin{DoxyParams}{Parameters}
+{\em v} & a vertex \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+an iterator to the edge list of that vertex 
+\end{DoxyReturn}
+\index{graph\+Code\+::\+Simple\+Graph@{graph\+Code\+::\+Simple\+Graph}!insert\+Edge@{insert\+Edge}}
+\index{insert\+Edge@{insert\+Edge}!graph\+Code\+::\+Simple\+Graph@{graph\+Code\+::\+Simple\+Graph}}
+\subsubsection[{\texorpdfstring{insert\+Edge(\+Vertex v, Vertex w, Object data, Object name)}{insertEdge(Vertex v, Vertex w, Object data, Object name)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Edge} graph\+Code.\+Simple\+Graph.\+insert\+Edge (
+\begin{DoxyParamCaption}
+\item[{{\bf Vertex}}]{v, }
+\item[{{\bf Vertex}}]{w, }
+\item[{Object}]{data, }
+\item[{Object}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classgraphCode_1_1SimpleGraph_a4507c310762a6091a25e8cd922662d7e}{}\label{classgraphCode_1_1SimpleGraph_a4507c310762a6091a25e8cd922662d7e}
+Add an edge to this graph. 
+\begin{DoxyParams}{Parameters}
+{\em v} & the first endpoint of the edge \\
+\hline
+{\em w} & the second endpoint of the edge \\
+\hline
+{\em data} & data to be associated with the new edge \\
+\hline
+{\em name} & name to be associated with the new edge \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the new edge 
+\end{DoxyReturn}
+\index{graph\+Code\+::\+Simple\+Graph@{graph\+Code\+::\+Simple\+Graph}!insert\+Vertex@{insert\+Vertex}}
+\index{insert\+Vertex@{insert\+Vertex}!graph\+Code\+::\+Simple\+Graph@{graph\+Code\+::\+Simple\+Graph}}
+\subsubsection[{\texorpdfstring{insert\+Vertex(\+Object data, Object name)}{insertVertex(Object data, Object name)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vertex} graph\+Code.\+Simple\+Graph.\+insert\+Vertex (
+\begin{DoxyParamCaption}
+\item[{Object}]{data, }
+\item[{Object}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classgraphCode_1_1SimpleGraph_a5c1202dd0060fd97620c1dfe4184a371}{}\label{classgraphCode_1_1SimpleGraph_a5c1202dd0060fd97620c1dfe4184a371}
+Add a vertex to this graph. 
+\begin{DoxyParams}{Parameters}
+{\em data} & an object to be associated with the new vertex \\
+\hline
+{\em name} & a name to be associated with the new vertex \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the new vertex 
+\end{DoxyReturn}
+\index{graph\+Code\+::\+Simple\+Graph@{graph\+Code\+::\+Simple\+Graph}!main@{main}}
+\index{main@{main}!graph\+Code\+::\+Simple\+Graph@{graph\+Code\+::\+Simple\+Graph}}
+\subsubsection[{\texorpdfstring{main(\+String[] args)}{main(String[] args)}}]{\setlength{\rightskip}{0pt plus 5cm}static void graph\+Code.\+Simple\+Graph.\+main (
+\begin{DoxyParamCaption}
+\item[{String\mbox{[}$\,$\mbox{]}}]{args}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classgraphCode_1_1SimpleGraph_a6368cc5b7180cd0d7aafb0f315b944f6}{}\label{classgraphCode_1_1SimpleGraph_a6368cc5b7180cd0d7aafb0f315b944f6}
+Code to test the correctness of the \hyperlink{classgraphCode_1_1SimpleGraph}{Simple\+Graph} methods. \index{graph\+Code\+::\+Simple\+Graph@{graph\+Code\+::\+Simple\+Graph}!num\+Edges@{num\+Edges}}
+\index{num\+Edges@{num\+Edges}!graph\+Code\+::\+Simple\+Graph@{graph\+Code\+::\+Simple\+Graph}}
+\subsubsection[{\texorpdfstring{num\+Edges()}{numEdges()}}]{\setlength{\rightskip}{0pt plus 5cm}int graph\+Code.\+Simple\+Graph.\+num\+Edges (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classgraphCode_1_1SimpleGraph_a11a7c6c52ebf307077ab6b887c122425}{}\label{classgraphCode_1_1SimpleGraph_a11a7c6c52ebf307077ab6b887c122425}
+Return the number of edges in this graph. \begin{DoxyReturn}{Returns}
+the number of edges 
+\end{DoxyReturn}
+\index{graph\+Code\+::\+Simple\+Graph@{graph\+Code\+::\+Simple\+Graph}!num\+Vertices@{num\+Vertices}}
+\index{num\+Vertices@{num\+Vertices}!graph\+Code\+::\+Simple\+Graph@{graph\+Code\+::\+Simple\+Graph}}
+\subsubsection[{\texorpdfstring{num\+Vertices()}{numVertices()}}]{\setlength{\rightskip}{0pt plus 5cm}int graph\+Code.\+Simple\+Graph.\+num\+Vertices (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classgraphCode_1_1SimpleGraph_ac00393b0333d8b19f2581c4773b8451e}{}\label{classgraphCode_1_1SimpleGraph_ac00393b0333d8b19f2581c4773b8451e}
+Return the number of vertices in this graph. \begin{DoxyReturn}{Returns}
+the number of vertices 
+\end{DoxyReturn}
+\index{graph\+Code\+::\+Simple\+Graph@{graph\+Code\+::\+Simple\+Graph}!opposite@{opposite}}
+\index{opposite@{opposite}!graph\+Code\+::\+Simple\+Graph@{graph\+Code\+::\+Simple\+Graph}}
+\subsubsection[{\texorpdfstring{opposite(\+Vertex v, Edge e)}{opposite(Vertex v, Edge e)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vertex} graph\+Code.\+Simple\+Graph.\+opposite (
+\begin{DoxyParamCaption}
+\item[{{\bf Vertex}}]{v, }
+\item[{{\bf Edge}}]{e}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classgraphCode_1_1SimpleGraph_ad700bce03aa2ab5cb067a9c5feb2f049}{}\label{classgraphCode_1_1SimpleGraph_ad700bce03aa2ab5cb067a9c5feb2f049}
+Given a vertex and an edge, if the vertex is one of the endpoints of the edge, return the other endpoint of the edge. Otherwise, return null. 
+\begin{DoxyParams}{Parameters}
+{\em v} & a vertex \\
+\hline
+{\em e} & an edge \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the other endpoint of the edge (or null, if v is not an endpoint of e) 
+\end{DoxyReturn}
+\index{graph\+Code\+::\+Simple\+Graph@{graph\+Code\+::\+Simple\+Graph}!tail@{tail}}
+\index{tail@{tail}!graph\+Code\+::\+Simple\+Graph@{graph\+Code\+::\+Simple\+Graph}}
+\subsubsection[{\texorpdfstring{tail(\+Vertex v, Edge e)}{tail(Vertex v, Edge e)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vertex} graph\+Code.\+Simple\+Graph.\+tail (
+\begin{DoxyParamCaption}
+\item[{{\bf Vertex}}]{v, }
+\item[{{\bf Edge}}]{e}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classgraphCode_1_1SimpleGraph_a2537a9016af6f2509381c124ed3de524}{}\label{classgraphCode_1_1SimpleGraph_a2537a9016af6f2509381c124ed3de524}
+Given a vertex and an edge, if the vertex is the head of the edge, return the other endpoint (tail) of the edge. Otherwise, return null. 
+\begin{DoxyParams}{Parameters}
+{\em v} & a vertex \\
+\hline
+{\em e} & an edge \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the other endpoint of the edge (or null, if v is not an endpoint of e) 
+\end{DoxyReturn}
+\index{graph\+Code\+::\+Simple\+Graph@{graph\+Code\+::\+Simple\+Graph}!vertices@{vertices}}
+\index{vertices@{vertices}!graph\+Code\+::\+Simple\+Graph@{graph\+Code\+::\+Simple\+Graph}}
+\subsubsection[{\texorpdfstring{vertices()}{vertices()}}]{\setlength{\rightskip}{0pt plus 5cm}Iterator graph\+Code.\+Simple\+Graph.\+vertices (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classgraphCode_1_1SimpleGraph_a9c8e1eedfc1f1f9b15cbaf0b7d1e60cd}{}\label{classgraphCode_1_1SimpleGraph_a9c8e1eedfc1f1f9b15cbaf0b7d1e60cd}
+Return the vertex list of this graph. \begin{DoxyReturn}{Returns}
+vertex list of this graph 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/anisha/\+Algo\+Project/\+Network\+Flow\+Study/src/graph\+Code/Simple\+Graph.\+java\end{DoxyCompactItemize}

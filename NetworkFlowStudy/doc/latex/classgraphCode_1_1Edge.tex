@@ -1,0 +1,114 @@
+\hypertarget{classgraphCode_1_1Edge}{}\section{graph\+Code.\+Edge Class Reference}
+\label{classgraphCode_1_1Edge}\index{graph\+Code.\+Edge@{graph\+Code.\+Edge}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classgraphCode_1_1Edge_af42116abc370a0421b529b8d2a1c0d23}{Edge} (\hyperlink{classgraphCode_1_1Vertex}{Vertex} v, \hyperlink{classgraphCode_1_1Vertex}{Vertex} w, Object data, Object name)
+\item 
+\hyperlink{classgraphCode_1_1Vertex}{Vertex} \hyperlink{classgraphCode_1_1Edge_aa2e3d12b5f250a7c328319238c259f6b}{get\+First\+Endpoint} ()
+\item 
+\hyperlink{classgraphCode_1_1Vertex}{Vertex} \hyperlink{classgraphCode_1_1Edge_a15ca063bcb0b6163a167407d67d3e7aa}{get\+Second\+Endpoint} ()
+\item 
+Object \hyperlink{classgraphCode_1_1Edge_a6b1ab8fe927bc8ab075e017b16e39181}{get\+Data} ()
+\item 
+void \hyperlink{classgraphCode_1_1Edge_ae62937229948e8edcfbd5b1e54a833a2}{set\+Data} (Object data)
+\item 
+Object \hyperlink{classgraphCode_1_1Edge_aa706434e463cc27aade24c53a0d0f375}{get\+Name} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class that represents an edge in a graph. An object (usually some sort of data) can be associated with the edge.
+
+A label (also represented by an object (e.\+g., a string) can also be associated with an edge. This could be useful, for example, if you need to mark an edge as being visited in some graph traversal.
+
+\begin{DoxyAuthor}{Author}
+edhong 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+0 
+\end{DoxyVersion}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{graph\+Code\+::\+Edge@{graph\+Code\+::\+Edge}!Edge@{Edge}}
+\index{Edge@{Edge}!graph\+Code\+::\+Edge@{graph\+Code\+::\+Edge}}
+\subsubsection[{\texorpdfstring{Edge(\+Vertex v, Vertex w, Object data, Object name)}{Edge(Vertex v, Vertex w, Object data, Object name)}}]{\setlength{\rightskip}{0pt plus 5cm}graph\+Code.\+Edge.\+Edge (
+\begin{DoxyParamCaption}
+\item[{{\bf Vertex}}]{v, }
+\item[{{\bf Vertex}}]{w, }
+\item[{Object}]{data, }
+\item[{Object}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classgraphCode_1_1Edge_af42116abc370a0421b529b8d2a1c0d23}{}\label{classgraphCode_1_1Edge_af42116abc370a0421b529b8d2a1c0d23}
+Constructor that allows data and a name to be associated with the edge. 
+\begin{DoxyParams}{Parameters}
+{\em v} & the first endpoint of this edge \\
+\hline
+{\em w} & the second endpoint of this edge \\
+\hline
+{\em data} & data to be associated with this edge \\
+\hline
+{\em name} & a name to be associated with this edge \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{graph\+Code\+::\+Edge@{graph\+Code\+::\+Edge}!get\+Data@{get\+Data}}
+\index{get\+Data@{get\+Data}!graph\+Code\+::\+Edge@{graph\+Code\+::\+Edge}}
+\subsubsection[{\texorpdfstring{get\+Data()}{getData()}}]{\setlength{\rightskip}{0pt plus 5cm}Object graph\+Code.\+Edge.\+get\+Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classgraphCode_1_1Edge_a6b1ab8fe927bc8ab075e017b16e39181}{}\label{classgraphCode_1_1Edge_a6b1ab8fe927bc8ab075e017b16e39181}
+Return the data associated with this edge. \begin{DoxyReturn}{Returns}
+the data of this edge 
+\end{DoxyReturn}
+\index{graph\+Code\+::\+Edge@{graph\+Code\+::\+Edge}!get\+First\+Endpoint@{get\+First\+Endpoint}}
+\index{get\+First\+Endpoint@{get\+First\+Endpoint}!graph\+Code\+::\+Edge@{graph\+Code\+::\+Edge}}
+\subsubsection[{\texorpdfstring{get\+First\+Endpoint()}{getFirstEndpoint()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vertex} graph\+Code.\+Edge.\+get\+First\+Endpoint (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classgraphCode_1_1Edge_aa2e3d12b5f250a7c328319238c259f6b}{}\label{classgraphCode_1_1Edge_aa2e3d12b5f250a7c328319238c259f6b}
+Return the first endpoint of this edge. \begin{DoxyReturn}{Returns}
+the first endpoint of this edge 
+\end{DoxyReturn}
+\index{graph\+Code\+::\+Edge@{graph\+Code\+::\+Edge}!get\+Name@{get\+Name}}
+\index{get\+Name@{get\+Name}!graph\+Code\+::\+Edge@{graph\+Code\+::\+Edge}}
+\subsubsection[{\texorpdfstring{get\+Name()}{getName()}}]{\setlength{\rightskip}{0pt plus 5cm}Object graph\+Code.\+Edge.\+get\+Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classgraphCode_1_1Edge_aa706434e463cc27aade24c53a0d0f375}{}\label{classgraphCode_1_1Edge_aa706434e463cc27aade24c53a0d0f375}
+Return the name associated with this edge. \begin{DoxyReturn}{Returns}
+the name of this edge 
+\end{DoxyReturn}
+\index{graph\+Code\+::\+Edge@{graph\+Code\+::\+Edge}!get\+Second\+Endpoint@{get\+Second\+Endpoint}}
+\index{get\+Second\+Endpoint@{get\+Second\+Endpoint}!graph\+Code\+::\+Edge@{graph\+Code\+::\+Edge}}
+\subsubsection[{\texorpdfstring{get\+Second\+Endpoint()}{getSecondEndpoint()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vertex} graph\+Code.\+Edge.\+get\+Second\+Endpoint (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classgraphCode_1_1Edge_a15ca063bcb0b6163a167407d67d3e7aa}{}\label{classgraphCode_1_1Edge_a15ca063bcb0b6163a167407d67d3e7aa}
+Return the second endpoint of this edge. \begin{DoxyReturn}{Returns}
+the second endpoint of this edge 
+\end{DoxyReturn}
+\index{graph\+Code\+::\+Edge@{graph\+Code\+::\+Edge}!set\+Data@{set\+Data}}
+\index{set\+Data@{set\+Data}!graph\+Code\+::\+Edge@{graph\+Code\+::\+Edge}}
+\subsubsection[{\texorpdfstring{set\+Data(\+Object data)}{setData(Object data)}}]{\setlength{\rightskip}{0pt plus 5cm}void graph\+Code.\+Edge.\+set\+Data (
+\begin{DoxyParamCaption}
+\item[{Object}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classgraphCode_1_1Edge_ae62937229948e8edcfbd5b1e54a833a2}{}\label{classgraphCode_1_1Edge_ae62937229948e8edcfbd5b1e54a833a2}
+Set the data associated with this edge. 
+\begin{DoxyParams}{Parameters}
+{\em data} & the data of this edge \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/anisha/\+Algo\+Project/\+Network\+Flow\+Study/src/graph\+Code/Edge.\+java\end{DoxyCompactItemize}

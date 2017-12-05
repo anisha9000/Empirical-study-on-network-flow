@@ -1,0 +1,160 @@
+\hypertarget{classnetworkflowstudy_1_1utils}{}\section{networkflowstudy.\+utils Class Reference}
+\label{classnetworkflowstudy_1_1utils}\index{networkflowstudy.\+utils@{networkflowstudy.\+utils}}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Linked\+Hash\+Map$<$ \hyperlink{classgraphCode_1_1Edge}{Edge}, Integer $>$ \hyperlink{classnetworkflowstudy_1_1utils_adb62dd1157cf528552b71e94e870a011}{init\+Flow} (\hyperlink{classgraphCode_1_1SimpleGraph}{Simple\+Graph} G)
+\item 
+static \hyperlink{classgraphCode_1_1SimpleGraph}{Simple\+Graph} \hyperlink{classnetworkflowstudy_1_1utils_a3f8e81e0a22357b097aa9d4b29f55c38}{create\+Residual\+Graph} (\hyperlink{classgraphCode_1_1SimpleGraph}{Simple\+Graph} G, Linked\+Hash\+Map$<$ \hyperlink{classgraphCode_1_1Edge}{Edge}, Integer $>$ flow)
+\item 
+static List$<$ \hyperlink{classgraphCode_1_1Vertex}{Vertex} $>$ \hyperlink{classnetworkflowstudy_1_1utils_a3e79182192feaaf3a165ea76dc7f67f1}{get\+S\+T\+Path} (\hyperlink{classgraphCode_1_1SimpleGraph}{Simple\+Graph} Gf, \hyperlink{classgraphCode_1_1Vertex}{Vertex} Sink, \hyperlink{classgraphCode_1_1Vertex}{Vertex} Source)
+\item 
+static List$<$ \hyperlink{classgraphCode_1_1Vertex}{Vertex} $>$ \hyperlink{classnetworkflowstudy_1_1utils_a808f3b008f9d0d7393ebc3b8c1720e09}{get\+S\+T\+Path} (\hyperlink{classgraphCode_1_1SimpleGraph}{Simple\+Graph} Gf, \hyperlink{classgraphCode_1_1Vertex}{Vertex} sink, \hyperlink{classgraphCode_1_1Vertex}{Vertex} source, int delta)
+\item 
+static int \hyperlink{classnetworkflowstudy_1_1utils_ab5edf71767668d4f1a1b2a8f713d4d12}{get\+\_\+bottleneck} (\hyperlink{classgraphCode_1_1SimpleGraph}{Simple\+Graph} Gf, List$<$ \hyperlink{classgraphCode_1_1Vertex}{Vertex} $>$ st\+\_\+path)
+\item 
+static void \hyperlink{classnetworkflowstudy_1_1utils_a8b78a7103f79ad968453d38e7429cedb}{augment} (\hyperlink{classgraphCode_1_1SimpleGraph}{Simple\+Graph} G, \hyperlink{classgraphCode_1_1SimpleGraph}{Simple\+Graph} Gf, Linked\+Hash\+Map$<$ \hyperlink{classgraphCode_1_1Edge}{Edge}, Integer $>$ flow, List$<$ \hyperlink{classgraphCode_1_1Vertex}{Vertex} $>$ path)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+anisha 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\index{networkflowstudy\+::utils@{networkflowstudy\+::utils}!augment@{augment}}
+\index{augment@{augment}!networkflowstudy\+::utils@{networkflowstudy\+::utils}}
+\subsubsection[{\texorpdfstring{augment(\+Simple\+Graph G, Simple\+Graph Gf, Linked\+Hash\+Map$<$ Edge, Integer $>$ flow, List$<$ Vertex $>$ path)}{augment(SimpleGraph G, SimpleGraph Gf, LinkedHashMap< Edge, Integer > flow, List< Vertex > path)}}]{\setlength{\rightskip}{0pt plus 5cm}static void networkflowstudy.\+utils.\+augment (
+\begin{DoxyParamCaption}
+\item[{{\bf Simple\+Graph}}]{G, }
+\item[{{\bf Simple\+Graph}}]{Gf, }
+\item[{Linked\+Hash\+Map$<$ {\bf Edge}, Integer $>$}]{flow, }
+\item[{List$<$ {\bf Vertex} $>$}]{path}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classnetworkflowstudy_1_1utils_a8b78a7103f79ad968453d38e7429cedb}{}\label{classnetworkflowstudy_1_1utils_a8b78a7103f79ad968453d38e7429cedb}
+Calculates the increase in flow using \hyperlink{classnetworkflowstudy_1_1utils_ab5edf71767668d4f1a1b2a8f713d4d12}{get\+\_\+bottleneck()} and updates the flow Linked\+Hashmap
+
+
+\begin{DoxyParams}{Parameters}
+{\em G} & \\
+\hline
+{\em Gf} & \\
+\hline
+{\em flow} & \\
+\hline
+{\em path} & \\
+\hline
+\end{DoxyParams}
+\index{networkflowstudy\+::utils@{networkflowstudy\+::utils}!create\+Residual\+Graph@{create\+Residual\+Graph}}
+\index{create\+Residual\+Graph@{create\+Residual\+Graph}!networkflowstudy\+::utils@{networkflowstudy\+::utils}}
+\subsubsection[{\texorpdfstring{create\+Residual\+Graph(\+Simple\+Graph G, Linked\+Hash\+Map$<$ Edge, Integer $>$ flow)}{createResidualGraph(SimpleGraph G, LinkedHashMap< Edge, Integer > flow)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Simple\+Graph} networkflowstudy.\+utils.\+create\+Residual\+Graph (
+\begin{DoxyParamCaption}
+\item[{{\bf Simple\+Graph}}]{G, }
+\item[{Linked\+Hash\+Map$<$ {\bf Edge}, Integer $>$}]{flow}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classnetworkflowstudy_1_1utils_a3f8e81e0a22357b097aa9d4b29f55c38}{}\label{classnetworkflowstudy_1_1utils_a3f8e81e0a22357b097aa9d4b29f55c38}
+Create a residual graph based on a network flow G=(V,E)
+
+
+\begin{DoxyParams}{Parameters}
+{\em G} & a simple graph G \\
+\hline
+{\em flow} & flow across the edges \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Residual Graph Gf 
+\end{DoxyReturn}
+\index{networkflowstudy\+::utils@{networkflowstudy\+::utils}!get\+\_\+bottleneck@{get\+\_\+bottleneck}}
+\index{get\+\_\+bottleneck@{get\+\_\+bottleneck}!networkflowstudy\+::utils@{networkflowstudy\+::utils}}
+\subsubsection[{\texorpdfstring{get\+\_\+bottleneck(\+Simple\+Graph Gf, List$<$ Vertex $>$ st\+\_\+path)}{get_bottleneck(SimpleGraph Gf, List< Vertex > st_path)}}]{\setlength{\rightskip}{0pt plus 5cm}static int networkflowstudy.\+utils.\+get\+\_\+bottleneck (
+\begin{DoxyParamCaption}
+\item[{{\bf Simple\+Graph}}]{Gf, }
+\item[{List$<$ {\bf Vertex} $>$}]{st\+\_\+path}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classnetworkflowstudy_1_1utils_ab5edf71767668d4f1a1b2a8f713d4d12}{}\label{classnetworkflowstudy_1_1utils_ab5edf71767668d4f1a1b2a8f713d4d12}
+Returns bottleneck for the given s-\/t path of graph Gf
+
+
+\begin{DoxyParams}{Parameters}
+{\em Gf} & \\
+\hline
+{\em st\+\_\+path} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+b\+\_\+neck 
+\end{DoxyReturn}
+\index{networkflowstudy\+::utils@{networkflowstudy\+::utils}!get\+S\+T\+Path@{get\+S\+T\+Path}}
+\index{get\+S\+T\+Path@{get\+S\+T\+Path}!networkflowstudy\+::utils@{networkflowstudy\+::utils}}
+\subsubsection[{\texorpdfstring{get\+S\+T\+Path(\+Simple\+Graph Gf, Vertex Sink, Vertex Source)}{getSTPath(SimpleGraph Gf, Vertex Sink, Vertex Source)}}]{\setlength{\rightskip}{0pt plus 5cm}static List$<${\bf Vertex}$>$ networkflowstudy.\+utils.\+get\+S\+T\+Path (
+\begin{DoxyParamCaption}
+\item[{{\bf Simple\+Graph}}]{Gf, }
+\item[{{\bf Vertex}}]{Sink, }
+\item[{{\bf Vertex}}]{Source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classnetworkflowstudy_1_1utils_a3e79182192feaaf3a165ea76dc7f67f1}{}\label{classnetworkflowstudy_1_1utils_a3e79182192feaaf3a165ea76dc7f67f1}
+Returns s-\/t path of graph Gf, if there is no simple path , returns 0
+
+
+\begin{DoxyParams}{Parameters}
+{\em Gf} & \\
+\hline
+{\em Source} & \\
+\hline
+{\em Sink} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+null if no s-\/t path else valid s-\/t path 
+\end{DoxyReturn}
+\index{networkflowstudy\+::utils@{networkflowstudy\+::utils}!get\+S\+T\+Path@{get\+S\+T\+Path}}
+\index{get\+S\+T\+Path@{get\+S\+T\+Path}!networkflowstudy\+::utils@{networkflowstudy\+::utils}}
+\subsubsection[{\texorpdfstring{get\+S\+T\+Path(\+Simple\+Graph Gf, Vertex sink, Vertex source, int delta)}{getSTPath(SimpleGraph Gf, Vertex sink, Vertex source, int delta)}}]{\setlength{\rightskip}{0pt plus 5cm}static List$<${\bf Vertex}$>$ networkflowstudy.\+utils.\+get\+S\+T\+Path (
+\begin{DoxyParamCaption}
+\item[{{\bf Simple\+Graph}}]{Gf, }
+\item[{{\bf Vertex}}]{sink, }
+\item[{{\bf Vertex}}]{source, }
+\item[{int}]{delta}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classnetworkflowstudy_1_1utils_a808f3b008f9d0d7393ebc3b8c1720e09}{}\label{classnetworkflowstudy_1_1utils_a808f3b008f9d0d7393ebc3b8c1720e09}
+Return s-\/t path for a graph Gf based on the limiting capacity delta
+
+
+\begin{DoxyParams}{Parameters}
+{\em Gf} & \\
+\hline
+{\em sink} & \\
+\hline
+{\em source} & \\
+\hline
+{\em delta} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{networkflowstudy\+::utils@{networkflowstudy\+::utils}!init\+Flow@{init\+Flow}}
+\index{init\+Flow@{init\+Flow}!networkflowstudy\+::utils@{networkflowstudy\+::utils}}
+\subsubsection[{\texorpdfstring{init\+Flow(\+Simple\+Graph G)}{initFlow(SimpleGraph G)}}]{\setlength{\rightskip}{0pt plus 5cm}static Linked\+Hash\+Map$<${\bf Edge}, Integer$>$ networkflowstudy.\+utils.\+init\+Flow (
+\begin{DoxyParamCaption}
+\item[{{\bf Simple\+Graph}}]{G}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classnetworkflowstudy_1_1utils_adb62dd1157cf528552b71e94e870a011}{}\label{classnetworkflowstudy_1_1utils_adb62dd1157cf528552b71e94e870a011}
+Initialize the flow Linked\+Hashmap for the graph G
+
+
+\begin{DoxyParams}{Parameters}
+{\em G} & simple graph G \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Linked\+Hashmap containing $<$Edge, flow value$>$ pairs 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/anisha/\+Algo\+Project/\+Network\+Flow\+Study/src/networkflowstudy/utils.\+java\end{DoxyCompactItemize}

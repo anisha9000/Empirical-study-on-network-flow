@@ -1,0 +1,82 @@
+\hypertarget{classnetworkflowstudy_1_1ScalingMaxFlow}{}\section{networkflowstudy.\+Scaling\+Max\+Flow Class Reference}
+\label{classnetworkflowstudy_1_1ScalingMaxFlow}\index{networkflowstudy.\+Scaling\+Max\+Flow@{networkflowstudy.\+Scaling\+Max\+Flow}}
+
+
+Collaboration diagram for networkflowstudy.\+Scaling\+Max\+Flow\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classnetworkflowstudy_1_1ScalingMaxFlow__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classnetworkflowstudy_1_1ScalingMaxFlow_a5f44980b9bf6c85fc0b925c5527e3464}{Scaling\+Max\+Flow} (\hyperlink{classgraphCode_1_1SimpleGraph}{Simple\+Graph} G)
+\item 
+Linked\+Hash\+Map$<$ \hyperlink{classgraphCode_1_1Edge}{Edge}, Integer $>$ \hyperlink{classnetworkflowstudy_1_1ScalingMaxFlow_a14309c02ceb7dc345452eced38777696}{calculate\+Flow} (\hyperlink{classgraphCode_1_1Vertex}{Vertex} sourceG, \hyperlink{classgraphCode_1_1Vertex}{Vertex} sinkG)
+\item 
+int \hyperlink{classnetworkflowstudy_1_1ScalingMaxFlow_a5d2651a2301430ad246aea848eb34a91}{get\+Delta} (\hyperlink{classgraphCode_1_1Vertex}{Vertex} source)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Calculates and returns flow using Scaling max Flow algorithm \begin{DoxyAuthor}{Author}
+anisha 
+\end{DoxyAuthor}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{networkflowstudy\+::\+Scaling\+Max\+Flow@{networkflowstudy\+::\+Scaling\+Max\+Flow}!Scaling\+Max\+Flow@{Scaling\+Max\+Flow}}
+\index{Scaling\+Max\+Flow@{Scaling\+Max\+Flow}!networkflowstudy\+::\+Scaling\+Max\+Flow@{networkflowstudy\+::\+Scaling\+Max\+Flow}}
+\subsubsection[{\texorpdfstring{Scaling\+Max\+Flow(\+Simple\+Graph G)}{ScalingMaxFlow(SimpleGraph G)}}]{\setlength{\rightskip}{0pt plus 5cm}networkflowstudy.\+Scaling\+Max\+Flow.\+Scaling\+Max\+Flow (
+\begin{DoxyParamCaption}
+\item[{{\bf Simple\+Graph}}]{G}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classnetworkflowstudy_1_1ScalingMaxFlow_a5f44980b9bf6c85fc0b925c5527e3464}{}\label{classnetworkflowstudy_1_1ScalingMaxFlow_a5f44980b9bf6c85fc0b925c5527e3464}
+Constructor to initialize the flow along all edges and create the corresponding graph 
+\begin{DoxyParams}{Parameters}
+{\em G} & \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{networkflowstudy\+::\+Scaling\+Max\+Flow@{networkflowstudy\+::\+Scaling\+Max\+Flow}!calculate\+Flow@{calculate\+Flow}}
+\index{calculate\+Flow@{calculate\+Flow}!networkflowstudy\+::\+Scaling\+Max\+Flow@{networkflowstudy\+::\+Scaling\+Max\+Flow}}
+\subsubsection[{\texorpdfstring{calculate\+Flow(\+Vertex source\+G, Vertex sink\+G)}{calculateFlow(Vertex sourceG, Vertex sinkG)}}]{\setlength{\rightskip}{0pt plus 5cm}Linked\+Hash\+Map$<${\bf Edge}, Integer$>$ networkflowstudy.\+Scaling\+Max\+Flow.\+calculate\+Flow (
+\begin{DoxyParamCaption}
+\item[{{\bf Vertex}}]{sourceG, }
+\item[{{\bf Vertex}}]{sinkG}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classnetworkflowstudy_1_1ScalingMaxFlow_a14309c02ceb7dc345452eced38777696}{}\label{classnetworkflowstudy_1_1ScalingMaxFlow_a14309c02ceb7dc345452eced38777696}
+Calculate flow of a network using Scaling max-\/ flow algorithm 
+\begin{DoxyParams}{Parameters}
+{\em source} & vertex sourceG \\
+\hline
+{\em sink} & vertex sinkG \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+flow 
+\end{DoxyReturn}
+\index{networkflowstudy\+::\+Scaling\+Max\+Flow@{networkflowstudy\+::\+Scaling\+Max\+Flow}!get\+Delta@{get\+Delta}}
+\index{get\+Delta@{get\+Delta}!networkflowstudy\+::\+Scaling\+Max\+Flow@{networkflowstudy\+::\+Scaling\+Max\+Flow}}
+\subsubsection[{\texorpdfstring{get\+Delta(\+Vertex source)}{getDelta(Vertex source)}}]{\setlength{\rightskip}{0pt plus 5cm}int networkflowstudy.\+Scaling\+Max\+Flow.\+get\+Delta (
+\begin{DoxyParamCaption}
+\item[{{\bf Vertex}}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classnetworkflowstudy_1_1ScalingMaxFlow_a5d2651a2301430ad246aea848eb34a91}{}\label{classnetworkflowstudy_1_1ScalingMaxFlow_a5d2651a2301430ad246aea848eb34a91}
+calculate delta for a residual graph G 
+\begin{DoxyParams}{Parameters}
+{\em source} & vertex in residual graph \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+delta 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/anisha/\+Algo\+Project/\+Network\+Flow\+Study/src/networkflowstudy/Scaling\+Max\+Flow.\+java\end{DoxyCompactItemize}

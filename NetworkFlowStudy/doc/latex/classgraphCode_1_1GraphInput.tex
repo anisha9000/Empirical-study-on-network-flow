@@ -1,0 +1,74 @@
+\hypertarget{classgraphCode_1_1GraphInput}{}\section{graph\+Code.\+Graph\+Input Class Reference}
+\label{classgraphCode_1_1GraphInput}\index{graph\+Code.\+Graph\+Input@{graph\+Code.\+Graph\+Input}}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Hashtable \hyperlink{classgraphCode_1_1GraphInput_a3e601808e53150db545cdaa441965c70}{Load\+Simple\+Graph} (\hyperlink{classgraphCode_1_1SimpleGraph}{Simple\+Graph} newgraph)
+\item 
+static Hashtable \hyperlink{classgraphCode_1_1GraphInput_ac47885774b3b789cc1202785807351f8}{Load\+Simple\+Graph} (\hyperlink{classgraphCode_1_1SimpleGraph}{Simple\+Graph} newgraph, String pathandfilename)
+\item 
+static void \hyperlink{classgraphCode_1_1GraphInput_afea873aaf28e3b6795bd293c5bfcb7c8}{main} (String args\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A class that can read a graph (in a specific format) from a file.
+
+\begin{DoxyAuthor}{Author}
+edhong 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+0 
+\end{DoxyVersion}
+
+
+\subsection{Member Function Documentation}
+\index{graph\+Code\+::\+Graph\+Input@{graph\+Code\+::\+Graph\+Input}!Load\+Simple\+Graph@{Load\+Simple\+Graph}}
+\index{Load\+Simple\+Graph@{Load\+Simple\+Graph}!graph\+Code\+::\+Graph\+Input@{graph\+Code\+::\+Graph\+Input}}
+\subsubsection[{\texorpdfstring{Load\+Simple\+Graph(\+Simple\+Graph newgraph)}{LoadSimpleGraph(SimpleGraph newgraph)}}]{\setlength{\rightskip}{0pt plus 5cm}static Hashtable graph\+Code.\+Graph\+Input.\+Load\+Simple\+Graph (
+\begin{DoxyParamCaption}
+\item[{{\bf Simple\+Graph}}]{newgraph}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classgraphCode_1_1GraphInput_a3e601808e53150db545cdaa441965c70}{}\label{classgraphCode_1_1GraphInput_a3e601808e53150db545cdaa441965c70}
+Load graph data from a text file via user interaction. This method asks the user for a directory and path name. It returns a hashtable of (String, \hyperlink{classgraphCode_1_1Vertex}{Vertex}) pairs. newgraph needs to already be initialized. 
+\begin{DoxyParams}{Parameters}
+{\em newgraph} & a simple graph \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a hash table of (String, \hyperlink{classgraphCode_1_1Vertex}{Vertex}) pairs 
+\end{DoxyReturn}
+\index{graph\+Code\+::\+Graph\+Input@{graph\+Code\+::\+Graph\+Input}!Load\+Simple\+Graph@{Load\+Simple\+Graph}}
+\index{Load\+Simple\+Graph@{Load\+Simple\+Graph}!graph\+Code\+::\+Graph\+Input@{graph\+Code\+::\+Graph\+Input}}
+\subsubsection[{\texorpdfstring{Load\+Simple\+Graph(\+Simple\+Graph newgraph, String pathandfilename)}{LoadSimpleGraph(SimpleGraph newgraph, String pathandfilename)}}]{\setlength{\rightskip}{0pt plus 5cm}static Hashtable graph\+Code.\+Graph\+Input.\+Load\+Simple\+Graph (
+\begin{DoxyParamCaption}
+\item[{{\bf Simple\+Graph}}]{newgraph, }
+\item[{String}]{pathandfilename}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classgraphCode_1_1GraphInput_ac47885774b3b789cc1202785807351f8}{}\label{classgraphCode_1_1GraphInput_ac47885774b3b789cc1202785807351f8}
+Load graph data from a text file. The format of the file is\+: Each line of the file contains 3 tokens, where the first two are strings representing vertex labels and the third is an edge weight (a double). Each line represents one edge.
+
+This method returns a hashtable of (String, \hyperlink{classgraphCode_1_1Vertex}{Vertex}) pairs.
+
+
+\begin{DoxyParams}{Parameters}
+{\em newgraph} & a graph to add edges to. newgraph should already be initialized \\
+\hline
+{\em pathandfilename} & the name of the file, including full path. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a hash table of (String, \hyperlink{classgraphCode_1_1Vertex}{Vertex}) pairs 
+\end{DoxyReturn}
+\index{graph\+Code\+::\+Graph\+Input@{graph\+Code\+::\+Graph\+Input}!main@{main}}
+\index{main@{main}!graph\+Code\+::\+Graph\+Input@{graph\+Code\+::\+Graph\+Input}}
+\subsubsection[{\texorpdfstring{main(\+String args[])}{main(String args[])}}]{\setlength{\rightskip}{0pt plus 5cm}static void graph\+Code.\+Graph\+Input.\+main (
+\begin{DoxyParamCaption}
+\item[{String}]{args\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classgraphCode_1_1GraphInput_afea873aaf28e3b6795bd293c5bfcb7c8}{}\label{classgraphCode_1_1GraphInput_afea873aaf28e3b6795bd293c5bfcb7c8}
+Code to test the methods of this class. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/anisha/\+Algo\+Project/\+Network\+Flow\+Study/src/graph\+Code/Graph\+Input.\+java\end{DoxyCompactItemize}

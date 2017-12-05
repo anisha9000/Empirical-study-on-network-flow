@@ -1,0 +1,127 @@
+\hypertarget{classgraphCode_1_1KeyboardReader}{}\section{graph\+Code.\+Keyboard\+Reader Class Reference}
+\label{classgraphCode_1_1KeyboardReader}\index{graph\+Code.\+Keyboard\+Reader@{graph\+Code.\+Keyboard\+Reader}}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{classgraphCode_1_1KeyboardReader_add978b1e4a585c5d7ab75113af2c42fa}{read\+Int} ()
+\item 
+static double \hyperlink{classgraphCode_1_1KeyboardReader_ac9ff0d97d041350b957dce4822813ba0}{read\+Double} ()
+\item 
+static String \hyperlink{classgraphCode_1_1KeyboardReader_a675b8013d5093b880c8988ca4e4dacd8}{read\+String} ()
+\item 
+static void \hyperlink{classgraphCode_1_1KeyboardReader_ad9d8ce7d07df5662e713542d7a813ff9}{main} (String\mbox{[}$\,$\mbox{]} args)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static final int \hyperlink{classgraphCode_1_1KeyboardReader_ad3188717707def9a8e8d6397646365ef}{E\+O\+I\+\_\+\+I\+NT} = Integer.\+M\+A\+X\+\_\+\+V\+A\+L\+UE
+\item 
+static final double \hyperlink{classgraphCode_1_1KeyboardReader_ad8288436031edae30b500dbb7ac05960}{E\+O\+I\+\_\+\+D\+O\+U\+B\+LE} = Double.\+M\+A\+X\+\_\+\+V\+A\+L\+UE
+\item 
+static final String \hyperlink{classgraphCode_1_1KeyboardReader_ac53bec259e91a7ca66bbc88d358a162b}{E\+O\+I\+\_\+\+S\+T\+R\+I\+NG} = \char`\"{}E\+N\+D\+\_\+\+O\+F\+\_\+\+I\+N\+F\+O\+\_\+1234\char`\"{}
+\item 
+static final int \hyperlink{classgraphCode_1_1KeyboardReader_a1169f29de6725738bebd5449cf6da367}{E\+R\+R\+O\+R\+\_\+\+I\+NT} = Integer.\+M\+I\+N\+\_\+\+V\+A\+L\+UE
+\item 
+static final double \hyperlink{classgraphCode_1_1KeyboardReader_ad4574418c09a66cfb44580e8a2105686}{E\+R\+R\+O\+R\+\_\+\+D\+O\+U\+B\+LE} = Double.\+M\+I\+N\+\_\+\+V\+A\+L\+UE
+\item 
+static final String \hyperlink{classgraphCode_1_1KeyboardReader_a5afecbc3f6ef9e6d54e0513d67b284aa}{E\+R\+R\+O\+R\+\_\+\+S\+T\+R\+I\+NG} = \char`\"{}I/O\+\_\+\+E\+R\+R\+O\+R\+\_\+1234\char`\"{}
+\item 
+static boolean \hyperlink{classgraphCode_1_1KeyboardReader_aa3d3742806e17ff6013ef7f5e37bef9f}{E\+R\+R\+O\+R\+\_\+\+M\+E\+S\+S\+A\+G\+ES} = true
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A class to read strings and numbers from the keyboard. 
+
+This class is intended for beginning Java programmers. It constructs the necessary buffered reader, converts strings to numbers, and handles exceptions. 
+
+The methods in this class are {\bfseries static} methods. This means that they can be invoked using the class name, without needing to create a {\itshape \hyperlink{classgraphCode_1_1KeyboardReader}{Keyboard\+Reader}} object. 
+
+The following examples illustrate how to use this class to read from the keyboard\+: 
+\begin{DoxyPre}
+   int x = \hyperlink{classgraphCode_1_1KeyboardReader_add978b1e4a585c5d7ab75113af2c42fa}{KeyboardReader.readInt()};        // read an int
+   double y = \hyperlink{classgraphCode_1_1KeyboardReader_ac9ff0d97d041350b957dce4822813ba0}{KeyboardReader.readDouble()};  // read a double
+   String s = \hyperlink{classgraphCode_1_1KeyboardReader_a675b8013d5093b880c8988ca4e4dacd8}{KeyboardReader.readString()};    // read a String
+\end{DoxyPre}
+ This class also defines return values to indicate end-\/of-\/information (E\+OI) and data conversion errors. 
+
+The default behavior of the {\itshape \hyperlink{classgraphCode_1_1KeyboardReader_add978b1e4a585c5d7ab75113af2c42fa}{read\+Int()}} and {\itshape \hyperlink{classgraphCode_1_1KeyboardReader_ac9ff0d97d041350b957dce4822813ba0}{read\+Double()}} methods is to write a comment to the screen in response to inappropriate data. This behavior may be controlled by the {\itshape E\+R\+R\+O\+R\+\_\+\+M\+E\+S\+S\+A\+G\+ES} field. 
+
+\begin{DoxyAuthor}{Author}
+Bill Conlen 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\index{graph\+Code\+::\+Keyboard\+Reader@{graph\+Code\+::\+Keyboard\+Reader}!main@{main}}
+\index{main@{main}!graph\+Code\+::\+Keyboard\+Reader@{graph\+Code\+::\+Keyboard\+Reader}}
+\subsubsection[{\texorpdfstring{main(\+String[] args)}{main(String[] args)}}]{\setlength{\rightskip}{0pt plus 5cm}static void graph\+Code.\+Keyboard\+Reader.\+main (
+\begin{DoxyParamCaption}
+\item[{String\mbox{[}$\,$\mbox{]}}]{args}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classgraphCode_1_1KeyboardReader_ad9d8ce7d07df5662e713542d7a813ff9}{}\label{classgraphCode_1_1KeyboardReader_ad9d8ce7d07df5662e713542d7a813ff9}
+Tests the \hyperlink{classgraphCode_1_1KeyboardReader}{Keyboard\+Reader} methods. 
+
+This method would not normally be invoked by users of the \hyperlink{classgraphCode_1_1KeyboardReader}{Keyboard\+Reader} class. \index{graph\+Code\+::\+Keyboard\+Reader@{graph\+Code\+::\+Keyboard\+Reader}!read\+Double@{read\+Double}}
+\index{read\+Double@{read\+Double}!graph\+Code\+::\+Keyboard\+Reader@{graph\+Code\+::\+Keyboard\+Reader}}
+\subsubsection[{\texorpdfstring{read\+Double()}{readDouble()}}]{\setlength{\rightskip}{0pt plus 5cm}static double graph\+Code.\+Keyboard\+Reader.\+read\+Double (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classgraphCode_1_1KeyboardReader_ac9ff0d97d041350b957dce4822813ba0}{}\label{classgraphCode_1_1KeyboardReader_ac9ff0d97d041350b957dce4822813ba0}
+Reads a line of input and converts it into a {\itshape double}. 
+
+\begin{DoxyReturn}{Returns}
+the number that the user typed, or E\+O\+I\+\_\+\+D\+O\+U\+B\+LE to indicate end-\/of-\/information, or E\+R\+R\+O\+R\+\_\+\+D\+O\+U\+B\+LE to indicate a conversion or I/O error. 
+\end{DoxyReturn}
+\index{graph\+Code\+::\+Keyboard\+Reader@{graph\+Code\+::\+Keyboard\+Reader}!read\+Int@{read\+Int}}
+\index{read\+Int@{read\+Int}!graph\+Code\+::\+Keyboard\+Reader@{graph\+Code\+::\+Keyboard\+Reader}}
+\subsubsection[{\texorpdfstring{read\+Int()}{readInt()}}]{\setlength{\rightskip}{0pt plus 5cm}static int graph\+Code.\+Keyboard\+Reader.\+read\+Int (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classgraphCode_1_1KeyboardReader_add978b1e4a585c5d7ab75113af2c42fa}{}\label{classgraphCode_1_1KeyboardReader_add978b1e4a585c5d7ab75113af2c42fa}
+Reads a line of input and converts it into an {\itshape int}. \begin{DoxyReturn}{Returns}
+the integer that the user typed, or E\+O\+I\+\_\+\+I\+NT to indicate end-\/of-\/information, or E\+R\+R\+O\+R\+\_\+\+I\+NT to indicate a conversion or I/O error. 
+\end{DoxyReturn}
+\index{graph\+Code\+::\+Keyboard\+Reader@{graph\+Code\+::\+Keyboard\+Reader}!read\+String@{read\+String}}
+\index{read\+String@{read\+String}!graph\+Code\+::\+Keyboard\+Reader@{graph\+Code\+::\+Keyboard\+Reader}}
+\subsubsection[{\texorpdfstring{read\+String()}{readString()}}]{\setlength{\rightskip}{0pt plus 5cm}static String graph\+Code.\+Keyboard\+Reader.\+read\+String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classgraphCode_1_1KeyboardReader_a675b8013d5093b880c8988ca4e4dacd8}{}\label{classgraphCode_1_1KeyboardReader_a675b8013d5093b880c8988ca4e4dacd8}
+Reads a line of character input. 
+
+\begin{DoxyReturn}{Returns}
+the line of input that the user typed, or E\+O\+I\+\_\+\+S\+T\+R\+I\+NG to indicate end-\/of-\/information, or E\+R\+R\+O\+R\+\_\+\+S\+T\+R\+I\+NG to indicate a conversion or I/O error. 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\index{graph\+Code\+::\+Keyboard\+Reader@{graph\+Code\+::\+Keyboard\+Reader}!E\+O\+I\+\_\+\+D\+O\+U\+B\+LE@{E\+O\+I\+\_\+\+D\+O\+U\+B\+LE}}
+\index{E\+O\+I\+\_\+\+D\+O\+U\+B\+LE@{E\+O\+I\+\_\+\+D\+O\+U\+B\+LE}!graph\+Code\+::\+Keyboard\+Reader@{graph\+Code\+::\+Keyboard\+Reader}}
+\subsubsection[{\texorpdfstring{E\+O\+I\+\_\+\+D\+O\+U\+B\+LE}{EOI_DOUBLE}}]{\setlength{\rightskip}{0pt plus 5cm}final double graph\+Code.\+Keyboard\+Reader.\+E\+O\+I\+\_\+\+D\+O\+U\+B\+LE = Double.\+M\+A\+X\+\_\+\+V\+A\+L\+UE\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classgraphCode_1_1KeyboardReader_ad8288436031edae30b500dbb7ac05960}{}\label{classgraphCode_1_1KeyboardReader_ad8288436031edae30b500dbb7ac05960}
+Returned by the {\itshape \hyperlink{classgraphCode_1_1KeyboardReader_ac9ff0d97d041350b957dce4822813ba0}{read\+Double()}} method to indicate E\+OI. \index{graph\+Code\+::\+Keyboard\+Reader@{graph\+Code\+::\+Keyboard\+Reader}!E\+O\+I\+\_\+\+I\+NT@{E\+O\+I\+\_\+\+I\+NT}}
+\index{E\+O\+I\+\_\+\+I\+NT@{E\+O\+I\+\_\+\+I\+NT}!graph\+Code\+::\+Keyboard\+Reader@{graph\+Code\+::\+Keyboard\+Reader}}
+\subsubsection[{\texorpdfstring{E\+O\+I\+\_\+\+I\+NT}{EOI_INT}}]{\setlength{\rightskip}{0pt plus 5cm}final int graph\+Code.\+Keyboard\+Reader.\+E\+O\+I\+\_\+\+I\+NT = Integer.\+M\+A\+X\+\_\+\+V\+A\+L\+UE\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classgraphCode_1_1KeyboardReader_ad3188717707def9a8e8d6397646365ef}{}\label{classgraphCode_1_1KeyboardReader_ad3188717707def9a8e8d6397646365ef}
+Returned by the {\itshape \hyperlink{classgraphCode_1_1KeyboardReader_add978b1e4a585c5d7ab75113af2c42fa}{read\+Int()}} method to indicate E\+OI. \index{graph\+Code\+::\+Keyboard\+Reader@{graph\+Code\+::\+Keyboard\+Reader}!E\+O\+I\+\_\+\+S\+T\+R\+I\+NG@{E\+O\+I\+\_\+\+S\+T\+R\+I\+NG}}
+\index{E\+O\+I\+\_\+\+S\+T\+R\+I\+NG@{E\+O\+I\+\_\+\+S\+T\+R\+I\+NG}!graph\+Code\+::\+Keyboard\+Reader@{graph\+Code\+::\+Keyboard\+Reader}}
+\subsubsection[{\texorpdfstring{E\+O\+I\+\_\+\+S\+T\+R\+I\+NG}{EOI_STRING}}]{\setlength{\rightskip}{0pt plus 5cm}final String graph\+Code.\+Keyboard\+Reader.\+E\+O\+I\+\_\+\+S\+T\+R\+I\+NG = \char`\"{}E\+N\+D\+\_\+\+O\+F\+\_\+\+I\+N\+F\+O\+\_\+1234\char`\"{}\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classgraphCode_1_1KeyboardReader_ac53bec259e91a7ca66bbc88d358a162b}{}\label{classgraphCode_1_1KeyboardReader_ac53bec259e91a7ca66bbc88d358a162b}
+Returned by the {\itshape \hyperlink{classgraphCode_1_1KeyboardReader_a675b8013d5093b880c8988ca4e4dacd8}{read\+String()}} method to indicate E\+OI. \index{graph\+Code\+::\+Keyboard\+Reader@{graph\+Code\+::\+Keyboard\+Reader}!E\+R\+R\+O\+R\+\_\+\+D\+O\+U\+B\+LE@{E\+R\+R\+O\+R\+\_\+\+D\+O\+U\+B\+LE}}
+\index{E\+R\+R\+O\+R\+\_\+\+D\+O\+U\+B\+LE@{E\+R\+R\+O\+R\+\_\+\+D\+O\+U\+B\+LE}!graph\+Code\+::\+Keyboard\+Reader@{graph\+Code\+::\+Keyboard\+Reader}}
+\subsubsection[{\texorpdfstring{E\+R\+R\+O\+R\+\_\+\+D\+O\+U\+B\+LE}{ERROR_DOUBLE}}]{\setlength{\rightskip}{0pt plus 5cm}final double graph\+Code.\+Keyboard\+Reader.\+E\+R\+R\+O\+R\+\_\+\+D\+O\+U\+B\+LE = Double.\+M\+I\+N\+\_\+\+V\+A\+L\+UE\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classgraphCode_1_1KeyboardReader_ad4574418c09a66cfb44580e8a2105686}{}\label{classgraphCode_1_1KeyboardReader_ad4574418c09a66cfb44580e8a2105686}
+Returned by the {\itshape \hyperlink{classgraphCode_1_1KeyboardReader_ac9ff0d97d041350b957dce4822813ba0}{read\+Double()}} method to indicate an error. \index{graph\+Code\+::\+Keyboard\+Reader@{graph\+Code\+::\+Keyboard\+Reader}!E\+R\+R\+O\+R\+\_\+\+I\+NT@{E\+R\+R\+O\+R\+\_\+\+I\+NT}}
+\index{E\+R\+R\+O\+R\+\_\+\+I\+NT@{E\+R\+R\+O\+R\+\_\+\+I\+NT}!graph\+Code\+::\+Keyboard\+Reader@{graph\+Code\+::\+Keyboard\+Reader}}
+\subsubsection[{\texorpdfstring{E\+R\+R\+O\+R\+\_\+\+I\+NT}{ERROR_INT}}]{\setlength{\rightskip}{0pt plus 5cm}final int graph\+Code.\+Keyboard\+Reader.\+E\+R\+R\+O\+R\+\_\+\+I\+NT = Integer.\+M\+I\+N\+\_\+\+V\+A\+L\+UE\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classgraphCode_1_1KeyboardReader_a1169f29de6725738bebd5449cf6da367}{}\label{classgraphCode_1_1KeyboardReader_a1169f29de6725738bebd5449cf6da367}
+Returned by the {\itshape \hyperlink{classgraphCode_1_1KeyboardReader_add978b1e4a585c5d7ab75113af2c42fa}{read\+Int()}} method to indicate an error. \index{graph\+Code\+::\+Keyboard\+Reader@{graph\+Code\+::\+Keyboard\+Reader}!E\+R\+R\+O\+R\+\_\+\+M\+E\+S\+S\+A\+G\+ES@{E\+R\+R\+O\+R\+\_\+\+M\+E\+S\+S\+A\+G\+ES}}
+\index{E\+R\+R\+O\+R\+\_\+\+M\+E\+S\+S\+A\+G\+ES@{E\+R\+R\+O\+R\+\_\+\+M\+E\+S\+S\+A\+G\+ES}!graph\+Code\+::\+Keyboard\+Reader@{graph\+Code\+::\+Keyboard\+Reader}}
+\subsubsection[{\texorpdfstring{E\+R\+R\+O\+R\+\_\+\+M\+E\+S\+S\+A\+G\+ES}{ERROR_MESSAGES}}]{\setlength{\rightskip}{0pt plus 5cm}boolean graph\+Code.\+Keyboard\+Reader.\+E\+R\+R\+O\+R\+\_\+\+M\+E\+S\+S\+A\+G\+ES = true\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classgraphCode_1_1KeyboardReader_aa3d3742806e17ff6013ef7f5e37bef9f}{}\label{classgraphCode_1_1KeyboardReader_aa3d3742806e17ff6013ef7f5e37bef9f}
+Controls the output of error messages to the console in response to inappropriate input. \index{graph\+Code\+::\+Keyboard\+Reader@{graph\+Code\+::\+Keyboard\+Reader}!E\+R\+R\+O\+R\+\_\+\+S\+T\+R\+I\+NG@{E\+R\+R\+O\+R\+\_\+\+S\+T\+R\+I\+NG}}
+\index{E\+R\+R\+O\+R\+\_\+\+S\+T\+R\+I\+NG@{E\+R\+R\+O\+R\+\_\+\+S\+T\+R\+I\+NG}!graph\+Code\+::\+Keyboard\+Reader@{graph\+Code\+::\+Keyboard\+Reader}}
+\subsubsection[{\texorpdfstring{E\+R\+R\+O\+R\+\_\+\+S\+T\+R\+I\+NG}{ERROR_STRING}}]{\setlength{\rightskip}{0pt plus 5cm}final String graph\+Code.\+Keyboard\+Reader.\+E\+R\+R\+O\+R\+\_\+\+S\+T\+R\+I\+NG = \char`\"{}I/O\+\_\+\+E\+R\+R\+O\+R\+\_\+1234\char`\"{}\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classgraphCode_1_1KeyboardReader_a5afecbc3f6ef9e6d54e0513d67b284aa}{}\label{classgraphCode_1_1KeyboardReader_a5afecbc3f6ef9e6d54e0513d67b284aa}
+Returned by the {\itshape \hyperlink{classgraphCode_1_1KeyboardReader_a675b8013d5093b880c8988ca4e4dacd8}{read\+String()}} method to indicate an error. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/anisha/\+Algo\+Project/\+Network\+Flow\+Study/src/graph\+Code/Keyboard\+Reader.\+java\end{DoxyCompactItemize}

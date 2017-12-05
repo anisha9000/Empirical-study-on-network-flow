@@ -1,0 +1,79 @@
+\hypertarget{classgraphGenerationCode_1_1Mesh_1_1MeshGenerator}{}\section{graph\+Generation\+Code.\+Mesh.\+Mesh\+Generator Class Reference}
+\label{classgraphGenerationCode_1_1Mesh_1_1MeshGenerator}\index{graph\+Generation\+Code.\+Mesh.\+Mesh\+Generator@{graph\+Generation\+Code.\+Mesh.\+Mesh\+Generator}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classgraphGenerationCode_1_1Mesh_1_1MeshGenerator_a4658a0e6ef335d61aaad0951e7bea550}{generate} ()
+\item 
+\hyperlink{classgraphGenerationCode_1_1Mesh_1_1MeshGenerator_a50aaa5dc64717b0685b7d744bd336580}{Mesh\+Generator} (String\mbox{[}$\,$\mbox{]} args)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{classgraphGenerationCode_1_1Mesh_1_1MeshGenerator_ad5644a452d15eb4cd640dfb1c1c0d2c9}{main} (String\mbox{[}$\,$\mbox{]} args)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class generates text files representing mesh graph flow networks. The mesh graphs have edges from s to each node in the first column, from each internal node to the node on its right, both ways between every internal node and the nodes above and below it, and from the last column nodes to the sink.
+
+The file format is the standard T\+C\+SS 343/543 format of \textquotesingle{}first vertex\textquotesingle{} \textquotesingle{}second vertex\textquotesingle{} \textquotesingle{}capacity\textquotesingle{}. The program takes command line arguments. They are\+: \mbox{[}\# of rows\mbox{]} \mbox{[}\# of columns\mbox{]}\mbox{[}capacity or maximum capacity\mbox{]}\mbox{[}filename\mbox{]}\mbox{[}-\/cc flag\mbox{]}. All arguments are optional. If you enter no arguments, you get a 3 x 4 mesh with capacity of 1 on all edges, printed to System.\+out. The arguments are\+:
+
+\#rows/columns -\/ self-\/explanatory...defaults to 3x4 if no arguments are given
+
+capacity -\/ defaults to 1(fixed) if $<$3 arguments. Otherwise random on the range 1 to capacity, unless \textquotesingle{}-\/cc\textquotesingle{} set.
+
+filename -\/ the name of file to write to. Defaults to System.\+out if $<$4 parameters (or if -\/cc is last parameter)
+
+-\/cc flag...With at least the first three parameters specified, ending the line with \textquotesingle{}-\/cc\textquotesingle{} will cause edge capacities to have a constant value of c.
+
+\begin{DoxyAuthor}{Author}
+T\+C\+SS 543 group 2\+: Apaporn Boonyaratta, Richard Hill, Quang Lu, \& David Thaler 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+November 21, 2008 
+\end{DoxyVersion}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{graph\+Generation\+Code\+::\+Mesh\+::\+Mesh\+Generator@{graph\+Generation\+Code\+::\+Mesh\+::\+Mesh\+Generator}!Mesh\+Generator@{Mesh\+Generator}}
+\index{Mesh\+Generator@{Mesh\+Generator}!graph\+Generation\+Code\+::\+Mesh\+::\+Mesh\+Generator@{graph\+Generation\+Code\+::\+Mesh\+::\+Mesh\+Generator}}
+\subsubsection[{\texorpdfstring{Mesh\+Generator(\+String[] args)}{MeshGenerator(String[] args)}}]{\setlength{\rightskip}{0pt plus 5cm}graph\+Generation\+Code.\+Mesh.\+Mesh\+Generator.\+Mesh\+Generator (
+\begin{DoxyParamCaption}
+\item[{String\mbox{[}$\,$\mbox{]}}]{args}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classgraphGenerationCode_1_1Mesh_1_1MeshGenerator_a50aaa5dc64717b0685b7d744bd336580}{}\label{classgraphGenerationCode_1_1Mesh_1_1MeshGenerator_a50aaa5dc64717b0685b7d744bd336580}
+Constructor for mesh generator parses the command line arguments and sets the defaults. See the class comment for arguments/defaults.
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & -\/ the command line arguments. See class comment. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{graph\+Generation\+Code\+::\+Mesh\+::\+Mesh\+Generator@{graph\+Generation\+Code\+::\+Mesh\+::\+Mesh\+Generator}!generate@{generate}}
+\index{generate@{generate}!graph\+Generation\+Code\+::\+Mesh\+::\+Mesh\+Generator@{graph\+Generation\+Code\+::\+Mesh\+::\+Mesh\+Generator}}
+\subsubsection[{\texorpdfstring{generate()}{generate()}}]{\setlength{\rightskip}{0pt plus 5cm}void graph\+Generation\+Code.\+Mesh.\+Mesh\+Generator.\+generate (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classgraphGenerationCode_1_1Mesh_1_1MeshGenerator_a4658a0e6ef335d61aaad0951e7bea550}{}\label{classgraphGenerationCode_1_1Mesh_1_1MeshGenerator_a4658a0e6ef335d61aaad0951e7bea550}
+The run method. \index{graph\+Generation\+Code\+::\+Mesh\+::\+Mesh\+Generator@{graph\+Generation\+Code\+::\+Mesh\+::\+Mesh\+Generator}!main@{main}}
+\index{main@{main}!graph\+Generation\+Code\+::\+Mesh\+::\+Mesh\+Generator@{graph\+Generation\+Code\+::\+Mesh\+::\+Mesh\+Generator}}
+\subsubsection[{\texorpdfstring{main(\+String[] args)}{main(String[] args)}}]{\setlength{\rightskip}{0pt plus 5cm}static void graph\+Generation\+Code.\+Mesh.\+Mesh\+Generator.\+main (
+\begin{DoxyParamCaption}
+\item[{String\mbox{[}$\,$\mbox{]}}]{args}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classgraphGenerationCode_1_1Mesh_1_1MeshGenerator_ad5644a452d15eb4cd640dfb1c1c0d2c9}{}\label{classgraphGenerationCode_1_1Mesh_1_1MeshGenerator_ad5644a452d15eb4cd640dfb1c1c0d2c9}
+
+\begin{DoxyParams}{Parameters}
+{\em args-\/} & command line args \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/anisha/\+Algo\+Project/\+Network\+Flow\+Study/src/graph\+Generation\+Code/\+Mesh/Mesh\+Generator.\+java\end{DoxyCompactItemize}
