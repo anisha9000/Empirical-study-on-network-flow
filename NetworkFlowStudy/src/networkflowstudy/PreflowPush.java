@@ -11,6 +11,7 @@ import graphCode.Vertex;
 import java.util.LinkedHashMap;
 import java.util.Iterator;
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  *
@@ -71,7 +72,7 @@ public class PreflowPush {
         while (!excess.isEmpty()) {                                                             // while excess map isn't empty
             int i = 0;                                                                          // declare here so UpdateExcessMap can use index value
             isPushSuccess = false;                                                              // reset this each iteration
-            Vertex v = excess.entrySet().iterator().next().getKey();                            // get the first key
+            Vertex v = GetVVertex();                                                            // get the vertex with max excess
             ArrayList<Vertex> w = GetWVertexList(v);                                            // get a list of available nodes
                                                                                                 //
             for (i = 0; i < w.size(); i++) {                                                    // iterate through each available node
@@ -211,6 +212,21 @@ public class PreflowPush {
                                                                                                 //
         return f_into_v - f_outa_v;                                                             // excess = flow in - flow out
     } /* end GetExcess function */
+    
+    
+    /**
+     * 
+     * @return      the vertex with max excess
+     */
+    private Vertex GetVVertex() {
+        Map.Entry<Vertex, Integer> max = null;                                                  // initialize a null entry
+                                                                                                //
+        for (Map.Entry<Vertex, Integer> e : excess.entrySet()) {                                // iterate through all excess entries
+            if (max == null || e.getValue().compareTo(max.getValue()) > 0)                      // each time saving the key if value
+                max = e;                                                                        // is greater than before
+        }                                                                                       //
+        return max.getKey();                                                                    // return the key
+    } /* end GetVVertex function */
 
 
     /**
