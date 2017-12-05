@@ -1,0 +1,60 @@
+Fixed,Scaling Max flow,52,17,192,100
+Fixed,FordFulkerson,52,6,192,100
+Fixed,PreflowPush,52,187,192,100
+Fixed,Scaling Max flow,52,9,230,120
+Fixed,FordFulkerson,52,4,230,120
+Fixed,PreflowPush,52,168,230,120
+Fixed,Scaling Max flow,52,9,140,150
+Fixed,FordFulkerson,52,2,140,150
+Fixed,PreflowPush,52,142,140,150
+Fixed,Scaling Max flow,52,8,344,180
+Fixed,FordFulkerson,52,9,344,180
+Fixed,PreflowPush,52,183,344,180
+Fixed,Scaling Max flow,52,11,14,20
+Fixed,FordFulkerson,52,2,14,20
+Fixed,PreflowPush,52,163,14,20
+Fixed,Scaling Max flow,52,13,91,50
+Fixed,FordFulkerson,52,5,91,50
+Fixed,PreflowPush,52,167,91,50
+Fixed,Scaling Max flow,52,15,141,80
+Fixed,FordFulkerson,52,19,141,80
+Fixed,PreflowPush,52,316,141,80
+Fixed,Scaling Max flow,52,8,303,160
+Fixed,FordFulkerson,52,3,303,160
+Fixed,PreflowPush,52,176,303,160
+Fixed,Scaling Max flow,52,11,15,10
+Fixed,FordFulkerson,52,5,15,10
+Fixed,PreflowPush,52,22,15,10
+Fixed,Scaling Max flow,52,8,252,130
+Fixed,FordFulkerson,52,4,252,130
+Fixed,PreflowPush,52,52,252,130
+Fixed,Scaling Max flow,52,6,366,190
+Fixed,FordFulkerson,52,3,366,190
+Fixed,PreflowPush,52,20,366,190
+Fixed,Scaling Max flow,52,11,43,30
+Fixed,FordFulkerson,52,5,43,30
+Fixed,PreflowPush,52,170,43,30
+Fixed,Scaling Max flow,52,7,102,60
+Fixed,FordFulkerson,52,4,102,60
+Fixed,PreflowPush,52,33,102,60
+Fixed,Scaling Max flow,52,10,170,90
+Fixed,FordFulkerson,52,13,170,90
+Fixed,PreflowPush,52,35,170,90
+Fixed,Scaling Max flow,52,8,205,110
+Fixed,FordFulkerson,52,11,205,110
+Fixed,PreflowPush,52,209,205,110
+Fixed,Scaling Max flow,52,8,380,200
+Fixed,FordFulkerson,52,8,380,200
+Fixed,PreflowPush,52,179,380,200
+Fixed,Scaling Max flow,52,10,131,70
+Fixed,FordFulkerson,52,5,131,70
+Fixed,PreflowPush,52,27,131,70
+Fixed,Scaling Max flow,52,6,30,40
+Fixed,FordFulkerson,52,3,30,40
+Fixed,PreflowPush,52,181,30,40
+Fixed,Scaling Max flow,52,7,323,170
+Fixed,FordFulkerson,52,4,323,170
+Fixed,PreflowPush,52,161,323,170
+Fixed,Scaling Max flow,52,13,264,140
+Fixed,FordFulkerson,52,3,264,140
+Fixed,PreflowPush,52,156,264,140

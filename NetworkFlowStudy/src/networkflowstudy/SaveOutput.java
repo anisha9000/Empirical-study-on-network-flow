@@ -19,11 +19,8 @@ import java.nio.file.Paths;
  */
 public class SaveOutput {
     private static final String OUTPUT_CSV_FILE = new File("").getAbsolutePath()
-            + "/src/output_bipartite.csv";
+            + "/output_capacity.csv";
 
-    private static final String OUTPUT_FOLDER =  new File("").getAbsolutePath() 
-            + "/src/output_bipartite/";
-    
     public static void writeToCSV(String graphType, String algorithmName, int numberOfVertices, 
             long runningTime, int maxFlow) throws IOException {
         
@@ -31,6 +28,20 @@ public class SaveOutput {
         
         String row = graphType + "," + algorithmName + "," + numberOfVertices +
                 ","+ runningTime + "," + maxFlow;
+        //System.out.println(row);
+        fileWriter.append(row);
+        fileWriter.append("\n");
+        fileWriter.flush();
+        fileWriter.close();
+    }
+    
+    public static void writeToCSV(String graphType, String algorithmName, int numberOfVertices, 
+            long runningTime, int maxFlow, int capacity) throws IOException {
+        
+        FileWriter fileWriter = new FileWriter(OUTPUT_CSV_FILE, true);
+        
+        String row = graphType + "," + algorithmName + "," + numberOfVertices +
+                ","+ runningTime + "," + maxFlow+ "," + capacity;
         //System.out.println(row);
         fileWriter.append(row);
         fileWriter.append("\n");

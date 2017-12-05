@@ -29,11 +29,14 @@ public class tcss543 {
         // TODO code application logic here
         SimpleGraph G = new SimpleGraph();
         GraphInput graphGenrerator = new GraphInput();
-        //graphGenrerator.LoadSimpleGraph(G, args[0]);
-        graphGenrerator.LoadSimpleGraph(G, "/home/anisha/AlgoProject/NetworkFlowStudy/src/graphGenerationCode/Bipartite/bipartitegraph_50.txt");
+        graphGenrerator.LoadSimpleGraph(G, args[0]);
         
+        String graphName = "Fixed";
         Vertex source = G.getVertex("s");
         Vertex sink = G.getVertex("t");
+        String strNumber= args[0].replaceAll("[^0-9]", "");
+        Integer numberOnly = Integer.parseInt(strNumber);
+        
         
         long startTime;
         long endTime;
@@ -57,8 +60,8 @@ public class tcss543 {
         endTime = System.currentTimeMillis();
         System.out.println("||Algorithm: Scaling Max Flow||" + "Number of vertices: " + G.numVertices() +"||Running time:" + (endTime- startTime)
                 +"||maxFlow:" + maxFlow+"||");
-        SaveOutput.writeToCSV("Mesh","Scaling Max flow", G.numVertices(), 
-                endTime- startTime, maxFlow);
+        SaveOutput.writeToCSV(graphName,"Scaling Max flow", G.numVertices(), 
+                endTime- startTime, maxFlow, numberOnly);
 
         
         System.out.println("******************************************");
@@ -76,8 +79,8 @@ public class tcss543 {
         System.out.println("||Algorithm: Ford fulkerson ||" + "Number of vertices: " + G.numVertices() +"||Running time:" + (endTime- startTime)
                 +"||maxFlow:" + maxFlow + "||");
         // TODO add these outputs to console output
-        SaveOutput.writeToCSV("Mesh", "FordFulkerson", G.numVertices(), 
-                endTime- startTime, maxFlow);
+        SaveOutput.writeToCSV(graphName, "FordFulkerson", G.numVertices(), 
+                endTime- startTime, maxFlow, numberOnly);
         
         
         
@@ -95,8 +98,8 @@ public class tcss543 {
         endTime = System.currentTimeMillis();
         System.out.println("||Algorithm: Preflow Push||" + "Number of vertices: " + G.numVertices() +"||Running time:" + (endTime- startTime)
                 +"||maxFlow:" + maxFlow +"||");
-        SaveOutput.writeToCSV("Mesh", "PreflowPush", G.numVertices(), 
-                endTime- startTime, maxFlow);
+        SaveOutput.writeToCSV(graphName, "PreflowPush", G.numVertices(), 
+                endTime- startTime, maxFlow, numberOnly);
         
         System.out.println("******************************************");
         
