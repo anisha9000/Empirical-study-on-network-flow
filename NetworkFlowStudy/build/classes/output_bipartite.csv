@@ -42,3 +42,6 @@ Mesh,PreflowPush,52,271,1312
 Mesh,Scaling Max flow,52,173,1312
 Mesh,FordFulkerson,52,109,1312
 Mesh,PreflowPush,52,247,1312
+Mesh,Scaling Max flow,52,220,1312
+Mesh,FordFulkerson,52,104,1312
+Mesh,PreflowPush,52,239,1312

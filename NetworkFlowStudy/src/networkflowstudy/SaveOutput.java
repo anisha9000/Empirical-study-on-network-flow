@@ -20,7 +20,6 @@ import java.nio.file.Paths;
 public class SaveOutput {
     private static final String OUTPUT_CSV_FILE = new File("").getAbsolutePath()
             + "/output_capacity.csv";
-
     public static void writeToCSV(String graphType, String algorithmName, int numberOfVertices, 
             long runningTime, int maxFlow) throws IOException {
         
