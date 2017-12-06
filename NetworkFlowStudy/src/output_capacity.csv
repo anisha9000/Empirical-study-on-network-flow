@@ -58,3 +58,6 @@ Fixed,PreflowPush,52,161,323,170
 Fixed,Scaling Max flow,52,13,264,140
 Fixed,FordFulkerson,52,3,264,140
 Fixed,PreflowPush,52,156,264,140
+Fixed,Scaling Max flow,202,627,2722,200
+Fixed,FordFulkerson,202,571,2722,200
+Fixed,PreflowPush,202,1150,2722,200

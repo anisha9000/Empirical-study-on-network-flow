@@ -280,7 +280,7 @@ public class utils {
      * @param flow flow value along each edge
      * @return 
      */
-    static int getMaxFlow(SimpleGraph G, Vertex source, 
+    public static int getMaxFlow(SimpleGraph G, Vertex source, 
             LinkedHashMap<Edge, Integer> flow) {
         Iterator incidentEdges = G.incidentEdges(source);
         int maxFlow = 0;

@@ -53,3 +53,16 @@ Bipartite,PreflowPush,28,106,264
 Bipartite,Scaling Max flow,11,9,66
 Bipartite,FordFulkerson,11,3,66
 Bipartite,PreflowPush,11,18,66
+Fixed,Scaling Max flow,502,4968,6276
+Fixed,FordFulkerson,502,11017,6276
+Fixed,Scaling Max flow,8,6,47
+Fixed,FordFulkerson,8,2,47
+Fixed,PreflowPush,8,5,47
+Fixed,Scaling Max flow,502,5168,6276
+Fixed,FordFulkerson,502,10551,6276
+Fixed,Scaling Max flow,752,19400,9267
+Fixed,FordFulkerson,752,40819,9267
+Fixed,Scaling Max flow,1002,69007,12741
+Fixed,FordFulkerson,1002,135587,12741
+Fixed,Scaling Max flow,602,8765,7655
+Fixed,FordFulkerson,602,19715,7655

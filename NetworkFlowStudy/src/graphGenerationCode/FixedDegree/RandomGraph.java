@@ -1,3 +1,5 @@
+package graphGenerationCode.FixedDegree;
+
 //Zane,Yogi,Nick,Jodie
 //TCSS 543
 //Nov. 21, 08

@@ -1,34 +1,55 @@
-
-Mesh,Scaling Max flow,7,24,14
-Mesh,FordFulkerson,7,4,14
-Mesh,PreflowPush,7,12,14
-Mesh,Scaling Max flow,12,12,108
-Mesh,FordFulkerson,12,7,108
-Mesh,PreflowPush,12,4,108
-Mesh,Scaling Max flow,27,38,276
-Mesh,FordFulkerson,27,34,276
-Mesh,PreflowPush,27,17,276
-Mesh,Scaling Max flow,52,120,599
-Mesh,FordFulkerson,52,64,599
-Mesh,PreflowPush,52,641,599
-Mesh,Scaling Max flow,77,142,848
-Mesh,FordFulkerson,77,140,848
-Mesh,PreflowPush,77,294,848
-Mesh,Scaling Max flow,102,365,1226
-Mesh,FordFulkerson,102,424,1226
-Mesh,PreflowPush,102,419,1226
-Mesh,Scaling Max flow,127,480,1665
-Mesh,FordFulkerson,127,359,1665
-Mesh,PreflowPush,127,642,1665
-Mesh,Scaling Max flow,152,654,1853
-Mesh,FordFulkerson,152,374,1853
-Mesh,PreflowPush,152,1007,1853
-Mesh,Scaling Max flow,202,909,2722
-Mesh,FordFulkerson,202,884,2722
-Mesh,PreflowPush,202,3549,2722
-Mesh,Scaling Max flow,252,1251,3059
-Mesh,FordFulkerson,252,1726,3059
-Mesh,PreflowPush,252,6963,3059
-Mesh,Scaling Max flow,7,4,2
-Mesh,FordFulkerson,7,0,2
-Mesh,PreflowPush,7,4,2
+Graph,Algorithm,Vertices,Running time,Max flow
+Fixed,Scaling Max flow,8,4,49
+Fixed,FordFulkerson,8,1,49
+Fixed,PreflowPush,8,18,49
+Fixed,Scaling Max flow,11,5,33
+Fixed,FordFulkerson,11,2,33
+Fixed,PreflowPush,11,20,33
+Fixed,Scaling Max flow,14,6,27
+Fixed,FordFulkerson,14,4,27
+Fixed,PreflowPush,14,11,27
+Fixed,Scaling Max flow,17,7,24
+Fixed,FordFulkerson,17,5,24
+Fixed,PreflowPush,17,15,24
+Fixed,Scaling Max flow,20,10,44
+Fixed,FordFulkerson,20,4,44
+Fixed,PreflowPush,20,52,44
+Fixed,Scaling Max flow,23,9,21
+Fixed,FordFulkerson,23,7,21
+Fixed,PreflowPush,23,20,21
+Fixed,Scaling Max flow,26,18,42
+Fixed,FordFulkerson,26,10,42
+Fixed,PreflowPush,26,20,42
+Fixed,Scaling Max flow,29,11,16
+Fixed,FordFulkerson,29,7,16
+Fixed,PreflowPush,29,91,16
+Fixed,Scaling Max flow,32,6,23
+Fixed,FordFulkerson,32,2,23
+Fixed,PreflowPush,32,80,23
+Bipartite,Scaling Max flow,14,12,175
+Bipartite,FordFulkerson,14,13,175
+Bipartite,PreflowPush,14,8,175
+Bipartite,Scaling Max flow,20,16,132
+Bipartite,FordFulkerson,20,13,132
+Bipartite,PreflowPush,20,25,132
+Bipartite,Scaling Max flow,26,22,279
+Bipartite,FordFulkerson,26,17,279
+Bipartite,PreflowPush,26,27,279
+Bipartite,Scaling Max flow,32,27,395
+Bipartite,FordFulkerson,32,26,395
+Bipartite,PreflowPush,32,22,395
+Bipartite,Scaling Max flow,8,5,47
+Bipartite,FordFulkerson,8,3,47
+Bipartite,PreflowPush,8,5,47
+Bipartite,Scaling Max flow,17,13,151
+Bipartite,FordFulkerson,17,11,151
+Bipartite,PreflowPush,17,11,151
+Bipartite,Scaling Max flow,23,20,243
+Bipartite,FordFulkerson,23,11,243
+Bipartite,PreflowPush,23,48,243
+Bipartite,Scaling Max flow,28,37,264
+Bipartite,FordFulkerson,28,23,264
+Bipartite,PreflowPush,28,106,264
+Bipartite,Scaling Max flow,11,9,66
+Bipartite,FordFulkerson,11,3,66
+Bipartite,PreflowPush,11,18,66

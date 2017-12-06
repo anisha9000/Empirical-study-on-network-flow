@@ -1,0 +1,30 @@
+Fixed,Scaling Max flow,51,13,68,10
+Fixed,FordFulkerson,51,8,68,10
+Fixed,PreflowPush,51,42,68,10
+Fixed,Scaling Max flow,51,14,44,20
+Fixed,FordFulkerson,51,17,44,20
+Fixed,PreflowPush,51,425,44,20
+Fixed,Scaling Max flow,51,49,390,30
+Fixed,FordFulkerson,51,41,390,30
+Fixed,PreflowPush,51,85,390,30
+Fixed,Scaling Max flow,51,29,273,40
+Fixed,FordFulkerson,51,36,273,40
+Fixed,PreflowPush,51,61,273,40
+Fixed,Scaling Max flow,51,83,598,50
+Fixed,FordFulkerson,51,75,598,50
+Fixed,PreflowPush,51,219,598,50
+Fixed,Scaling Max flow,51,113,767,60
+Fixed,FordFulkerson,51,115,767,60
+Fixed,PreflowPush,51,1678,767,60
+Fixed,Scaling Max flow,51,110,890,70
+Fixed,FordFulkerson,51,120,890,70
+Fixed,PreflowPush,51,276,890,70
+Fixed,Scaling Max flow,51,150,912,80
+Fixed,FordFulkerson,51,131,912,80
+Fixed,PreflowPush,51,2444,912,80
+Fixed,Scaling Max flow,51,164,1017,90
+Fixed,FordFulkerson,51,152,1017,90
+Fixed,PreflowPush,51,428,1017,90
+Fixed,Scaling Max flow,51,155,1179,100
+Fixed,FordFulkerson,51,139,1179,100
+Fixed,PreflowPush,51,279,1179,100
